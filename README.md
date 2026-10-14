@@ -1,14 +1,14 @@
-**⚽ Live ansehen: [https://nosz.github.io/fcbayern](https://nosz.github.io/fcbayern)**
+**⚽ Live ansehen: [https://nosz.github.io/schwaben-fcb-power](https://nosz.github.io/schwaben-fcb-power)**
 
-[![Stammtisch-Quiz: Was weißt du über den FC Bayern? / What do you know about FC Bayern? / Wos woasst du iwa den FC Bayern?](fcbayern_vorschau.jpg)](https://nosz.github.io/fcbayern)
+[![Stammtisch-Quiz: Was weißt du über den FC Bayern? / What do you know about FC Bayern? / Wos woasst du iwa den FC Bayern?](fcbayern_vorschau.jpg)](https://nosz.github.io/schwaben-fcb-power)
 
-# FCBAYERN: Stammtisch-Quiz
+# Schwaben FCB Power: Stammtisch-Quiz
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
 **Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.0, Stand 14.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
-> Annahme: Die Seite wird unter `https://nosz.github.io/fcbayern/` veröffentlicht (GitHub Pages, Repository `fcbayern`). Ist die Adresse eine andere, in `index.html` (canonical, og:url, og:image, twitter:image), `README.md` und `manifest.webmanifest` anpassen.
+> **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
 ## Inhalt
 Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **Deutsch, Englisch und Bairisch** (Umschalter oben, wird gespeichert).
@@ -23,10 +23,15 @@ Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **D
 | 6 | Spitznamen & Triple: Stern des Südens | 4 |
 | 7 | Bossrunde: Elfmeterschießen | 5 |
 
+- **Hinweis ganz oben:** Ein dunkler, gut sichtbarer Banner unter der Kopfzeile: "⚽ von den FCB Hardcore Fans: Arno & Udo & Nobbe ⚽" (Deutsch, Englisch, Bairisch), ebenso auf jedem Zertifikat und in der Fußzeile.
+- **Stammtisch-Spruch & Fakt:** Karte auf der Startseite mit 16 Sprüchen und Fakten (Gags von Arno, Udo & Nobbe plus belegte Zahlen aus den Quellen), Knopf "Noch einer!" zeigt den nächsten.
 - **Startseite:** "Servus! Was weißt du über den FC Bayern?" mit zwei Wegen ("Ich bin neu im Stadion" / "Ich bin schon ewig Fan"). Name optional, nur lokal gespeichert, steckt in Begrüßung, Quiz, Ergebnis und Zertifikat.
 - **Spielmechanik:** 10 Tore je richtiger Antwort, 1 bis 3 Sterne je Spieltag, 5 Ränge von "Bankdrücker" bis "Vereinslegende", Konfetti, Hell- und Dunkelmodus.
 - **Zertifikate:** je Spieltag ein "Stammtisch-Zertifikat", zum Abschluss das "Meisterschalen-Zertifikat" (PNG speichern oder drucken). Unterschrieben "Arno, Udo & Nobbe (inoffiziell)".
 - **PWA:** installierbar, läuft offline, Update-Hinweis. Dateien (alle ins Hauptverzeichnis): `index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `favicon.svg`, `apple-touch-icon.png`, `fcbayern_vorschau.jpg`. Bei jeder neuen Version `VERSION` in `index.html` **und** `sw.js` gemeinsam erhöhen.
+
+## Tests (14.10.2026, lokaler Testserver)
+Daten und Texte (alle in 3 Sprachen, 93 Oberflächentexte, 16 Sprüche), 7 Spieltage x 3 Sprachen komplett durchgespielt, Namensfrage und Personalisierung, 168 Urkunden (7 Namen, 3 Sprachen, 8 Urkunden) im Rand, PWA (Manifest, Icons, Service Worker, Offline bei gestopptem Server, Fortschritt nach Neuladen), UX-Suite U1 bis U10 auf dem Handy (375 px) hell und dunkel. Nicht getestet: echtes Gerät, GitHub Pages selbst, fcbayern.com-Links.
 
 ## Marke und Look
 Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Blau-Verlauf), aus einem Screenshot geschätzt, nicht aus dem Quelltext der Seite. Es werden **kein Vereinswappen, keine Logos, keine Spielerfotos und keine kopierten Texte** verwendet. Das Logo ist ein selbst gezeichneter Pixel-Fanschal. Die Seite ist ein inoffizielles Fan-Projekt ohne Verbindung zum FC Bayern München.
@@ -42,4 +47,4 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
-- 1.0.0 (14.10.2026): Erstfassung (Technik der Nintendo-Quest-Seite, Inhalte neu).
+- 1.0.0 (14.10.2026): Erstfassung (Technik der Nintendo-Quest-Seite, Inhalte neu), Repository `schwaben-fcb-power`.
