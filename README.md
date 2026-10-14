@@ -6,7 +6,7 @@
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.0, Stand 14.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.0.1, Stand 14.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
@@ -23,7 +23,7 @@ Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **D
 | 6 | Spitznamen & Triple: Stern des Südens | 4 |
 | 7 | Bossrunde: Elfmeterschießen | 5 |
 
-- **Hinweis ganz oben:** Ein dunkler, gut sichtbarer Banner unter der Kopfzeile: "⚽ von den FCB Hardcore Fans: Arno & Udo & Nobbe ⚽" (Deutsch, Englisch, Bairisch), ebenso auf jedem Zertifikat und in der Fußzeile.
+- **Hinweis ganz oben:** In der Kopfzeile direkt unter "Stammtisch-Quiz" steht groß und fett: "von den FCB Hardcore Fans: Arno & Udo & Nobbe" (Deutsch, Englisch, Bairisch), ebenso auf jedem Zertifikat und in der Fußzeile.
 - **Stammtisch-Spruch & Fakt:** Karte auf der Startseite mit 16 Sprüchen und Fakten (Gags von Arno, Udo & Nobbe plus belegte Zahlen aus den Quellen), Knopf "Noch einer!" zeigt den nächsten.
 - **Startseite:** "Servus! Was weißt du über den FC Bayern?" mit zwei Wegen ("Ich bin neu im Stadion" / "Ich bin schon ewig Fan"). Name optional, nur lokal gespeichert, steckt in Begrüßung, Quiz, Ergebnis und Zertifikat.
 - **Spielmechanik:** 10 Tore je richtiger Antwort, 1 bis 3 Sterne je Spieltag, 5 Ränge von "Bankdrücker" bis "Vereinslegende", Konfetti, Hell- und Dunkelmodus.
@@ -47,4 +47,5 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.0.1 (14.10.2026): Hinweis "von den FCB Hardcore Fans: Arno & Udo & Nobbe" in der Kopfzeile unter dem Titel (größer, 15 px fett), dunklen Extra-Banner entfernt.
 - 1.0.0 (14.10.2026): Erstfassung (Technik der Nintendo-Quest-Seite, Inhalte neu), Repository `schwaben-fcb-power`.

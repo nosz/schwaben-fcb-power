@@ -18,13 +18,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="canonical" href="https://nosz.github.io/fcbayern/">
+<link rel="canonical" href="https://nosz.github.io/schwaben-fcb-power/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stammtisch-Quiz">
 <meta property="og:title" content="FCB Stammtisch-Quiz von Arno, Udo & Nobbe">
 <meta property="og:description" content="DE: 7 Spieltage, Zertifikate, Humor. EN: 7 matchdays, certificates, fun. BAR: 7 Spuitag, Zertifikate, Gaudi.">
-<meta property="og:url" content="https://nosz.github.io/fcbayern/">
-<meta property="og:image" content="https://nosz.github.io/fcbayern/fcbayern_vorschau.jpg?v=1">
+<meta property="og:url" content="https://nosz.github.io/schwaben-fcb-power/">
+<meta property="og:image" content="https://nosz.github.io/schwaben-fcb-power/fcbayern_vorschau.jpg?v=1">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FCB Stammtisch-Quiz von Arno, Udo & Nobbe">
 <meta name="twitter:description" content="DE: 7 Spieltage, Zertifikate, Humor. EN: 7 matchdays, certificates, fun. BAR: 7 Spuitag, Zertifikate, Gaudi.">
-<meta name="twitter:image" content="https://nosz.github.io/fcbayern/fcbayern_vorschau.jpg?v=1">
+<meta name="twitter:image" content="https://nosz.github.io/schwaben-fcb-power/fcbayern_vorschau.jpg?v=1">
 <style>
 :root{
   --red:#e6003a;--red-d:#c20031;--red-l:#ffe6ec;--herobg:linear-gradient(135deg,#ffd9e2,#d9e0ff);
@@ -76,7 +76,7 @@ button{font:inherit;cursor:pointer}
 .topin{max-width:1060px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:1.15rem;letter-spacing:.2px;min-height:44px;background:none;border:0;padding:0}
 .brand .dot svg{width:24px;height:auto;display:block}.brand .dot{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--red-d);display:grid;place-items:center;font-size:1.2rem;box-shadow:0 2px 0 rgba(0,0,0,.2)}
-.brand{text-align:left;line-height:1.2}.brand small{display:block;font-weight:600;font-size:.75rem;opacity:.95;letter-spacing:.2px;margin-top:1px}
+.brand{text-align:left;line-height:1.2}.brand small{display:block;font-weight:800;font-size:.98rem;opacity:1;letter-spacing:.1px;margin-top:2px;line-height:1.25}
 .spacer{flex:1}
 .pill{background:rgba(0,0,0,.2);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem;white-space:nowrap}
 .lang{display:flex;gap:6px}
@@ -206,11 +206,9 @@ button.chip{font:inherit;font-weight:700;color:var(--ink);cursor:pointer;min-hei
 .snack button{min-height:44px;padding:8px 16px;border-radius:999px;border:0;background:#ffc800;color:#3b2d00;font-weight:800}
 .instcard{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:14px 18px;margin:26px 0 0;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .instcard .ii{font-size:1.8rem}.instcard div{flex:1;min-width:200px}.instcard b{display:block}.instcard small{color:var(--mute)}
-.bannerby{background:#16181d;color:#fff;text-align:center;font-weight:800;font-size:1.05rem;line-height:1.3;padding:11px 14px;border-bottom:4px solid var(--red);letter-spacing:.2px}
-@media(max-width:560px){.bannerby{font-size:1rem;padding:10px 12px}}
-@media print{.bannerby{display:none}}
+@media(max-width:560px){.brand small{font-size:.9rem}}
 .spruch{background:var(--card);border:2px solid var(--line);border-left:8px solid var(--red);border-radius:var(--r);padding:12px 18px 16px;margin:18px 0 0;box-shadow:var(--shadow)}
-.spruch h2.sec{margin:4px 0 8px;font-size:1.1rem}.spruch .stag{margin:0;font-weight:800;color:var(--red-d)}.spruch .stxt{margin:4px 0 12px;font-size:1.05rem;font-weight:600}
+.spruch h2.sec{margin:4px 0 8px;font-size:1.1rem}.spruch .stag{margin:0;font-weight:800;color:var(--red)}.spruch .stxt{margin:4px 0 12px;font-size:1.05rem;font-weight:600}
 .byline{background:var(--red-l);color:var(--ink);text-align:center;font-weight:700;font-size:.85rem;padding:7px 12px;border-bottom:2px solid var(--line)}
 .stats{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:8px;margin-top:2px;grid-column:1/-1}
 .stat{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:8px 10px;min-width:0}
@@ -257,13 +255,12 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
   <div class="lang" role="group" id="langs"></div>
   <button type="button" class="theme" id="theme" aria-label="Hell/Dunkel">◐</button>
 </div></header>
-<div class="bannerby" id="by" role="note"></div>
 <main id="main" tabindex="-1"></main>
 <footer id="foot"></footer>
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.0.0", STAND = "14.10.2026";
+const VERSION = "1.0.1", STAND = "14.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -842,6 +839,7 @@ function certSVG(l){
   const hs = Math.min(72, Math.floor(860 / (head.length * 0.78)));
   const line = hasName() ? fill(M ? CT.lineMN[li] : CT.linesN[Math.max(0, st-1)][li]) : (M ? g("lineM") : CT.lines[Math.max(0, st-1)][li]);
   const rank = rankName(T.st);
+  const lw = [...line].reduce((s, c) => s + (/[WMm@]/.test(c) ? 1.05 : /\s/.test(c) ? .3 : /[A-ZÄÖÜ]/.test(c) ? .74 : /[ilj.,'!|]/.test(c) ? .3 : .56), 0), lsz = Math.max(13, Math.min(22, Math.floor(960 / lw)));
   return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1123 794" width="1123" height="794" role="img" aria-label="' + esc(head + (n ? " – " + n : "") + (M ? "" : " – " + l.t[li])) + '">'
    + '<rect width="1123" height="794" rx="28" fill="#ffffff"/>'
    + '<rect x="14" y="14" width="1095" height="766" rx="22" fill="none" stroke="#e6003a" stroke-width="10"/>'
@@ -856,7 +854,7 @@ function certSVG(l){
    + tl.map((x, i) => '<text x="561.5" y="' + ((M ? 350 : 392) + i*40) + '" text-anchor="middle" font-size="' + (M ? 26 : 34) + '" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(x) + '</text>').join("")
    + (M ? '<text x="561.5" y="440" text-anchor="middle" font-size="26" font-weight="800" fill="#1b7a3d" ' + F + '>' + esc(t("certMasterBadge")) + '</text>' : '<text x="561.5" y="' + (392 + (tl.length-1)*40 + 50) + '" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2026" ' + F + '>' + esc(right + " / " + l.q.length + " " + g("score")) + '</text>')
    + stars
-   + '<text x="561.5" y="640" text-anchor="middle" font-size="22" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
+   + '<text x="561.5" y="640" text-anchor="middle" font-size="' + lsz + '" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
    + '<text x="110" y="712" font-size="15" fill="#565860" ' + F + '>' + esc(g("date") + ": " + d) + '</text>'
    + '<text x="110" y="736" font-size="15" fill="#565860" ' + F + '>' + esc(g("rankL") + ": " + rank) + '</text>'
    + '<circle cx="561.5" cy="695" r="38" fill="#ffffff" stroke="#e6003a" stroke-width="5"/><g transform="translate(535.5 677) scale(3.25)">' + logoRects() + '</g>'
@@ -912,7 +910,7 @@ function render(keepScroll){
 function chrome(){
   document.documentElement.lang = LANGS[li][0];
   document.title = t("title");
-  $(".brand .dot").innerHTML = logoSvg(); $("#bt").textContent = t("title"); $("#bs").textContent = t("sub"); $("#by").textContent = "⚽ " + t("by") + " ⚽"; $("#brand").setAttribute("aria-label", t("title") + " – " + t("over"));
+  $(".brand .dot").innerHTML = logoSvg(); $("#bt").textContent = t("title"); $("#bs").textContent = t("by"); $("#brand").setAttribute("aria-label", t("title") + " – " + t("over"));
   $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL"));
   const T = totals(); $("#coins").textContent = "⚽ " + T.co;
   const lg = $("#langs"); lg.replaceChildren(); LANGS.forEach((x, i) => lg.append(h("button", {type:"button", lang:x[0], "aria-pressed": String(i === li), "aria-label":x[2], onclick:() => { li = i; save(); render(true); }}, x[1])));
