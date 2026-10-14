@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="application-name" content="Stammtisch-Quiz">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Stammtisch-Quiz">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Stammtisch-Quiz</title>
+<meta name="description" content="DE: 7 Spieltage, Zertifikate, Humor. EN: 7 matchdays, certificates, fun. BAR: 7 Spuitag, Zertifikate, Gaudi.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#e6003a">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 1 16 9' shape-rendering='crispEdges'%3E%3Crect x='0' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='8' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='9' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='10' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='11' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='12' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='13' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='14' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='15' y='1' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='9' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='2' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='2' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='15' y='2' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='9' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='3' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='3' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='15' y='3' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='9' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='4' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='4' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='15' y='4' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='5' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='9' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='13' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='5' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='15' y='5' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='7' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='9' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='10' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='11' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='12' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='13' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='15' y='6' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='10' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='12' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='14' y='7' width='1' height='1' fill='%232b1b1b'/%3E%3Crect x='0' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='12' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='8' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='0' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='2' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='4' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='10' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='12' y='9' width='1' height='1' fill='%23e6003a'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%23e6003a'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="canonical" href="https://nosz.github.io/fcbayern/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stammtisch-Quiz">
+<meta property="og:title" content="FCB Stammtisch-Quiz von Arno, Udo & Nobbe">
+<meta property="og:description" content="DE: 7 Spieltage, Zertifikate, Humor. EN: 7 matchdays, certificates, fun. BAR: 7 Spuitag, Zertifikate, Gaudi.">
+<meta property="og:url" content="https://nosz.github.io/fcbayern/">
+<meta property="og:image" content="https://nosz.github.io/fcbayern/fcbayern_vorschau.jpg?v=1">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stammtisch-Quiz: roter Fanschal, Fußball und Sterne. Was weißt du über den FC Bayern? What do you know about FC Bayern? Wos woasst du iwa den FC Bayern?">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FCB Stammtisch-Quiz von Arno, Udo & Nobbe">
+<meta name="twitter:description" content="DE: 7 Spieltage, Zertifikate, Humor. EN: 7 matchdays, certificates, fun. BAR: 7 Spuitag, Zertifikate, Gaudi.">
+<meta name="twitter:image" content="https://nosz.github.io/fcbayern/fcbayern_vorschau.jpg?v=1">
+<style>
+:root{
+  --red:#e6003a;--red-d:#c20031;--red-l:#ffe6ec;--herobg:linear-gradient(135deg,#ffd9e2,#d9e0ff);
+  --bg:#f4f4f4;--card:#ffffff;--ink:#1f2026;--mute:#565860;--line:#e1e2e5;
+  --blue:#2a4bd7;--green:#1b7a3d;--gold:#ffc800;--gold-ink:#5a4500;--purple:#6b3fa0;
+  --ok:#157a3a;--okbg:#e6f6ec;--bad:#b3261e;--badbg:#fdecea;
+  --shadow:0 4px 0 rgba(0,0,0,.08),0 8px 22px rgba(0,0,0,.08);
+  --r:20px;
+  --font:"Trebuchet MS","Segoe UI","Hiragino Maru Gothic ProN","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
+}
+:root[data-theme="dark"]{
+  --red:#ff4d5d;--red-d:#e6003a;--red-l:#3a1a1e;--herobg:linear-gradient(135deg,#4a1822,#1d2447);
+  --bg:#15161a;--card:#202228;--ink:#f1f2f4;--mute:#b4b6bd;--line:#34363e;
+  --blue:#5db8f0;--green:#5ccf86;--gold:#ffc800;--gold-ink:#ffe28a;--purple:#b794f0;
+  --ok:#5ccf86;--okbg:#17301f;--bad:#ff8a80;--badbg:#3a1d1b;
+  --shadow:0 4px 0 rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.35);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --red:#ff4d5d;--red-d:#e6003a;--red-l:#3a1a1e;--herobg:linear-gradient(135deg,#4a1822,#1d2447);
+    --bg:#15161a;--card:#202228;--ink:#f1f2f4;--mute:#b4b6bd;--line:#34363e;
+    --blue:#5db8f0;--green:#5ccf86;--gold:#ffc800;--gold-ink:#ffe28a;--purple:#b794f0;
+    --ok:#5ccf86;--okbg:#17301f;--bad:#ff8a80;--badbg:#3a1d1b;
+    --shadow:0 4px 0 rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.6 var(--font);-webkit-text-size-adjust:100%}
+a{color:var(--blue)}
+button{font:inherit;cursor:pointer}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;z-index:100}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Kopf */
+.top{background:var(--red);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+:root[data-theme="dark"] .top{background:#c20031}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .top{background:#c20031}}
+.topin{max-width:1060px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:1.15rem;letter-spacing:.2px;min-height:44px;background:none;border:0;padding:0}
+.brand .dot svg{width:24px;height:auto;display:block}.brand .dot{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--red-d);display:grid;place-items:center;font-size:1.2rem;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.brand{text-align:left;line-height:1.2}.brand small{display:block;font-weight:600;font-size:.75rem;opacity:.95;letter-spacing:.2px;margin-top:1px}
+.spacer{flex:1}
+.pill{background:rgba(0,0,0,.2);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem;white-space:nowrap}
+.lang{display:flex;gap:6px}
+.lang button,.theme{min-height:44px;min-width:44px;padding:6px 12px;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;font-weight:700}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--red-d)}
+.theme{font-size:1.1rem;padding:6px}
+/* Layout */
+main{max-width:1060px;margin:0 auto;padding:20px 16px 90px;outline:none}
+.hero{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;position:relative;overflow:hidden;border:2px solid var(--line)}
+.hero::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--herobg)}
+.hero>*{position:relative}
+.hero h1{margin:0 0 6px;font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.2}
+.hero p{margin:0 0 12px;color:var(--mute)}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}
+.chip.coin b{color:#3b2d00;background:var(--gold);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:.8rem}
+.ring{--p:0;width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center;transition:background .6s}
+.ring span{width:84px;height:84px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:800;font-size:1.3rem}
+h2.sec{margin:28px 0 12px;font-size:1.3rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.lcard{--c:var(--red);text-align:left;background:var(--card);border:2px solid var(--line);border-top:8px solid var(--c);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);color:var(--ink);display:flex;flex-direction:column;gap:6px;min-height:170px;transition:transform .18s,box-shadow .18s;animation:pop .5s both}
+.lcard:hover{transform:translateY(-4px) rotate(-.4deg)}
+.lcard:active{transform:translateY(1px)}
+.lcard .ico{font-size:2rem;line-height:1}
+.lcard h3{margin:0;font-size:1.08rem;line-height:1.3}
+.lcard p{margin:0;color:var(--mute);font-size:.92rem}
+.lcard .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;color:var(--mute);font-weight:700}
+.stars{letter-spacing:2px;font-size:1.15rem}
+.stars .off{opacity:.3;filter:grayscale(1)}
+.nr{font-weight:800;color:var(--c)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 22px;border-radius:999px;border:0;background:var(--red-d);color:#fff;font-weight:800;box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .12s,box-shadow .12s;text-decoration:none}
+:root[data-theme="dark"] .btn{background:#d0101f}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{background:#d0101f}}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.ghost{background:var(--card)!important;color:var(--ink);border:2px solid var(--line);box-shadow:0 3px 0 rgba(0,0,0,.08)}
+.crumb{display:flex;gap:12px;flex-wrap:nowrap;align-items:center;margin:0 0 16px;min-width:0}
+.ctx{flex:1;min-width:0;color:var(--mute);font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{display:inline-flex;align-items:center;gap:4px;flex:none;min-height:44px;padding:8px 16px 8px 8px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-weight:800;box-shadow:0 3px 0 rgba(0,0,0,.08);transition:transform .12s}
+.back svg{color:var(--red);flex:none}
+.back:hover{transform:translateX(-2px)}.back:active{transform:translateY(2px);box-shadow:none}
+/* Lektion */
+.lhead{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.lhead .big{font-size:3rem;animation:wob 2.4s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg) translateY(-4px)}}
+.lhead h1{margin:0;font-size:clamp(1.4rem,4.5vw,2rem);line-height:1.25}
+.lhead p{margin:0;color:var(--mute)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:0 0 14px;box-shadow:var(--shadow);animation:pop .5s both}
+.card h2{margin:0 0 6px;font-size:1.1rem}
+.card p{margin:0}
+.card .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--red-d);color:#fff;font-weight:800;margin-right:8px;font-size:.9rem}
+.bubble{background:var(--gold);color:#3b2d00;border-radius:22px 22px 22px 6px;padding:14px 18px;margin:18px 0;font-weight:700;box-shadow:0 4px 0 rgba(0,0,0,.12);animation:pop .5s .25s both}
+:root[data-theme="dark"] .bubble{color:#2a2000}
+.bubble small{display:block;font-weight:800;letter-spacing:.5px;text-transform:uppercase;font-size:.75rem;margin-bottom:2px}
+details.pro{background:var(--card);border:2px dashed var(--c,var(--red));border-radius:var(--r);padding:0;margin:0 0 14px}
+details.pro summary{min-height:48px;padding:12px 18px;font-weight:800;cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center}
+details.pro summary::-webkit-details-marker{display:none}
+details.pro summary::before{content:"\1F3C6";font-size:1.2rem}
+details.pro[open] summary::before{content:"\2B50"}
+details.pro p{margin:0;padding:0 18px 16px}
+.src{font-size:.9rem;color:var(--mute);margin:16px 0}
+.src ul{margin:6px 0 0;padding-left:20px}
+.src li{margin:4px 0}
+.sticky{position:sticky;bottom:0;display:flex;justify-content:center;margin:18px -16px 0;padding:22px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--bg) 34%);z-index:10}.next{margin:16px 0 0}.next .btn{width:100%;min-height:52px;font-size:1.05rem}.sticky .btn{width:100%;max-width:420px;min-height:52px;font-size:1.05rem}
+/* Quiz */
+.dots{display:flex;gap:6px;margin:0 0 16px}
+.dots i{flex:1;height:10px;border-radius:99px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--ok)}
+.dots i.no{background:var(--bad)}
+.dots i.cur{background:var(--blue)}
+.qq{font-size:clamp(1.15rem,3.8vw,1.5rem);line-height:1.35;margin:0 0 16px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;min-height:56px;padding:12px 16px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.08);transition:transform .12s,border-color .12s}
+.opt:hover:not(:disabled){border-color:var(--blue);transform:translateX(3px)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.opt.right{background:var(--okbg);border-color:var(--ok);animation:hop .45s}
+.opt.wrong{background:var(--badbg);border-color:var(--bad);animation:shake .4s}
+.opt:disabled{cursor:default;color:var(--ink)}
+.opt.dim{opacity:.7}
+@keyframes hop{30%{transform:scale(1.03) translateY(-4px)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{margin:16px 0 0;padding:14px 16px;border-radius:16px;font-weight:600}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb b{display:block;margin-bottom:2px}
+.res{text-align:center;padding:10px 0}
+.res .bigstars{display:inline-block;font-size:2.6rem;line-height:1.3;letter-spacing:6px;color:#ffc800;background:#26272e;border-radius:999px;padding:2px 22px 0 28px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.res .bigstars span{display:inline-block;animation:star .6s both}
+.res .bigstars span:nth-child(2){animation-delay:.2s}.res .bigstars span:nth-child(3){animation-delay:.4s}
+.res .bigstars .off{animation:none;color:#8a8c92}
+@keyframes star{from{transform:scale(0) rotate(-180deg)}to{transform:none}}
+.res h1{margin:6px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+footer{max-width:1060px;margin:0 auto;padding:0 16px 40px;color:var(--mute);font-size:.88rem}
+footer p{margin:6px 0}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.conf i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;animation:fall 2.2s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.9}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:560px){
+  .brand{flex:1 1 0;min-width:0}.brand small{white-space:normal}.pill{display:none}.topin .lang{order:3;flex:1 1 100%}.lang button{flex:1;min-width:0}.spacer{display:none}.pill{margin-left:auto}.chip{padding:3px 11px;font-size:.84rem;min-height:40px}button.chip{min-height:40px}.stats{gap:8px}.hero::before{width:130px;height:130px;right:-46px;top:-46px;opacity:.75}.hero{padding:16px;gap:12px}.ring{width:72px;height:72px}.ring span{width:54px;height:54px;font-size:1rem}.hero p{font-size:.95rem}
+  .topin{padding:8px 12px}
+  main{padding:14px 12px 90px}
+}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.choices:has(.choice:only-child){grid-template-columns:1fr}
+.choice{display:flex;gap:14px;align-items:center;text-align:left;min-height:84px;padding:14px 20px;border-radius:22px;border:2px solid var(--line);background:var(--card);color:var(--ink);box-shadow:var(--shadow);transition:transform .15s;animation:pop .5s .1s both}
+.choice:hover{transform:translateY(-3px)}
+.choice .ci{font-size:2.2rem;line-height:1}
+.choice b{display:block;font-size:1.15rem}
+.choice small{display:block;font-size:.92rem;opacity:.92}
+.choice.pri{background:var(--red-d);color:#fff;border-color:transparent}
+.ach{margin-top:10px;padding:10px 14px;border-radius:14px;background:var(--gold);color:#3b2d00;font-weight:800;animation:pop .5s both}
+.nameq{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:14px 0 0;box-shadow:var(--shadow);display:grid;gap:6px;animation:pop .5s both}
+.nameq label{font-weight:800;font-size:1.1rem}
+.nameq small{color:var(--mute)}
+.nameq input{min-height:48px;font:inherit;font-size:1rem;padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:4px}
+.linkbtn{background:none;border:0;color:var(--blue);font-weight:800;text-decoration:underline;min-height:44px;padding:6px 8px}
+.qp{margin:0 0 6px;font-weight:800;color:var(--blue)}
+button.chip{font:inherit;font-weight:700;color:var(--ink);cursor:pointer;min-height:40px}
+.nlink{display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:var(--blue)}
+.pitch{text-align:center;color:var(--mute);margin:10px 0 0;font-weight:700}
+@media(max-width:560px){.choices{grid-template-columns:1fr}.res .row,.main>.row{flex-direction:column;align-items:stretch}.res~.row{flex-direction:column;align-items:stretch}.res~.row .btn,.certbox~.row .btn{width:100%}}.top{padding-top:env(safe-area-inset-top)}
+.snack{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;max-width:520px;margin:0 auto;background:#26272e;color:#fff;border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35);animation:pop .4s both}
+.snack span{flex:1;font-weight:700}
+.snack button{min-height:44px;padding:8px 16px;border-radius:999px;border:0;background:#ffc800;color:#3b2d00;font-weight:800}
+.instcard{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:14px 18px;margin:26px 0 0;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.instcard .ii{font-size:1.8rem}.instcard div{flex:1;min-width:200px}.instcard b{display:block}.instcard small{color:var(--mute)}
+.bannerby{background:#16181d;color:#fff;text-align:center;font-weight:800;font-size:1.05rem;line-height:1.3;padding:11px 14px;border-bottom:4px solid var(--red);letter-spacing:.2px}
+@media(max-width:560px){.bannerby{font-size:1rem;padding:10px 12px}}
+@media print{.bannerby{display:none}}
+.spruch{background:var(--card);border:2px solid var(--line);border-left:8px solid var(--red);border-radius:var(--r);padding:12px 18px 16px;margin:18px 0 0;box-shadow:var(--shadow)}
+.spruch h2.sec{margin:4px 0 8px;font-size:1.1rem}.spruch .stag{margin:0;font-weight:800;color:var(--red-d)}.spruch .stxt{margin:4px 0 12px;font-size:1.05rem;font-weight:600}
+.byline{background:var(--red-l);color:var(--ink);text-align:center;font-weight:700;font-size:.85rem;padding:7px 12px;border-bottom:2px solid var(--line)}
+.stats{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:8px;margin-top:2px;grid-column:1/-1}
+.stat{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:8px 10px;min-width:0}
+.stat .sv{display:block;font-weight:800;font-size:.98rem;line-height:1.25;overflow-wrap:anywhere}
+.stat .sl{display:block;font-size:.78rem;color:var(--mute);font-weight:700;margin-top:2px}
+.namebtn{padding:6px 0;min-height:44px;text-decoration:none;color:var(--mute);font-weight:700}
+.namebtn:hover{text-decoration:underline}
+h2.secrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
+.lcard.nextup{box-shadow:0 0 0 3px var(--red),var(--shadow)}
+.lcard.done .nr::after{content:" ✓";color:var(--ok)}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr;gap:10px}
+ .lcard{display:grid;grid-template-columns:44px 1fr auto;grid-template-areas:"ico title foot" "ico sub foot";column-gap:12px;row-gap:2px;align-items:center;min-height:78px;padding:12px 14px;border-top:2px solid var(--line);border-left:8px solid var(--c)}
+ .lcard:hover{transform:none}
+ .lcard .ico{grid-area:ico;font-size:1.9rem;text-align:center}
+ .lcard .nr{display:none}
+ .lcard h3{grid-area:title;font-size:1rem}
+ .lcard p{grid-area:sub;font-size:.84rem}
+ .lcard .foot{grid-area:foot;flex-direction:column;align-items:flex-end;gap:2px;margin:0;font-size:.8rem}
+ .stats{grid-template-columns:1.6fr 1fr 1fr;gap:6px}.stat{padding:7px 8px}
+}
+@media print{.byline{display:none}}
+.certbox{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:10px;box-shadow:var(--shadow);margin:14px 0;animation:pop .5s both}
+.certbox svg{display:block;width:100%;height:auto;border-radius:12px}
+.field{display:grid;gap:6px;margin:14px 0}
+.field label{font-weight:800}
+.field input{min-height:48px;font:inherit;font-size:1rem;padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+.certlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.certlist .btn{justify-content:flex-start;text-align:left;border-radius:16px;min-height:52px;width:100%}
+.btn.mastercard{background:#ffc800!important;color:#3b2d00;border:0;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+@page{size:A4 landscape;margin:8mm}
+@media print{body{background:#fff}main>*:not(.certbox){display:none!important}.certbox{box-shadow:none;border:0;padding:0;margin:0}footer{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.top,.sticky,.lang{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" id="skip">Zum Inhalt</a>
+<header class="top"><div class="topin">
+  <button type="button" class="brand" id="brand" aria-label="Stammtisch-Quiz"><span class="dot" aria-hidden="true"></span><span><span id="bt">Stammtisch-Quiz</span><small id="bs"></small></span></button>
+  <span class="spacer"></span>
+  <span class="pill" id="coins" aria-live="polite"></span>
+  <div class="lang" role="group" id="langs"></div>
+  <button type="button" class="theme" id="theme" aria-label="Hell/Dunkel">◐</button>
+</div></header>
+<div class="bannerby" id="by" role="note"></div>
+<main id="main" tabindex="-1"></main>
+<footer id="foot"></footer>
+<div id="live" class="sr" aria-live="polite"></div>
+<script>
+"use strict";
+const VERSION = "1.0.0", STAND = "14.10.2026";
+const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
+const KEY = "fcb_stammtisch_v1";
+let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
+try{ const s = JSON.parse(localStorage.getItem(KEY) || "{}"); prog = s.prog || {}; nm = s.name || ""; ach = s.ach || {}; li = Math.max(0, LANGS.findIndex(l => l[0] === s.lang)); if(!s.lang){ const n = (navigator.language||"de").slice(0,2); li = Math.max(0, LANGS.findIndex(l => l[0] === n)); } }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({prog, name:nm, ach, lang:LANGS[li][0]})); }catch(e){} }
+
+/* ---------- Oberflächentexte [DE, EN, BAR] ---------- */
+const S = {
+ title:["Stammtisch-Quiz","Stammtisch Quiz","Stammtisch-Quiz"],
+ sub:["Inoffizielles Fan-Projekt","Unofficial fan project","Inoffizielles Fan-Projekt"],
+ hello:["Servus! Was weißt du über den FC Bayern?","Hey! How much do you know about FC Bayern?","Servus! Wos woasst du iwa den FC Bayern?"],
+ intro:["In 20 Minuten vom Bankdrücker zur Vereinslegende. Für Neulinge, Dauerkartenbesitzer und alle am Stammtisch.","In 20 minutes from benchwarmer to club legend. For newcomers, season-ticket holders and everyone at the Stammtisch.","In 20 Minuten vom Bankdruckä zur Vereinslegende. Fia Neilinge, Dauerkartnbsitzer und olle am Stammtisch."],
+ newB:["Ich bin neu im Stadion","I'm new to the stadium","I bin neich im Stadion"],
+ newS:["Dein erstes Zertifikat in 60 Sekunden","Your first certificate in 60 seconds","Dei erstes Zertifikat in 60 Sekundn"],
+ oldB:["Ich bin schon ewig Fan","I've been a fan forever","I bin scho ewig Fan"],
+ oldS:["Teste dich gleich in der Bossrunde","Take on the boss round right away","Teste di glei in da Bossrundn"],
+ achFirst:["Erfolg freigeschaltet: Erster Treffer! Das fühlt sich an wie ein Tor in der 90. Minute.","Achievement unlocked: first hit! That feels like a goal in the 90th minute.","Erfolg freigschoitn: Erschta Treffa! Des fühlt si o wia a Tor in da 90. Minutn."],
+ certNow:["Dein Zertifikat ist fertig. Name eintragen, speichern, am Stammtisch zeigen!","Your certificate is ready. Add your name, save it, show it off at the Stammtisch!","Dei Zertifikat is fertig. Nam eitrong, speichan, am Stammtisch herzeign!"],
+ nSec:["Mehr vom FC Bayern","More from FC Bayern","Mehr vom FC Bayern"],
+ nSite:["Offizielle Vereinsseite","Official club website","Offizielle Vereinsseitn"],
+ nHist:["Vereinsgeschichte (Wikipedia, DE)","Club history (Wikipedia, DE)","Vereinsgschicht (Wikipedia, DE)"],
+ nCorp:["Club facts (Wikipedia, EN)","Club facts (Wikipedia, EN)","Club facts (Wikipedia, EN)"],
+ nExt:["öffnet im gleichen Tab","opens in the same tab","geht im gleichn Tab af"],
+ nameQ:["Wie dürfen wir dich am Stammtisch nennen?","What should we call you at the Stammtisch?","Wia derfma di am Stammtisch nenna?"],
+ nameSub:["Für Begrüßung, Quiz und Zertifikat. Dein Name bleibt auf diesem Gerät.","For greetings, quiz and certificate. Your name stays on this device.","Fia Begrüßung, Quiz und Zertifikat. Dei Nam bleibt af dem Gerät."],
+ nameP2:["Dein Name oder Fan-Name","Your name or fan nickname","Dei Nam oda Fan-Nam"],
+ nameOk:["Das bin ich","That's me","Des bin i"],
+ nameSkip:["Lieber anonym bleiben","Stay anonymous","Liaba anonym bleibm"],
+ nameChange:["Name ändern","Change name","Nam ändan"],
+ helloN:["Servus {n}! Was weißt du über den FC Bayern?","Hey {n}! How much do you know about FC Bayern?","Servus {n}! Wos woasst du iwa den FC Bayern?"],
+ greetN:["Schön, dich am Stammtisch zu sehen, {n}. Das erste Bier gibt's nach dem Quiz.","Great to see you at the Stammtisch, {n}. The first beer comes after the quiz.","Schee, di am Stammtisch zum seng, {n}. Des erste Bier gibt's nach'm Quiz."],
+ qFirst:["Anpfiff, {n}!","Kick-off, {n}!","Ofpfiff, {n}!"],
+ qLast:["Letzte Frage, {n}: Das ist der Elfmeter.","Last question, {n}: this is the penalty.","Letzte Frog, {n}: Des is da Elfmeter."],
+ passN:["Spiel gewonnen, {n}!","Match won, {n}!","Spui gwunna, {n}!"],
+ tryN:["Knapp, {n}! Nochmal in die Verlängerung?","Close, {n}! Another go in extra time?","Knapp, {n}! Nomoi in d' Verlängerung?"],
+ gateT:["Kurze Halbzeitpause vor dem Quiz!","Quick half-time break before the quiz!","Kurze Halbzeitpausn voam Quiz!"],
+ gateS:["Wie heißt du eigentlich? Dann wird dein Zertifikat gleich viel persönlicher. Der Name bleibt auf diesem Gerät.","What's your name? It makes your certificate much more personal. Your name stays on this device.","Wia hoaßt du eigentlich? Dann is dei Zertifikat glei vui persönlicha. Da Nam bleibt af dem Gerät."],
+ gateGo:["Los geht's","Let's go","Auf geht's"],
+ gateSkip:["Weiter ohne Namen","Continue without a name","Weida ohne Nam"],
+ by:["von den FCB Hardcore Fans: Arno & Udo & Nobbe","by the FCB hardcore fans: Arno & Udo & Nobbe","vo de FCB-Hardcore-Fans: Arno & Udo & Nobbe"],
+ introH:["In 20 Minuten vom Bankdrücker zur Vereinslegende. Für Neue, Dauerkarten-Profis und die ganze Kurve.","In 20 minutes from benchwarmer to club legend. For newcomers, season-ticket pros and the whole curve.","In 20 Minutn vom Bankdruckä zur Vereinslegende. Fia Neie, Dauerkartn-Profis und de ganze Kurvn."],
+ instT:["Als App installieren","Install as an app","Als App installiern"],
+ instS:["Startet wie eine App und läuft auch ohne Internet.","Opens like an app and works without internet.","Startet wia a App und lafft aa ohne Internet."],
+ instB:["Installieren","Install","Installiern"],
+ instIos:["Auf dem iPhone: Teilen-Symbol antippen, dann „Zum Home-Bildschirm“.","On iPhone: tap the Share icon, then “Add to Home Screen”.","Aufm iPhone: Teilen-Symbol antippn, dann „Zum Home-Bildschirm“."],
+ updT:["Neue Version verfügbar","New version available","Neie Version do"],
+ updB:["Aktualisieren","Update","Aktualisiern"],
+ offT:["Bereit für den Offline-Betrieb ✓","Ready for offline use ✓","Bereit fia ohne Internet ✓"],
+ spruchT:["Stammtisch-Spruch & Fakt","Stammtisch saying & fact","Stammtisch-Spruch & Fakt"],
+ spruchB:["Noch einer!","Another one!","Nomoi oana!"],
+ spruchG:["😄 Stammtisch-Spruch","😄 Stammtisch saying","😄 Stammtisch-Spruch"],
+ spruchF:["🧠 Wusstest du?","🧠 Did you know?","🧠 Hosts gwusst?"],
+ moreN:["Mehr vom FC Bayern entdecken","Discover more about FC Bayern","Mehr vom FC Bayern entdeckn"],
+ contB:["Weiter geht's","Keep going","Weida geht's"],
+ pitch:["Auch Weltvereine fangen klein an: 1900 mit elf Männern in einem Münchner Weinhaus.","Even world clubs start small: in 1900 with eleven men in a Munich wine house.","Aa Weltvereine fanga kloa o: 1900 mit elf Mannsbuidan in am Münchna Weinhaus."], lessons:["Deine Spieltage","Your matchdays","Deine Spuitag"],
+ min:["Min.","min","Min."],
+ done:["gespielt","played","gspuit"],
+ rank:["Dein Rang","Your rank","Dei Rang"],
+ coins:["Tore","goals","Tor"],
+ starsOf:["Sterne","stars","Stern"],
+ start:["Anpfiff","Kick-off","Ofpfiff"],
+ cont:["Nochmal spielen","Play again","Nomoi spuin"],
+ back:["Übersicht","Overview","Übersicht"],
+ backL:["Zum Spieltag","Back to matchday","Zum Spuitag"],
+ intro2:["Kurz & knackig","Short & sweet","Kurz & knackig"],
+ pro:["Für Kenner: Stammtisch-Wissen","For connoisseurs: Stammtisch knowledge","Fia Kenna: Stammtisch-Wissn"],
+ fun:["Halbzeit-Gag","Half-time joke","Halbzeit-Gaudi"],
+ src:["Quellen (Stand 14.10.2026)","Sources (as of 14 Oct 2026)","Quellen (Stand 14.10.2026)"],
+ quiz:["Quiz starten","Start quiz","Quiz startn"],
+ qof:["Frage","Question","Frog"],
+ of:["von","of","vo"],
+ next:["Weiter","Next","Weida"],
+ finish:["Ergebnis ansehen","See result","Ergebnis o'schaun"],
+ correct:["Richtig!","Correct!","Richtig!"],
+ wrong:["Knapp daneben!","Not quite!","Knapp danebn!"],
+ solution:["Richtig wäre:","The right answer is:","Richtig waar:"],
+ res:["Ergebnis","Result","Ergebnis"],
+ pass:["Spiel gewonnen!","Match won!","Spui gwunna!"],
+ tryAgain:["Fast! Nochmal in die Verlängerung?","Almost! Another go in extra time?","Fast! Nomoi in d' Verlängerung?"],
+ retry:["Quiz wiederholen","Retry quiz","Quiz wiedahoin"],
+ nextL:["Nächster Spieltag","Next matchday","Nächsta Spuitag"],
+ over:["Zur Übersicht","To overview","Zur Übersicht"],
+ reset:["Fortschritt zurücksetzen","Reset progress","Fortschritt zruckstein"],
+ resetQ:["Fortschritt wirklich löschen?","Really delete your progress?","Fortschritt echt löschn?"],
+ allDone:["Alle Spieltage gemeistert – du bist offiziell ein Stammtisch-Experte (inoffiziell).","All matchdays mastered – you are officially a Stammtisch expert (unofficially).","Olle Spuitag gmoastert – du bist offiziell a Stammtisch-Experte (inoffiziell)."],
+ disc:["Inoffizielles Fan-Projekt der FCB-Hardcore-Fans Arno, Udo & Nobbe ohne Verbindung zum FC Bayern München. FC Bayern München und alle genannten Namen und Marken gehören ihren jeweiligen Inhabern; es werden kein Vereinswappen, keine Logos und keine Originalbilder verwendet. Zahlen sind Momentaufnahmen aus den angegebenen Quellen und können sich ändern.","Unofficial fan project by the FCB hardcore fans Arno, Udo & Nobbe, not affiliated with FC Bayern München. FC Bayern München and all names and trademarks mentioned belong to their respective owners; no club crest, logos or original images are used. Figures are snapshots from the cited sources and may change.","Inoffizielles Fan-Projekt vo de FCB-Hardcore-Fans Arno, Udo & Nobbe, ohne Verbindung zum FC Bayern München. FC Bayern München und olle gnannten Nam und Marken ghörn eanan jeweiligen Inhaber; es wern koa Vereinswappn, koane Logos und koane Originalbuider vawendt. Zahln san Momentaufnahman aus de Quellen und kennan si ändan."],
+ trans:["Hinweis: Die bairischen Texte sind liebevoll-lautmalerisch gemeint und keine Rechtschreibnorm; Dialekt-Profis dürfen gern korrigieren.","Note: the Bavarian texts are meant playfully and phonetically, not as a spelling standard; dialect pros are welcome to correct them.","Hinweis: De bairischn Text san liabevoi gmoant, koa Rechtschreibnorm; Dialekt-Profis derfa gern korrigiern."],
+ skip:["Zum Inhalt","Skip to content","Zum Inhoit"],
+ ver:["Version","Version","Version"],
+ themeL:["Farbschema wechseln","Switch colour scheme","Farbschema wechsln"],
+ certBtn:["Zertifikat holen","Get your certificate","Zertifikat hoin"],
+ certs:["Deine Zertifikate","Your certificates","Deine Zertifikat"],
+ certsHint:["Jedes gewonnene Spiel gibt eine Urkunde fürs Stammtisch-Regal. Alle sieben gibt das Meister-Zertifikat.","Every match won earns a certificate for the Stammtisch shelf. All seven earn the Master certificate.","Jedes gwunnane Spui gibt a Urkundn fias Stammtisch-Regal. Olle sieme gem's Meister-Zertifikat."],
+ master:["Meister-Zertifikat","Master certificate","Meister-Zertifikat"],
+ nameL:["Dein Name für die Urkunde","Your name for the certificate","Dei Nam fia d' Urkundn"],
+ nameP:["Dein Name hier – sei stolz darauf!","Your name here – be proud of it!","Dei Nam do – sei stolz drauf!"],
+ dl:["Als Bild speichern (PNG)","Save as image (PNG)","Als Buid speichan (PNG)"],
+ prt:["Drucken","Print","Druckn"],
+ certOf:["Zertifikat","Certificate","Zertifikat"],
+ certMasterBadge:["Alle 7 Spieltage gewonnen!","All 7 matchdays won!","Olle 7 Spuitag gwunna!"]
+};
+const RANKS = [
+ [0,["Bankdrücker","Benchwarmer","Bankdruckä"]],
+ [3,["Stammspieler","Regular starter","Stammspuia"]],
+ [8,["Torjäger","Top scorer","Torjaga"]],
+ [14,["Kapitän","Captain","Kapitän"]],
+ [20,["Vereinslegende","Club legend","Vereinslegende"]]
+];
+const OKS = [
+ ["Tooor! Und der Stammtisch jubelt.","Goal! And the Stammtisch erupts.","Tooor! Und da Stammtisch jubelt."],
+ ["Richtig! Das hätte selbst der Schiri gesehen.","Right! Even the referee would have spotted that.","Richtig! Des hätt sogar da Schiri gseng."],
+ ["Volltreffer! Arno nickt anerkennend.","Bullseye! Arno nods in approval.","Volltreffer! Da Arno nickt anerkennend."],
+ ["Sauber! Das war so klar wie ein Elfmeter.","Clean! As clear as a penalty.","Sauber! Des war so kloar wia a Elfmeter."]
+];
+const BADS = [
+ ["Autsch! Gelbe Karte für diese Antwort.","Ouch! Yellow card for that answer.","Autsch! Gelbe Kartn fia de Antwort."],
+ ["Nicht schlimm: Nachspielzeit gibt's gratis.","No worries: stoppage time is free.","Net schlimm: Nachspuizeit gibt's gratis."],
+ ["Knapp vorbei ist auch Lattenkracher.","A near miss is still a crossbar rattler.","Knapp vorbei is aa a Lattnkracha."],
+ ["Das war die Schiedsrichter-Falle. Nächstes Mal klappt's.","That was the referee trap. You'll get it next time.","Des war de Schiedsrichter-Fallen. Nächstes Moi klappt's."]
+];
+const OKN = [
+ ["Tooor, {n}! Und der Stammtisch jubelt.","Goal, {n}! And the Stammtisch erupts.","Tooor, {n}! Und da Stammtisch jubelt."],
+ ["Richtig, {n}! Das hätte selbst der Schiri gesehen.","Right, {n}! Even the referee would have spotted that.","Richtig, {n}! Des hätt sogar da Schiri gseng."],
+ ["Volltreffer, {n}! Udo klatscht Beifall.","Bullseye, {n}! Udo applauds.","Volltreffer, {n}! Da Udo klatscht Beifoi."],
+ ["Sauber, {n}! So klar wie ein Elfmeter.","Clean, {n}! As clear as a penalty.","Sauber, {n}! So kloar wia a Elfmeter."]
+];
+const BADN = [
+ ["Autsch, {n}! Gelbe Karte für diese Antwort.","Ouch, {n}! Yellow card for that answer.","Autsch, {n}! Gelbe Kartn fia de Antwort."],
+ ["Nicht schlimm, {n}: Nachspielzeit gibt's gratis.","No worries, {n}: stoppage time is free.","Net schlimm, {n}: Nachspuizeit gibt's gratis."],
+ ["Knapp daneben, {n}. Selbst Nobbe hat mal die Latte getroffen.","A near miss, {n}. Even Nobbe has hit the crossbar once.","Knapp danebn, {n}. Sogar da Nobbe hod scho de Lattn dawischt."],
+ ["Das war die Schiedsrichter-Falle, {n}. Nächstes Mal klappt's.","That was the referee trap, {n}. You'll get it next time.","Des war de Schiedsrichter-Fallen, {n}. Nächstes Moi klappt's."]
+];
+const LOGO = ["................","KKKKKKKKKKKKKKKK","KRRRWWWRRRWWWRRK","KRRRWWWRRRWWWRRK","KRRRWWWRRRWWWRRK","KRRRWWWRRRWWWRRK","KKKKKKKKKKKKKKKK","K.K.K.K.K.K.K.K.","R.R.R.R.R.R.R.R.","R.R.R.R.R.R.R.R.","................"], LOGOC = {K:"#2b1b1b", R:"#e6003a", W:"#ffffff", Y:"#ffc800", B:"#2a4bd7", G:"#1b7a3d"};
+const logoRects = () => LOGO.map((r, y) => [...r].map((c, x) => c === "." ? "" : '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + LOGOC[c] + '"/>').join("")).join("");
+const logoSvg = () => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" shape-rendering="crispEdges" aria-hidden="true" focusable="false">' + logoRects() + '</svg>';
+const t = k => S[k][li];
+const fname = () => { const f = (nm || "").trim().split(/\s+/)[0] || ""; let w = 0, o = ""; for(const c of f){ w += /[\u3000-\u9fff\uff00-\uffef]/.test(c) ? 2 : 1; if(w > 16) break; o += c; } return o; };
+const fill = s => s.replace(/\{n\}/g, fname());
+const hasName = () => fname() !== "";
+let editName = false;
+const NURL = [["https://fcbayern.com/de","fcbayern.com/de"],["https://fcbayern.com/en","fcbayern.com/en"],["https://fcbayern.com/de","fcbayern.com/de"]];
+
+
+/* ---------- Spieltage (Lektionen) [DE, EN, BAR] ---------- */
+const WP = "https://en.wikipedia.org/wiki/";
+const WPDE = "https://de.wikipedia.org/wiki/FC_Bayern_M%C3%BCnchen";
+const LESSONS = [
+{ id:"gruendung", ico:"⚽", c:"var(--red)", min:1,
+ t:["Blitzstart: 1900 in 60 Sekunden","Quick start: 1900 in 60 seconds","Blitzstart: 1900 in 60 Sekundn"],
+ sub:["Zwei Karten, zwei Fragen, ein Zertifikat","Two cards, two questions, one certificate","Zwoa Kartn, zwoa Frogn, a Zertifikat"],
+ cards:[
+  [["Elf Männer und ein Weinhaus","Eleven men and a wine house","Elf Mannsbuida und a Weinhaus"],
+   ["Am 27. Februar 1900 gründeten elf Mitglieder des Fußballbereichs vom MTV 1879 den FC Bayern in München, im Weinhaus Gisela. Erster Vorsitzender war Franz John. Der erste Stammtisch der Vereinsgeschichte, quasi.","On 27 February 1900 eleven members of the football division of MTV 1879 founded FC Bayern in Munich, in the Weinhaus Gisela. The first chairman was Franz John. The first Stammtisch in club history, so to speak.","Am 27. Februar 1900 ham elf Mitglieda vom Fuaßboibereich vom MTV 1879 an FC Bayern in München gründt, im Weinhaus Gisela. Erschta Vorsitzender war da Franz John. Da erste Stammtisch vo da Vereinsgschicht, quasi."]],
+  [["Erst blau-weiß, dann rot-weiß","First blue and white, then red and white","Erst blau-weiß, dann rot-weiß"],
+   ["Die Gründungsfarben waren Blau-Weiß. Seit der Fusion mit dem Münchner SC 1906 spielt der Verein in Weiß und Rot. Rot steht den Bayern einfach besser.","The founding colours were blue and white. Since the 1906 merger with Münchner SC the club has played in white and red. Red simply suits Bayern better.","De Gründungsfarbn warn Blau-Weiß. Seit da Fusion mit'm Münchna SC 1906 spuit da Verein in Weiß und Rot. Rot steht de Bayern oafach bessa."]]
+ ],
+ pro:["Der Anlass der Gründung: Der Mutterverein MTV 1879 wollte seine Fußballer nicht im Deutschen Fußball-Bund (DFB) mitspielen lassen. Die Fußballer machten sich daher selbstständig.","The trigger for the founding: the parent club MTV 1879 did not want its footballers to join the German Football Association (DFB). So the footballers went independent.","Da Anlass: Da Muttaverein MTV 1879 hod seine Fuaßboia ned im DFB mitspuin lassn. Drum ham si de Fuaßboia selbstständig gmacht."],
+ fun:["Die erste Vereinssitzung war eine Runde im Wirtshaus. Seitdem hat sich am Stammtisch-Prinzip nichts geändert, sagen Arno, Udo & Nobbe.","The first club meeting was a round at the inn. The Stammtisch principle has not changed since, say Arno, Udo & Nobbe.","De erste Vereinssitzung war a Runde im Wirtshaus. Seitdem hod si am Stammtisch-Prinzip nix gändert, song da Arno, da Udo & da Nobbe."],
+ src:[["Wikipedia (DE): FC Bayern München",WPDE],["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"]],
+ q:[
+  {q:["In welchem Jahr wurde der FC Bayern gegründet?","In which year was FC Bayern founded?","In wos fia am Jahr is da FC Bayern gründt worn?"],
+   a:[["1900","1900","1900"],["1899","1899","1899"],["1910","1910","1910"],["Irgendwann nach der dritten Maß","Sometime after the third stein of beer","Irgendwann nach da dritten Maß"]],
+   e:["Am 27. Februar 1900 in München.","On 27 February 1900 in Munich.","Am 27. Februar 1900 in München."]},
+  {q:["Welche Farben hatte der Verein bei der Gründung?","Which colours did the club have when it was founded?","Wos fia Farbn hod da Verein bei da Gründung ghabt?"],
+   a:[["Blau-Weiß","Blue and white","Blau-Weiß"],["Rot-Weiß","Red and white","Rot-Weiß"],["Schwarz-Gelb","Black and yellow","Schwarz-Gelb"],["Grün-Weiß","Green and white","Grün-Weiß"]],
+   e:["Blau-Weiß; seit der Fusion mit dem Münchner SC 1906 Weiß und Rot.","Blue and white; since the 1906 merger with Münchner SC white and red.","Blau-Weiß; seit da Fusion mit'm Münchna SC 1906 Weiß und Rot."]}
+ ]},
+{ id:"meister", ico:"🏆", c:"var(--blue)", min:2,
+ t:["Die Meistermaschine","The title machine","De Meistamaschin"],
+ sub:["Titel, Rekorde und eine sehr volle Vitrine","Titles, records and a very full trophy cabinet","Titl, Rekorde und a recht voie Vitrin"],
+ cards:[
+  [["35 Meisterschaften, ein Rekord","35 championships, one record","35 Meisterschaftn, a Rekord"],
+   ["Der FC Bayern ist mit 35 deutschen Meisterschaften Rekordmeister, davon 34 in der Bundesliga (Stand Frühjahr 2026 laut Wikipedia). Die Meisterschale ist praktisch Dauergast in München.","With 35 German championships FC Bayern is the record champion, 34 of them in the Bundesliga (as of spring 2026 according to Wikipedia). The championship trophy is practically a permanent guest in Munich.","Mit 35 deitschn Meisterschaftn is da FC Bayern Rekordmeista, davo 34 in da Bundesliga (Stand Frühjahr 2026 laut Wikipedia). De Meisterschaln is praktisch Dauergast in München."]],
+  [["Elf Titel in Folge","Eleven titles in a row","Elf Titl hintanand"],
+   ["Von 2012/13 bis 2022/23 wurde der FC Bayern elf Mal hintereinander Deutscher Meister, ein Rekord. Die Konkurrenz nannte das „Spannung“.","From 2012/13 to 2022/23 FC Bayern won the German championship eleven times in a row, a record. The competition called that “suspense”.","Vo 2012/13 bis 2022/23 is da FC Bayern elf Moi hintanand Deitscha Meista worn, a Rekord. De Konkurrenz hod des „Spannung“ gnennt."]]
+ ],
+ pro:["Dazu kommen 21 DFB-Pokalsiege (deutscher Rekord). Die Zahlen können sich mit jeder Saison ändern.","On top come 21 DFB-Pokal wins (German record). The figures can change with every season.","Dazua kemman 21 DFB-Pokalsiege (deitscha Rekord). De Zahln kenna si mit jeda Saison ändan."],
+ fun:["Die Vitrine ist so voll, dass Nobbe vorschlägt, den Stammtisch als Regal zu benutzen.","The trophy cabinet is so full that Nobbe suggests using the Stammtisch as a shelf.","De Vitrin is so voi, dass da Nobbe vorschlagt, an Stammtisch als Regal herz'nehma."],
+ src:[["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"],["Wikipedia (DE): FC Bayern München",WPDE]],
+ q:[
+  {q:["Wie viele Meistertitel in Folge holte der FC Bayern von 2012/13 bis 2022/23?","How many league titles in a row did FC Bayern win from 2012/13 to 2022/23?","Wia vui Meistertitl hintanand hod da FC Bayern vo 2012/13 bis 2022/23 gholt?"],
+   a:[["Elf","Eleven","Elf"],["Sieben","Seven","Sieme"],["Neun","Nine","Neine"],["Dreizehn","Thirteen","Dreizehne"]],
+   e:["Elf Meisterschaften hintereinander, ein Rekord.","Eleven championships in a row, a record.","Elf Meisterschaftn hintanand, a Rekord."]},
+  {q:["Wie viele DFB-Pokalsiege hat der FC Bayern (deutscher Rekord, Stand Frühjahr 2026)?","How many DFB-Pokal wins does FC Bayern have (German record, as of spring 2026)?","Wia vui DFB-Pokalsiege hod da FC Bayern (deitscha Rekord, Stand Frühjahr 2026)?"],
+   a:[["21","21","21"],["12","12","12"],["30","30","30"],["Null, die Pokale liegen im Fundbüro","Zero, the trophies are in lost property","Null, de Pokale san im Fundbüro"]],
+   e:["21, ein deutscher Rekord laut Wikipedia.","21, a German record according to Wikipedia.","21, a deitscha Rekord laut Wikipedia."]}
+ ]},
+{ id:"legenden", ico:"🧤", c:"var(--green)", min:3,
+ t:["Legenden: Beckenbauer, Kahn & Co.","Legends: Beckenbauer, Kahn & Co.","Legendn: Beckenbauer, Kahn & Co."],
+ sub:["Von Beckenbauer bis Neuer","From Beckenbauer to Neuer","Vo Beckenbauer bis Neuer"],
+ cards:[
+  [["Der Kapitän der Siebziger","The captain of the seventies","Da Kapitän vo de Siebzga"],
+   ["Franz Beckenbauer führte den FC Bayern in den 1970ern als Kapitän zu den drei Europapokalsiegen und war später Vereinspräsident.","Franz Beckenbauer captained FC Bayern in the 1970s to the three European Cup wins and later became club president.","Da Franz Beckenbauer hod an FC Bayern in de 1970er als Kapitän zu de drei Europapokalsiege gführt und war spada Vereinspräsident."]],
+  [["Gerd Müller und Sepp Maier","Gerd Müller and Sepp Maier","Da Gerd Müller und da Sepp Maier"],
+   ["Gerd Müller war der Torjäger der Siebziger und brach Rekorde. Sepp Maier stand im Tor und beendete seine Karriere 1979.","Gerd Müller was the goal scorer of the seventies and broke records. Sepp Maier was in goal and retired in 1979.","Da Gerd Müller war da Torjaga vo de Siebzga und hod Rekorde brocha. Da Sepp Maier is im Tor gstandn und hod 1979 aufghört."]],
+  [["Von Kahn zu Neuer","From Kahn to Neuer","Vo Kahn zu Neuer"],
+   ["Oliver Kahn hütete das Tor lange Jahre und beendete seine Karriere nach der Saison 2007/08. Manuel Neuer kam 2011 als sein Nachfolger.","Oliver Kahn guarded the goal for many years and retired after the 2007/08 season. Manuel Neuer arrived in 2011 as his successor.","Da Oliver Kahn hod as Tor lang ghüt und hod noch da Saison 2007/08 aufghört. Da Manuel Neuer is 2011 als sei Nachfoiga kemma."]]
+ ],
+ pro:["Gerd Müllers Bundesliga-Saisonrekord brach später Robert Lewandowski.","Gerd Müller's Bundesliga season record was later broken by Robert Lewandowski.","Dem Gerd Müller sein Bundesliga-Saisonrekord hod spada da Robert Lewandowski brocha."],
+ fun:["Torhüter beim FC Bayern halten nicht nur Bälle, sondern auch Reden, am liebsten am Stammtisch.","Goalkeepers at FC Bayern do not only hold balls but also speeches, preferably at the Stammtisch.","Torhüata beim FC Bayern haltn ned bloß Bäi, sondan aa Redn, am liabstn am Stammtisch."],
+ src:[["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"],["Wikipedia (DE): FC Bayern München",WPDE]],
+ q:[
+  {q:["Wer führte als Kapitän die Bayern der 1970er zu drei Europapokalsiegen?","Who captained the Bayern of the 1970s to three European Cup wins?","Wer hod als Kapitän de Bayern vo de 1970er zu drei Europapokalsiege gführt?"],
+   a:[["Franz Beckenbauer","Franz Beckenbauer","Franz Beckenbauer"],["Gerd Müller","Gerd Müller","Gerd Müller"],["Sepp Maier","Sepp Maier","Sepp Maier"],["Oliver Kahn","Oliver Kahn","Oliver Kahn"]],
+   e:["Beckenbauer war Kapitän und später Präsident.","Beckenbauer was captain and later president.","Da Beckenbauer war Kapitän und spada Präsident."]},
+  {q:["Welcher Torhüter beendete nach der Saison 2007/08 seine Karriere beim FC Bayern?","Which goalkeeper retired from FC Bayern after the 2007/08 season?","Wer is nach da Saison 2007/08 ois Torhüta beim FC Bayern in Ruhestand ganga?"],
+   a:[["Oliver Kahn","Oliver Kahn","Oliver Kahn"],["Sepp Maier","Sepp Maier","Sepp Maier"],["Manuel Neuer","Manuel Neuer","Manuel Neuer"],["Jens Lehmann","Jens Lehmann","Jens Lehmann"]],
+   e:["Kahn hörte nach 2007/08 auf; Maier schon 1979.","Kahn stopped after 2007/08; Maier already in 1979.","Da Kahn hod nach 2007/08 aufghört; da Maier scho 1979."]},
+  {q:["Wer kam 2011 als Nachfolger von Oliver Kahn?","Who arrived in 2011 as the successor of Oliver Kahn?","Wer is 2011 als Nachfoiga vom Oliver Kahn kemma?"],
+   a:[["Manuel Neuer","Manuel Neuer","Manuel Neuer"],["Sepp Maier","Sepp Maier","Sepp Maier"],["Jens Lehmann","Jens Lehmann","Jens Lehmann"],["Marc-André ter Stegen","Marc-André ter Stegen","Marc-André ter Stegen"]],
+   e:["Manuel Neuer, seit 2011 im Tor.","Manuel Neuer, in goal since 2011.","Da Manuel Neuer, seit 2011 im Tor."]},
+  {q:["Wer brach später Gerd Müllers Bundesliga-Saisonrekord?","Who later broke Gerd Müller's Bundesliga season record?","Wer hod spada dem Gerd Müller sein Bundesliga-Saisonrekord brocha?"],
+   a:[["Robert Lewandowski","Robert Lewandowski","Robert Lewandowski"],["Franz Beckenbauer","Franz Beckenbauer","Franz Beckenbauer"],["Thomas Müller","Thomas Müller","Thomas Müller"],["Harry Kane","Harry Kane","Harry Kane"]],
+   e:["Lewandowski übertraf Müllers Rekord.","Lewandowski surpassed Müller's record.","Da Lewandowski hod dem Müller sein Rekord übatroffa."]}
+ ]},
+{ id:"europa", ico:"🌍", c:"var(--purple)", min:3,
+ t:["Europa: Sechs Sterne und ein Finale dahoam","Europe: six trophies and a final at home","Europa: Sechs Sterne und a Finale dahoam"],
+ sub:["Europapokal, Champions League und Wohnzimmer-Dramen","European Cup, Champions League and living-room drama","Europapokal, Champions League und Wohnzimmer-Dramen"],
+ cards:[
+  [["Sechs Mal Europas Beste","Six times Europe's best","Sechs Moi Europas Beste"],
+   ["Der FC Bayern gewann den Europapokal der Landesmeister bzw. die Champions League sechs Mal: 1974, 1975, 1976, 2001, 2013 und 2020. Von 1974 bis 1976 gelang das drei Mal in Folge.","FC Bayern won the European Cup or Champions League six times: 1974, 1975, 1976, 2001, 2013 and 2020. From 1974 to 1976 that happened three times in a row.","Da FC Bayern hod an Europapokal da Landesmoasta bzw. de Champions League sechs Moi gwunna: 1974, 1975, 1976, 2001, 2013 und 2020. Vo 1974 bis 1976 is des drei Moi hintanand gglückt."]],
+  [["Zwei Finals, zwei Siege","Two finals, two wins","Zwoa Finals, zwoa Siege"],
+   ["2013 schlug der FC Bayern Borussia Dortmund mit 2:1. 2020 gewann er in Lissabon gegen Paris Saint-Germain mit 1:0, das Tor schoss Coman. In beiden Saisons holte er das Triple.","In 2013 FC Bayern beat Borussia Dortmund 2–1. In 2020 it won 1–0 against Paris Saint-Germain in Lissabon, Coman scored the goal. In both seasons it won the treble.","2013 hod da FC Bayern Borussia Dortmund mit 2:1 gschlogn. 2020 hod a in Lissabon gega Paris Saint-Germain mit 1:0 gwunna, as Tor hod da Coman gschossn. In boadn Saisons hod a as Triple gholt."]],
+  [["Das Finale dahoam","The final at home","Des Finale dahoam"],
+   ["2012 stand der FC Bayern im Finale in der eigenen Allianz Arena, verlor aber im Elfmeterschießen gegen den FC Chelsea. Heimspiel, Elfmeterschießen, Tränen: Wohnzimmer-Dramen kennt der Verein.","In 2012 FC Bayern played the final in its own Allianz Arena but lost on penalties to Chelsea. Home game, penalty shoot-out, tears: the club knows living-room drama.","2012 is da FC Bayern im Finale in da eigenan Allianz Arena gstandn, hod aba im Elfmeterschiaßn gega an FC Chelsea valorn. Hoamspuil, Elfmeterschiaßn, Trän: Wohnzimmer-Dramen kennt da Verein."]]
+ ],
+ pro:["1999 und 2010 verlor der FC Bayern ebenfalls Endspiele der Champions League (gegen Manchester United und Inter Mailand).","In 1999 and 2010 FC Bayern also lost Champions League finals (against Manchester United and Inter Milan).","1999 und 2010 hod da FC Bayern aa Endspuie vo da Champions League valorn (gega Manchester United und Inter Mailand)."],
+ fun:["Dahoam ist es am schönsten, außer im Elfmeterschießen.","There's no place like home, except in a penalty shoot-out.","Dahoam is as am schönstn, außa im Elfmeterschiaßn."],
+ src:[["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"],["Wikipedia (DE): FC Bayern München",WPDE]],
+ q:[
+  {q:["Wie viele Titel im Europapokal der Landesmeister bzw. in der Champions League hat der FC Bayern gewonnen?","How many European Cup or Champions League titles has FC Bayern won?","Wia vui Titl im Europapokal da Landesmoasta bzw. in da Champions League hod da FC Bayern gwunna?"],
+   a:[["Sechs","Six","Sechs"],["Drei","Three","Drei"],["Neun","Nine","Neine"],["Zwei","Two","Zwoa"]],
+   e:["1974, 1975, 1976, 2001, 2013 und 2020.","1974, 1975, 1976, 2001, 2013 and 2020.","1974, 1975, 1976, 2001, 2013 und 2020."]},
+  {q:["Wer war 2013 der Finalgegner, der mit 2:1 besiegt wurde?","Who was the 2013 final opponent that was beaten 2–1?","Wer war 2013 da Finalgegna, der mit 2:1 gschlogn worn is?"],
+   a:[["Borussia Dortmund","Borussia Dortmund","Borussia Dortmund"],["FC Chelsea","Chelsea","FC Chelsea"],["Paris Saint-Germain","Paris Saint-Germain","Paris Saint-Germain"],["FC Valencia","Valencia","FC Valencia"]],
+   e:["2013 gegen Borussia Dortmund, 2:1.","2013 against Borussia Dortmund, 2–1.","2013 gega Borussia Dortmund, 2:1."]},
+  {q:["Wer erzielte im Finale 2020 gegen Paris Saint-Germain das 1:0?","Who scored the 1–0 in the 2020 final against Paris Saint-Germain?","Wer hod im Finale 2020 gega Paris Saint-Germain as 1:0 gschossn?"],
+   a:[["Kingsley Coman","Kingsley Coman","Kingsley Coman"],["Robert Lewandowski","Robert Lewandowski","Robert Lewandowski"],["Thomas Müller","Thomas Müller","Thomas Müller"],["Manuel Neuer","Manuel Neuer","Manuel Neuer"]],
+   e:["Coman traf zum 1:0.","Coman scored the 1–0.","Da Coman hod as 1:0 gschossn."]},
+  {q:["Wo fand das „Finale dahoam“ 2012 statt, das der FC Bayern im Elfmeterschießen gegen Chelsea verlor?","Where was the “Finale dahoam” in 2012 played, which FC Bayern lost to Chelsea on penalties?","Wo war des „Finale dahoam“ 2012, des da FC Bayern im Elfmeterschiaßn gega Chelsea valorn hod?"],
+   a:[["In der Allianz Arena in München","In the Allianz Arena in Munich","In da Allianz Arena in München"],["Im Wembley-Stadion in London","In Wembley Stadium in London","Im Wembley-Stadion in London"],["Im Olympiastadion in Berlin","In the Olympiastadion in Berlin","Im Olympiastadion in Berlin"],["Im Camp Nou in Barcelona","In Camp Nou in Barcelona","Im Camp Nou in Barcelona"]],
+   e:["Das Endspiel fand in der eigenen Arena statt: daher „dahoam“.","The final was played in the club's own arena, hence “dahoam”.","Des Endspui war in da eigana Arena: drum „dahoam“."]}
+ ]},
+{ id:"arena", ico:"🏟️", c:"var(--red)", min:3,
+ t:["Allianz Arena & Kurve: Zahlen zum Staunen","Allianz Arena & the curve: numbers to marvel at","Allianz Arena & Kurvn: Zahln zum Stauna"],
+ sub:["Wohnzimmer, Mitglieder und Fanclubs","Living room, members and fan clubs","Wohnzimma, Mitglieda und Fanclubs"],
+ cards:[
+  [["Das Wohnzimmer: Allianz Arena","The living room: Allianz Arena","Des Wohnzimma: Allianz Arena"],
+   ["Seit der Saison 2005/06 spielt der FC Bayern in der Allianz Arena. Sie fasst rund 75.000 Zuschauer (75.024 laut Wikipedia).","Since the 2005/06 season FC Bayern has played in the Allianz Arena. It holds about 75,000 spectators (75,024 according to Wikipedia).","Seit da Saison 2005/06 spuit da FC Bayern in da Allianz Arena. Sie fasst rund 75.000 Zuschauer (75.024 laut Wikipedia)."]],
+  [["Die Kurve in Zahlen","The curve in numbers","De Kurvn in Zahln"],
+   ["Im November 2025 hatte der Verein mehr als 432.500 Mitglieder und gilt als größter Sportverein der Welt nach Mitgliedern. Dazu kommen 4.425 registrierte Fanclubs mit über 328.000 Mitgliedern.","In November 2025 the club had more than 432,500 members and is the largest sports club in the world by membership. On top come 4,425 registered fan clubs with over 328,000 members.","Im November 2025 hod da Verein mehr ois 432.500 Mitglieda ghabt und gilt ois greaßta Sportverein da Wejt noch Mitglieda. Dazua kemman 4.425 registrierte Fanclubs mit über 328.000 Mitglieda."]],
+  [["Wer zahlt, was?","Who pays for what?","Wer zoit wos?"],
+   ["Der Umsatz lag 2024/25 bei 978,3 Millionen Euro: Deutschlands umsatzstärkster Sportverein. Bei diesen Zahlen müsste das Bier am Stammtisch eigentlich frei sein.","Revenue in 2024/25 was 978.3 million euros: Germany's highest-earning sports club. With these numbers the beer at the Stammtisch should really be free.","Da Umsatz war 2024/25 bei 978,3 Millionen Euro: Deitschlands umsatzstärkster Sportverein. Bei de Zahln miassat as Bier am Stammtisch eigentlich frei sei."]]
+ ],
+ pro:["Die Zahlen stammen aus dem Wikipedia-Stand Frühjahr 2026 (Mitglieder: November 2025) und ändern sich laufend. Offizielle Werte gibt es beim Verein selbst.","The figures come from Wikipedia as of spring 2026 (members: November 2025) and change constantly. Official values are available from the club itself.","De Zahln san vom Wikipedia-Stand Frühjahr 2026 (Mitglieda: November 2025) und ändan si laufend. Offizielle Werte gibt's beim Verein söiba."],
+ fun:["75.000 Plätze, davon drei am Stammtisch: Arno, Udo & Nobbe. Die anderen 74.997 sind Gäste.","75,000 seats, three of them at the Stammtisch: Arno, Udo & Nobbe. The other 74,997 are guests.","75.000 Plätz, davo drei am Stammtisch: Arno, Udo & Nobbe. De andan 74.997 san Gäst."],
+ src:[["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"],["Wikipedia (DE): FC Bayern München",WPDE]],
+ q:[
+  {q:["Seit welcher Saison ist die Allianz Arena die Heimat des FC Bayern?","Since which season has the Allianz Arena been home to FC Bayern?","Seit wos fia ana Saison is de Allianz Arena de Hoamat vom FC Bayern?"],
+   a:[["2005/06","2005/06","2005/06"],["1995/96","1995/96","1995/96"],["2010/11","2010/11","2010/11"],["1965/66","1965/66","1965/66"]],
+   e:["Seit 2005/06.","Since 2005/06.","Seit 2005/06."]},
+  {q:["Wie viele Plätze hat die Allianz Arena etwa?","About how many seats does the Allianz Arena have?","Wia vui Plätz hod de Allianz Arena etwa?"],
+   a:[["Rund 75.000","About 75,000","Rund 75.000"],["Rund 50.000","About 50,000","Rund 50.000"],["Rund 100.000","About 100,000","Rund 100.000"],["Rund 30.000","About 30,000","Rund 30.000"]],
+   e:["Etwa 75.000 (75.024 laut Wikipedia).","About 75,000 (75,024 according to Wikipedia).","Etwa 75.000 (75.024 laut Wikipedia)."]},
+  {q:["Wie viele Mitglieder hatte der FC Bayern im November 2025 etwa?","About how many members did FC Bayern have in November 2025?","Wia vui Mitglieda hod da FC Bayern im November 2025 etwa ghabt?"],
+   a:[["Rund 432.500","About 432,500","Rund 432.500"],["Rund 43.250","About 43,250","Rund 43.250"],["Rund 4 Millionen","About 4 million","Rund 4 Millionen"],["Rund 100.000","About 100,000","Rund 100.000"]],
+   e:["Mehr als 432.500 laut Wikipedia.","More than 432,500 according to Wikipedia.","Mehr ois 432.500 laut Wikipedia."]},
+  {q:["Wie viele registrierte Fanclubs gibt es laut Quelle?","How many registered fan clubs are there according to the source?","Wia vui registrierte Fanclubs gibt's laut Quelle?"],
+   a:[["Über 4.400","Over 4,400","Über 4.400"],["Genau 12","Exactly 12","Genau 12"],["Über 44.000","Over 44,000","Über 44.000"],["Rund 400","About 400","Rund 400"]],
+   e:["4.425 registrierte Fanclubs (Stand November 2025).","4,425 registered fan clubs (as of November 2025).","4.425 registrierte Fanclubs (Stand November 2025)."]}
+ ]},
+{ id:"spitznamen", ico:"🎭", c:"var(--blue)", min:3,
+ t:["Spitznamen & Triple: Stern des Südens","Nicknames & treble: Star of the South","Spitznam & Triple: Stern vom Süden"],
+ sub:["Von den Roten bis FC Hollywood","From the Reds to FC Hollywood","Vo de Roten bis FC Hollywood"],
+ cards:[
+  [["Stern des Südens und Die Roten","Star of the South and The Reds","Stern vom Süden und De Roten"],
+   ["Der Verein heißt auch „Die Bayern“, „Stern des Südens“ und „Die Roten“. Ein Spitzname kommt eben selten allein.","The club is also called “Die Bayern”, “Stern des Südens” (Star of the South) and “Die Roten” (The Reds). A nickname rarely comes alone.","Da Verein hoaßt aa „De Bayern“, „Stern vom Süden“ und „De Roten“. A Spitznam kimmt hoit sejtn alloa."]],
+  [["FC Hollywood","FC Hollywood","FC Hollywood"],
+   ["In den 1990ern nannte die Presse den Verein „FC Hollywood“, wegen der vielen Geschichten abseits des Rasens. Drehbuchautoren hatten in München nie Langeweile.","In the 1990s the press called the club “FC Hollywood” because of the many stories off the pitch. Screenwriters were never bored in Munich.","In de 1990er hod de Presse an Verein „FC Hollywood“ gnennt, wega de vuin Gschichtn neban am Rasn. Drehbuchschreiba hom in München nia Langweile ghabt."]],
+  [["Das Triple, gleich zweimal","The treble, twice","Des Triple, glei zwoamoi"],
+   ["2012/13 holte der FC Bayern das erste deutsche Triple, 2019/20 das zweite. Damit war er nach dem FC Barcelona der zweite Verein Europas mit zwei Trebles.","In 2012/13 FC Bayern won the first German treble and in 2019/20 the second. That made it the second club in Europe with two trebles after FC Barcelona.","2012/13 hod da FC Bayern as erste deitsche Triple gholt, 2019/20 as zwoate. Damit war a nach'm FC Barcelona da zwoate Verein vo Europa mit zwoa Trebles."]]
+ ],
+ pro:["Das Sextuple: Meisterschaft, Pokal, Champions League, Supercup, UEFA-Supercup und Klub-Weltmeisterschaft in den Saisons 2019/20 und 2020/21. Als zweiter Verein nach dem FC Barcelona (2009).","The sextuple: league, cup, Champions League, Supercup, UEFA Super Cup and Club World Cup across the seasons 2019/20 and 2020/21. The second club after FC Barcelona (2009).","Des Sextuple: Meisterschaft, Pokal, Champions League, Supercup, UEFA-Supercup und Klub-Weltmeisterschaft in de Saisons 2019/20 und 2020/21. Ois zwoater Verein nach'm FC Barcelona (2009)."],
+ fun:["Mit sechs Pokalen in einem Jahr braucht man keinen Stammtisch mehr, man braucht eine Spedition.","With six trophies in a year you no longer need a Stammtisch, you need a removal company.","Mit sechs Pokal in am Jahr brauchst koan Stammtisch mehr, du brauchst a Spedition."],
+ src:[["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"],["Wikipedia (DE): FC Bayern München",WPDE]],
+ q:[
+  {q:["Welcher Spitzname bedeutet auf Englisch „Star of the South“?","Which nickname means “Star of the South” in English?","Wos fia a Spitznam hoaßt auf Englisch „Star of the South“?"],
+   a:[["Stern des Südens","Stern des Südens","Stern vom Süden"],["Die Roten","Die Roten","De Roten"],["FC Hollywood","FC Hollywood","FC Hollywood"],["Die Bayern","Die Bayern","De Bayern"]],
+   e:["„Stern des Südens“.","“Stern des Südens”.","„Stern vom Süden“."]},
+  {q:["In welchem Jahrzehnt entstand laut Quelle der Spitzname „FC Hollywood“?","In which decade did the nickname “FC Hollywood” come up according to the source?","In wos fia am Jahrzehnt is laut Quelle da Spitznam „FC Hollywood“ entstandn?"],
+   a:[["In den 1990ern","In the 1990s","In de 1990er"],["In den 1960ern","In the 1960s","In de 1960er"],["In den 2010ern","In the 2010s","In de 2010er"],["In den 1930ern","In the 1930s","In de 1930er"]],
+   e:["Die Presse nannte den Verein in den 1990ern so.","The press called the club that in the 1990s.","De Presse hod an Verein in de 1990er so gnennt."]},
+  {q:["Wie viele Triple-Saisons hat der FC Bayern (Stand Frühjahr 2026)?","How many treble seasons does FC Bayern have (as of spring 2026)?","Wia vui Triple-Saisons hod da FC Bayern (Stand Frühjahr 2026)?"],
+   a:[["Zwei","Two","Zwoa"],["Eine","One","Oane"],["Drei","Three","Drei"],["Vier","Four","Vier"]],
+   e:["2012/13 und 2019/20.","2012/13 and 2019/20.","2012/13 und 2019/20."]},
+  {q:["Welcher Verein gewann das Sextuple vor dem FC Bayern?","Which club won the sextuple before FC Bayern?","Wer hod as Sextuple vor'm FC Bayern gwunna?"],
+   a:[["FC Barcelona (2009)","FC Barcelona (2009)","FC Barcelona (2009)"],["Real Madrid","Real Madrid","Real Madrid"],["Manchester United","Manchester United","Manchester United"],["Juventus Turin","Juventus Turin","Juventus Turin"]],
+   e:["Der FC Barcelona 2009; der FC Bayern folgte 2020/21.","FC Barcelona in 2009; FC Bayern followed in 2020/21.","Da FC Barcelona 2009; da FC Bayern is 2020/21 gfoigt."]}
+ ]},
+{ id:"boss", ico:"👑", c:"var(--purple)", min:4,
+ t:["Bossrunde: Elfmeterschießen","Boss round: penalty shoot-out","Bossrundn: Elfmeterschiaßn"],
+ sub:["Dein Zeitstrahl und das große Finale","Your timeline and the grand finale","Dei Zeitstrahl und as große Finale"],
+ cards:[
+  [["Der Zeitstrahl","The timeline","Da Zeitstrahl"],
+   ["1900 Gründung · 1906 Fusion mit dem Münchner SC · 1974 bis 1976 drei Europapokalsiege · 2001 Champions League · 2005 Allianz Arena · 2012 Finale dahoam · 2013 und 2020 Triple.","1900 founding · 1906 merger with Münchner SC · 1974 to 1976 three European Cup wins · 2001 Champions League · 2005 Allianz Arena · 2012 final at home · 2013 and 2020 treble.","1900 Gründung · 1906 Fusion mit'm Münchna SC · 1974 bis 1976 drei Europapokalsiege · 2001 Champions League · 2005 Allianz Arena · 2012 Finale dahoam · 2013 und 2020 Triple."]],
+  [["Menschen hinter dem Verein","People behind the club","Leit hinterm Verein"],
+   ["Franz John war der erste Vorsitzende, Franz Beckenbauer Kapitän und später Präsident. Gerd Müller schoss die Tore, Manuel Neuer hütet seit 2011 das Tor.","Franz John was the first chairman, Franz Beckenbauer captain and later president. Gerd Müller scored the goals, Manuel Neuer has kept goal since 2011.","Da Franz John war da erste Vorsitzende, da Franz Beckenbauer Kapitän und spada Präsident. Da Gerd Müller hod de Tore gschossn, da Manuel Neuer hüt seit 2011 as Tor."]],
+  [["Bereit für den Elfmeter?","Ready for the penalty?","Bereit fia'n Elfmeter?"],
+   ["Fünf Fragen quer durch alle Spieltage. Tipp: Wer die Stammtisch-Wissen-Kästen gelesen hat, ist klar im Vorteil.","Five questions across all matchdays. Tip: anyone who read the Stammtisch knowledge boxes has a clear advantage.","Fünf Frogn quer durch olle Spuitag. Tipp: Wer de Stammtisch-Wissn-Kastn glesn hod, hod an kloan Vorteil."]]
+ ],
+ pro:["Zum Schluss ein ehrlicher Hinweis: Alle Daten stammen aus den verlinkten Quellen mit Stand Frühjahr 2026; bei Abweichungen gilt die offizielle Vereinsseite.","A final honest note: all data comes from the linked sources as of spring 2026; where they differ, the official club website applies.","Zum Schluss a ehrlicha Hinweis: Olle Daten san aus de verlinktn Quelln mit Stand Frühjahr 2026; bei Abweichunga gilt de offizielle Vereinsseitn."],
+ fun:["Boss besiegt? Dann gilt: Der wahre Endgegner ist die Parkplatzsuche rund um die Arena.","Boss defeated? Then remember: the real final boss is finding a parking spot near the arena.","Boss bsiegt? Dann gilt: Da wahre Endgegna is de Parkplatzsuach rund um de Arena."],
+ src:[["Wikipedia (DE): FC Bayern München",WPDE],["Wikipedia (EN): FC Bayern Munich",WP+"FC_Bayern_Munich"]],
+ q:[
+  {q:["Wer war der erste Vorsitzende des FC Bayern?","Who was the first chairman of FC Bayern?","Wer war da erste Vorsitzende vom FC Bayern?"],
+   a:[["Franz John","Franz John","Franz John"],["Franz Beckenbauer","Franz Beckenbauer","Franz Beckenbauer"],["Uli Hoeneß","Uli Hoeneß","Uli Hoeneß"],["Herbert Hainer","Herbert Hainer","Herbert Hainer"]],
+   e:["Franz John, bei der Gründung 1900.","Franz John, at the founding in 1900.","Da Franz John, bei da Gründung 1900."]},
+  {q:["Gegen wen verlor der FC Bayern 2012 das „Finale dahoam“?","Whom did FC Bayern lose the “Finale dahoam” to in 2012?","Gega wen hod da FC Bayern 2012 as „Finale dahoam“ valorn?"],
+   a:[["FC Chelsea","Chelsea","FC Chelsea"],["Inter Mailand","Inter Milan","Inter Mailand"],["Manchester United","Manchester United","Manchester United"],["FC Barcelona","FC Barcelona","FC Barcelona"]],
+   e:["Im Elfmeterschießen gegen Chelsea.","On penalties against Chelsea.","Im Elfmeterschiaßn gega Chelsea."]},
+  {q:["Was kam zuerst?","Which came first?","Wos is z'erscht kemma?"],
+   a:[["Gründung (1900)","Founding (1900)","Gründung (1900)"],["Allianz Arena (2005)","Allianz Arena (2005)","Allianz Arena (2005)"],["Erstes Triple (2013)","First treble (2013)","Erstes Triple (2013)"],["Sechster Europapokal (2020)","Sixth European title (2020)","Sechster Europapokal (2020)"]],
+   e:["1900, 2005, 2013, 2020: so die Reihenfolge.","1900, 2005, 2013, 2020: that is the order.","1900, 2005, 2013, 2020: so is d' Reihenfoig."]},
+  {q:["Welche Serie gelang dem FC Bayern von 1974 bis 1976 im Europapokal?","Which streak did FC Bayern achieve in the European Cup from 1974 to 1976?","Wos fia a Serie is dem FC Bayern vo 1974 bis 1976 im Europapokal gglückt?"],
+   a:[["Drei Siege in Folge","Three wins in a row","Drei Siege hintanand"],["Zwei Finalniederlagen","Two lost finals","Zwoa Finalniederlagn"],["Fünf Siege in Folge","Five wins in a row","Fünf Siege hintanand"],["Gar keine","None at all","Goar koane"]],
+   e:["1974, 1975 und 1976: drei Europapokalsiege hintereinander.","1974, 1975 and 1976: three European Cup wins in a row.","1974, 1975 und 1976: drei Europapokalsiege hintanand."]},
+  {q:["Welcher Stammtisch hat dieses Quiz gebaut?","Which Stammtisch built this quiz?","Wos fia a Stammtisch hod des Quiz baut?"],
+   a:[["Arno, Udo & Nobbe","Arno, Udo & Nobbe","Arno, Udo & Nobbe"],["Uli, Karl-Heinz & Franz","Uli, Karl-Heinz & Franz","Uli, Karl-Heinz & Franz"],["Hansi, Toni & Lothar","Hansi, Toni & Lothar","Hansi, Toni & Lothar"],["Pep, Jupp & Carlo","Pep, Jupp & Carlo","Pep, Jupp & Carlo"]],
+   e:["Die FCB-Hardcore-Fans Arno, Udo & Nobbe. Wer sonst?","The FCB hardcore fans Arno, Udo & Nobbe. Who else?","De FCB-Hardcore-Fans Arno, Udo & Nobbe. Wer sunst?"]}
+ ]}
+];
+
+/* ---------- Hilfen ---------- */
+const $ = s => document.querySelector(s);
+function h(tag, o, ...kids){
+  const e = document.createElement(tag);
+  if(o) for(const k in o){ if(o[k] == null) continue; if(k === "class") e.className = o[k]; else if(k === "text") e.textContent = o[k]; else if(k.startsWith("on")) e[k] = o[k]; else e.setAttribute(k, o[k]); }
+  kids.flat().forEach(c => { if(c == null) return; e.append(c.nodeType ? c : document.createTextNode(c)); });
+  return e;
+}
+const starsOf = (p, n) => !p ? 0 : p.best === n ? 3 : p.best / n >= .75 ? 2 : p.best / n >= .5 ? 1 : 0;
+function totals(){
+  let st = 0, co = 0, dn = 0;
+  LESSONS.forEach(l => { const p = prog[l.id]; const s = starsOf(p, l.q.length); st += s; co += p ? p.best * 10 : 0; if(s >= 1) dn++; });
+  return {st, co, dn};
+}
+const rankName = st => { let r = RANKS[0]; RANKS.forEach(x => { if(st >= x[0]) r = x; }); return r[1][li]; };
+const starRow = n => h("span", {class:"stars", "aria-label": n + " / 3 " + t("starsOf")}, [0,1,2].map(i => h("span", {class: i < n ? "" : "off", "aria-hidden":"true"}, "★")));
+const announce = m => { $("#live").textContent = ""; setTimeout(() => { $("#live").textContent = m; }, 30); };
+function focusMain(){ const m = $("#main"); m.focus({preventScroll:true}); window.scrollTo({top:0, behavior:"auto"}); }
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const w = h("div", {class:"conf", "aria-hidden":"true"}); const cols = ["#e6003a","#2a4bd7","#ffc800","#1b7a3d","#6b3fa0"];
+  for(let i = 0; i < 36; i++){ const s = h("i"); s.style.left = Math.random()*100 + "%"; s.style.background = cols[i % cols.length]; s.style.animationDelay = Math.random()*.6 + "s"; s.style.animationDuration = 1.6 + Math.random()*1.2 + "s"; w.append(s); }
+  document.body.append(w); setTimeout(() => w.remove(), 3400);
+}
+const idxOf = id => LESSONS.findIndex(l => l.id === id);
+
+/* ---------- Ansichten ---------- */
+function renderHome(){
+  const T = totals(), pct = Math.round(T.dn / LESSONS.length * 100); const m = $("#main"); m.replaceChildren();
+  const nextL = LESSONS.find(l => !earned(l)), boss = LESSONS[LESSONS.length-1], started = T.dn > 0;
+  m.append(h("section", {class:"hero", "aria-labelledby":"h1"},
+    h("div", null,
+      h("h1", {id:"h1", text:hasName() ? fill(t("helloN")) : t("hello")}),
+      h("p", {text:t("introH")}),
+      hasName() ? h("button", {type:"button", class:"linkbtn namebtn", "aria-label":t("nameChange") + ": " + fname(), onclick:() => { editName = true; render(true); }}, "✎ " + fname() + " · " + t("nameChange")) : null),
+    h("div", {class:"ring", style:"--p:" + pct, role:"img", "aria-label": T.dn + " / " + LESSONS.length + " " + t("done")}, h("span", {text:T.dn + "/" + LESSONS.length})),
+h("div", {class:"stats", role:"list"},
+        h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"🏅 " + rankName(T.st)}), h("span", {class:"sl", text:t("rank")})),
+        h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"⚽ " + T.co}), h("span", {class:"sl", text:t("coins")})),
+        h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"★ " + T.st + "/" + LESSONS.length*3}), h("span", {class:"sl", text:t("starsOf")})))));
+  if((!hasName() && !ach.skip) || editName){
+    const inp = h("input", {id:"nmq", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:t("nameP2"), value:nm});
+    const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(true); };
+    const form = h("form", {class:"nameq", "aria-labelledby":"nq"},
+      h("label", {for:"nmq", id:"nq", text:"👋 " + t("nameQ")}), h("small", {text:t("nameSub")}), inp,
+      h("div", {class:"row", style:"justify-content:flex-start;align-items:center;margin-top:8px;gap:6px 14px"},
+        h("button", {type:"submit", class:"btn"}, t("nameOk")),
+        h("button", {type:"button", class:"linkbtn", onclick:() => { editName = false; ach.skip = true; if(!hasName()) nm = ""; save(); render(true); }}, t("nameSkip"))));
+    form.onsubmit = e => { e.preventDefault(); done(inp.value); };
+    m.append(form);
+  }
+  if(nextL){
+    const first = started ? h("button", {type:"button", class:"choice pri", onclick:() => go("lesson", nextL.id)}, h("span", {class:"ci", "aria-hidden":"true"}, nextL.ico), h("span", null, h("b", {text:t("contB")}), h("small", {text:nextL.t[li]})))
+                          : h("button", {type:"button", class:"choice pri", onclick:() => go("lesson", LESSONS[0].id)}, h("span", {class:"ci", "aria-hidden":"true"}, "🌱"), h("span", null, h("b", {text:t("newB")}), h("small", {text:t("newS")})));
+    const vet = nextL === boss ? null : h("button", {type:"button", class:"choice", onclick:() => go("lesson", boss.id)}, h("span", {class:"ci", "aria-hidden":"true"}, "🏆"), h("span", null, h("b", {text:t("oldB")}), h("small", {text:t("oldS")})));
+    m.append(h("div", {class:"choices"}, first, vet));
+    m.append(h("p", {class:"pitch", text:"✨ " + (hasName() ? fill(t("greetN")) : t("pitch"))}));
+  }  if(T.dn === LESSONS.length) m.append(h("div", {class:"bubble", role:"status"}, h("small", {text:"🎉"}), t("allDone")));
+  m.append(spruchCard());
+  m.append(h("h2", {class:"sec secrow"}, h("span", {text:t("lessons")}), h("span", {class:"cnt", text:T.dn + " / " + LESSONS.length + " " + t("done")})));
+  const g = h("div", {class:"grid"});
+  LESSONS.forEach((l, i) => {
+    const p = prog[l.id], s = starsOf(p, l.q.length);
+    const b = h("button", {type:"button", class:"lcard" + (s >= 1 ? " done" : "") + (nextL === l ? " nextup" : ""), style:"--c:" + l.c + ";animation-delay:" + i*60 + "ms", onclick:() => go("lesson", l.id)},
+      h("span", {class:"ico", "aria-hidden":"true"}, l.ico),
+      h("span", {class:"nr", text:(i+1) + " / " + LESSONS.length}),
+      h("h3", {text:l.t[li]}), h("p", {text:l.sub[li]}),
+      h("span", {class:"foot"}, h("span", {text:"⏱ " + l.min + " " + t("min")}), p ? starRow(s) : h("span", {text:t("start") + " →"})));
+    g.append(b);
+  });
+  m.append(g);
+  m.append(certList());
+  m.append(installCard());
+  m.append(fcbLinks());
+  m.append(h("p", {style:"margin-top:26px;text-align:center"}, h("button", {type:"button", class:"btn ghost", onclick:() => { if(confirm(t("resetQ"))){ prog = {}; save(); render(); } }}, "↺ " + t("reset"))));
+}
+const SPR = [
+ ["g",["Warum nimmt Nobbe immer zwei Bier mit zum Spiel? Falls die Verlängerung kommt.","Why does Nobbe always take two beers to the match? In case of extra time.","Warum nimmt da Nobbe imma zwoa Bier zum Spui mit? Falls d' Verlängerung kimmt."]],
+ ["g",["Arno sagt: Abseits ist, wenn der Schiedsrichter so tut, als hätte er es gesehen.","Arno says: offside is when the referee pretends he saw it.","Da Arno sagt: Abseits is, wenn da Schiedsrichta so doa, ois hätt a as gseng."]],
+ ["g",["Udos Taktik-Tipp: „Einfach mehr Tore schießen als die anderen.“ Genial, aber schwer umzusetzen.","Udo's tactical tip: “Just score more goals than the others.” Brilliant, but hard to implement.","Dem Udo sei Taktik-Tipp: „Oafach mehr Tore schiaßn ois de andan.“ Genial, aba schwar umzsetzn."]],
+ ["g",["Unterschied zwischen Stammtisch und Trainerbank: Am Stammtisch weiß man alles besser und es zahlt trotzdem keiner.","Difference between Stammtisch and dugout: at the Stammtisch everyone knows better and still nobody pays.","Untaschied zwischn Stammtisch und Trainabank: Am Stammtisch woaß ma ois bessa und zoin duads trotzdem koana."]],
+ ["g",["Am Stammtisch gibt es drei Wahrheiten: Arnos, Udos und Nobbes. Die vierte ist die Tabelle.","At the Stammtisch there are three truths: Arno's, Udo's and Nobbe's. The fourth is the league table.","Am Stammtisch gibt's drei Wahrheitn: vom Arno, vom Udo und vom Nobbe. De vierte is d' Tabelln."]],
+ ["g",["Jeder Fan ist Bundestrainer. Nur am Stammtisch sind alle Weltmeister.","Every fan is a national coach. Only at the Stammtisch is everyone a world champion.","Jeda Fan is Bundestrainer. Bloß am Stammtisch san olle Weltmeista."]],
+ ["g",["Udo hat seine Glücksschal-Regel: gewaschen wird erst nach dem nächsten Titel.","Udo has his lucky-scarf rule: it only gets washed after the next title.","Da Udo hod sei Glücksschal-Regel: gwaschn wird erst nach'm nächstn Titl."]],
+ ["f",["Der FC Bayern wurde am 27. Februar 1900 von elf Männern gegründet, die einfach nur Fußball spielen wollten.","FC Bayern was founded on 27 February 1900 by eleven men who simply wanted to play football.","Da FC Bayern is am 27. Februar 1900 vo elf Mannsbuida gründt worn, de oafach bloß Fuaßboi spuin wollt ham."]],
+ ["f",["Elf Meistertitel in Folge (2012/13 bis 2022/23): Die Konkurrenz nahm das mit Humor, meist mit Galgenhumor.","Eleven league titles in a row (2012/13 to 2022/23): the competition took it with humour, mostly gallows humour.","Elf Meistertitl hintanand (2012/13 bis 2022/23): De Konkurrenz hod's mit Humor gnumma, meistns mit Galgnhumor."]],
+ ["f",["Mehr als 432.500 Mitglieder (Stand November 2025): Das sind fast sechs ausverkaufte Allianz Arenen.","More than 432,500 members (as of November 2025): that is almost six sold-out Allianz Arenas.","Mehr ois 432.500 Mitglieda (Stand November 2025): Des san fast sechs ausvakaufte Allianz Arenan."]],
+ ["f",["4.425 registrierte Fanclubs: Irgendwo sitzt immer jemand, der behauptet, den besten Platz zu haben.","4,425 registered fan clubs: somewhere there is always someone claiming to have the best seat.","4.425 registrierte Fanclubs: Irgendwo sitzt imma oana, der behaupt, as beste Platzl z' ham."]],
+ ["f",["Rot-Weiß seit 1906: Davor trug der Verein Blau-Weiß. Man munkelt, Rot verdeckt Bierflecken besser.","Red and white since 1906: before that the club wore blue and white. Rumour has it red hides beer stains better.","Rot-Weiß seit 1906: Davor hod da Verein Blau-Weiß gtrong. Ma munkelt, Rot dacktd Bierflecka bessa zua."]],
+ ["f",["Die Allianz Arena fasst rund 75.000 Menschen. Beim Stammtisch passen drei. Die sind aber lauter.","The Allianz Arena holds about 75,000 people. The Stammtisch fits three. They are louder, though.","De Allianz Arena fasst rund 75.000 Leit. Am Stammtisch passn drei. De san aba lauta."]],
+ ["f",["Das Triple gab es schon zweimal (2012/13 und 2019/20). Das Dreifach-Bier am Stammtisch öfter.","The treble has happened twice (2012/13 and 2019/20). The triple beer at the Stammtisch more often.","Des Triple hod's scho zwoamoi gem (2012/13 und 2019/20). Des Dreifach-Bier am Stammtisch öfta."]],
+ ["f",["2012: Finale dahoam, Elfmeterschießen gegen Chelsea. Seitdem ist „dahoam“ am Stammtisch ein sensibles Wort.","2012: final at home, penalty shoot-out against Chelsea. Since then “dahoam” is a sensitive word at the Stammtisch.","2012: Finale dahoam, Elfmeterschiaßn gega Chelsea. Seitdem is „dahoam“ am Stammtisch a heikles Woat."]],
+ ["f",["Der Umsatz lag 2024/25 bei 978,3 Millionen Euro. Franz John hätte da erstmal ein Bier bestellt.","Revenue in 2024/25 was 978.3 million euros. Franz John would have ordered a beer first.","Da Umsatz war 2024/25 bei 978,3 Millionen Euro. Da Franz John hätt do erstmoi a Bier bstellt."]]
+];
+let sprI = Math.floor(Math.random() * SPR.length);
+function spruchCard(){
+  const x = SPR[sprI];
+  const c = h("section", {class:"spruch", "aria-labelledby":"spt"}, h("h2", {class:"sec", id:"spt", text:t("spruchT")}), h("p", {class:"stag", text:t(x[0] === "g" ? "spruchG" : "spruchF")}), h("p", {class:"stxt", text:x[1][li]}));
+  c.append(h("button", {type:"button", class:"btn ghost", onclick:() => { let n = sprI; while(n === sprI) n = Math.floor(Math.random() * SPR.length); sprI = n; render(true); }}, "🔁 " + t("spruchB")));
+  return c;
+}
+function crumbBar(label, fn, ctx){
+  const b = h("button", {type:"button", class:"back", "aria-label":label + (ctx ? ": " + ctx : ""), onclick:fn});
+  b.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  b.append(h("span", {text:label}));
+  const bar = h("div", {class:"crumb"}, b); if(ctx) bar.append(h("span", {class:"ctx", "aria-hidden":"true", text:ctx})); return bar;
+}
+function renderLesson(l){
+  const m = $("#main"); m.replaceChildren(); const i = idxOf(l.id);
+  m.style.setProperty("--c", l.c);
+  m.append(crumbBar(t("back"), () => go("home")));
+  m.append(h("div", {class:"lhead"}, h("span", {class:"big", "aria-hidden":"true"}, l.ico), h("div", null, h("h1", {id:"h1", text:l.t[li]}), h("p", {text:l.sub[li]}))));
+  l.cards.forEach((c, k) => { const d = h("section", {class:"card", style:"animation-delay:" + k*120 + "ms"}, h("h2", null, h("span", {class:"n", "aria-hidden":"true"}, k+1), c[0][li]), h("p", {text:c[1][li]})); m.append(d); });
+  m.append(h("details", {class:"pro", style:"--c:" + l.c}, h("summary", {text:t("pro")}), h("p", {text:l.pro[li]})));
+  m.append(h("div", {class:"bubble"}, h("small", {text:"😄 " + t("fun")}), l.fun[li]));
+  m.append(h("div", {class:"src"}, h("strong", {text:t("src")}), h("ul", null, l.src.map(s => h("li", null, h("a", {href:s[1], rel:"noopener"}, s[0]))))));
+  m.append(h("div", {class:"sticky"}, h("button", {type:"button", class:"btn", id:"go", onclick:() => startQuiz(l)}, (prog[l.id] ? t("cont") : t("quiz")) + " →")));
+}
+function shuffle(n){ const a = [...Array(n).keys()]; for(let i = n-1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function startQuiz(l){
+  if(!hasName() && !ach.askedQuiz){ view = {v:"namegate", id:l.id}; render(); return; }
+  beginQuiz(l);
+}
+function renderGate(l){
+  const m = $("#main"); m.replaceChildren(); m.style.setProperty("--c", l.c);
+  m.append(crumbBar(t("backL"), () => go("lesson", l.id), l.t[li]));
+  const inp = h("input", {id:"nmg", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:t("nameP2"), value:nm});
+  const go2 = skip => { if(!skip) nm = inp.value.trim().slice(0, 40); ach.askedQuiz = true; if(nm) ach.skip = false; save(); beginQuiz(l); };
+  const form = h("form", {class:"nameq", "aria-labelledby":"h1"},
+    h("h1", {id:"h1", style:"margin:0;font-size:1.35rem", text:"🏁 " + t("gateT")}), h("small", {text:t("gateS")}),
+    h("label", {for:"nmg", class:"sr", text:t("nameQ")}), inp,
+    h("div", {class:"row", style:"justify-content:flex-start;align-items:center;margin-top:8px;gap:6px 14px"},
+      h("button", {type:"submit", class:"btn"}, t("gateGo") + " →"),
+      h("button", {type:"button", class:"linkbtn", onclick:() => go2(true)}, t("gateSkip"))));
+  form.onsubmit = e => { e.preventDefault(); go2(false); };
+  m.append(form);
+}
+function beginQuiz(l){ view = {v:"quiz", id:l.id, n:0, right:0, qs:l.q.map(q => ({order:shuffle(q.a.length), picked:null}))}; location.hash = "quiz-" + l.id; render(); }
+function renderQuiz(l){
+  const m = $("#main"); m.replaceChildren(); m.style.setProperty("--c", l.c);
+  const Q = l.q[view.n], st = view.qs[view.n], total = l.q.length; const done = st.picked !== null;
+  m.append(crumbBar(t("backL"), () => go("lesson", l.id), l.t[li]));
+  m.append(h("div", {class:"dots", role:"img", "aria-label": t("qof") + " " + (view.n+1) + " " + t("of") + " " + total}, view.qs.map((s, i) => h("i", {class: s.picked !== null ? (s.order[s.picked] === 0 ? "on" : "no") : i === view.n ? "cur" : ""}))));
+  m.append(h("p", {style:"margin:0 0 4px;color:var(--mute);font-weight:700", text:t("qof") + " " + (view.n+1) + " " + t("of") + " " + total}));
+  if(hasName() && (view.n === 0 || view.n === total - 1)) m.append(h("p", {class:"qp", text:"🎯 " + fill(t(view.n === 0 && total > 1 ? "qFirst" : view.n === 0 ? "qFirst" : "qLast"))}));
+  m.append(h("h1", {class:"qq", id:"h1", text:Q.q[li]}));
+  const box = h("div", {class:"opts", role:"group", "aria-labelledby":"h1"});
+  st.order.forEach((ai, pos) => {
+    const cls = ["opt"]; if(done){ if(ai === 0) cls.push("right"); else if(pos === st.picked) cls.push("wrong"); else cls.push("dim"); }
+    const b = h("button", {type:"button", class:cls.join(" "), disabled: done ? "" : null, "data-pos":pos, onclick:() => answer(l, pos)}, h("span", {class:"k", "aria-hidden":"true"}, "ABCD"[pos]), h("span", {text:Q.a[ai][li]}));
+    if(done) b.disabled = true;
+    box.append(b);
+  });
+  m.append(box);
+  if(done){
+    const ok = st.order[st.picked] === 0; const f = h("div", {class:"fb " + (ok ? "ok" : "bad"), role:"status"}, h("b", {text:(ok ? "✅ " + t("correct") : "❌ " + t("wrong")) + " " + fill(st.msgSet[li])}));
+    if(!ok) f.append(h("div", null, t("solution") + " " + Q.a[0][li]));
+    f.append(h("div", {style:"margin-top:6px;font-weight:500", text:Q.e[li]}));
+    if(st.firstHit) f.append(h("div", {class:"ach", text:"🏆 " + t("achFirst")}));
+    m.append(f);
+    const last = view.n === total - 1;
+    m.append(h("div", {class:"next"}, h("button", {type:"button", class:"btn", id:"nx", onclick:() => { if(last){ finishQuiz(l); } else { view.n++; render(); } }}, (last ? t("finish") : t("next")) + " →")));
+  }
+}
+function answer(l, pos){
+  const st = view.qs[view.n]; if(st.picked !== null) return; st.picked = pos; const ok = st.order[pos] === 0; if(ok) view.right++; if(ok && !ach.first){ ach.first = true; save(); st.firstHit = true; }
+  st.msgSet = (ok ? (hasName() ? OKN : OKS) : (hasName() ? BADN : BADS))[Math.floor(Math.random()*4)];
+  render(true);
+}
+function finishQuiz(l){
+  const n = l.q.length, p = prog[l.id]; if(view.right > (p ? p.best : 0)) prog[l.id] = {best:view.right}; save();
+  view = {v:"result", id:l.id, right:view.right}; render();
+}
+function renderResult(l){
+  const m = $("#main"); m.replaceChildren(); const n = l.q.length, s = view.right === n ? 3 : view.right/n >= .75 ? 2 : view.right/n >= .5 ? 1 : 0;
+  const i = idxOf(l.id), nxt = LESSONS[i+1]; const pass = s >= 1;
+  m.append(h("section", {class:"res"},
+    h("div", {class:"bigstars", role:"img", "aria-label": s + " / 3 " + t("starsOf")}, [0,1,2].map(k => h("span", {class:k < s ? "" : "off"}, "★"))),
+    h("h1", {id:"h1", text:hasName() ? fill(t(pass ? "passN" : "tryN")) : (pass ? t("pass") : t("tryAgain"))}),
+    h("p", {text:t("res") + ": " + view.right + " " + t("of") + " " + n + " · " + view.right*10 + " " + t("coins")})));
+  if(pass){ m.append(h("p", {class:"pitch", style:"margin:0 0 6px", text:"🏅 " + t("certNow")})); certBlock(m, l); }
+  const save1 = () => savePng(certSVG(l), "fcb_stammtisch_" + l.id + "_" + (nm.trim() || "name").replace(/[^\p{L}\p{N}]+/gu, "_") + ".png");
+  const bNext = nxt && pass ? h("button", {type:"button", class:"btn", onclick:() => go("lesson", nxt.id)}, t("nextL") + " →") : null;
+  const bSave = pass ? h("button", {type:"button", class:"btn" + (bNext ? " ghost" : ""), onclick:save1}, "⬇ " + t("dl")) : null;
+  const bRetry = h("button", {type:"button", class:"btn" + (pass ? " ghost" : ""), onclick:() => startQuiz(l)}, "↺ " + t("retry"));
+  const bHome = h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, t("over"));
+  m.append(h("div", {class:"row"}, bNext, bSave, bRetry, bHome));  m.append(nLink());
+  if(pass) confetti();
+}
+const NHIST = "https://de.wikipedia.org/wiki/FC_Bayern_M%C3%BCnchen", NCORP = "https://en.wikipedia.org/wiki/FC_Bayern_Munich";
+function fcbLinks(){
+  const w = h("section", {"aria-labelledby":"nh"}); const g = h("div", {class:"certlist"});
+  [["⚽", t("nSite"), NURL[li][0], NURL[li][1]], ["📜", t("nHist"), NHIST, "de.wikipedia.org"], ["🌍", t("nCorp"), NCORP, "en.wikipedia.org"]].forEach(x => g.append(h("a", {class:"btn ghost", href:x[2], rel:"noopener"}, h("span", {"aria-hidden":"true"}, x[0]), h("span", null, x[1], h("small", {style:"display:block;font-weight:600;color:var(--mute)", text:x[3]})))));
+  w.append(h("h2", {class:"sec", id:"nh", text:"⚽ " + t("nSec")}), g); return w;
+}
+function nLink(){ return h("p", {style:"text-align:center;margin:18px 0 0"}, h("a", {href:NURL[li][0], rel:"noopener", class:"nlink"}, "⚽ " + t("moreN") + " (" + NURL[li][1] + ") →")); }
+function certBlock(m, l){
+  const fld = h("div", {class:"field"}, h("label", {for:"nm", text:t("nameL")}), h("input", {id:"nm", type:"text", maxlength:"40", autocomplete:"name", placeholder:t("nameP"), value:nm}));
+  const box = h("div", {class:"certbox"}); box.innerHTML = certSVG(l);
+  fld.querySelector("input").oninput = e => { nm = e.target.value; save(); box.innerHTML = certSVG(l); };
+  m.append(fld, box);
+}
+/* ---------- Zertifikate ---------- */
+const CT = {
+ head:["STAMMTISCH-ZERTIFIKAT","STAMMTISCH CERTIFICATE","STAMMTISCH-ZERTIFIKAT"],
+ headM:["MEISTERSCHALEN-ZERTIFIKAT","CHAMPIONSHIP TROPHY CERTIFICATE","MEISTASCHALN-ZERTIFIKAT"],
+ conf:["Hiermit wird feierlich und mit Bierdeckel-Stempel bestätigt, dass","It is hereby solemnly and with a beer-mat stamp confirmed that","Hiermit wird feierlich und mit Bierdeckl-Stempe bstätigt, dass"],
+ did:["den Spieltag gewonnen hat:","has won the matchday:","an Spuitag gwunna hod:"],
+ didM:["alle sieben Spieltage gewonnen hat und damit Stammtisch-Wissen auf Profi-Niveau besitzt.","has won all seven matchdays and now holds pro-level Stammtisch knowledge.","olle sieme Spuitag gwunna hod und damit Stammtisch-Wissn af Profi-Niveau hod."],
+ score:["richtig","correct","richtig"],
+ lines:[["Geschafft! Jede Vereinslegende hat mal auf der Bank angefangen.","Done! Every club legend started out on the bench.","Gschafft! Jede Vereinslegende hod moi af da Bank ogfanga."],
+        ["Stark! Der nächste Spieltag wartet schon auf dich.","Strong! The next matchday is already waiting for you.","Stark! Da nächste Spuitag wart scho af di."],
+        ["Perfekt! Ein Tor wie in der 90. Minute.","Perfect! A goal like in the 90th minute.","Perfekt! A Tor wia in da 90. Minutn."]],
+ linesN:[["Geschafft, {n}! Jede Vereinslegende hat mal auf der Bank angefangen.","Done, {n}! Every club legend started out on the bench.","Gschafft, {n}! Jede Vereinslegende hod moi af da Bank ogfanga."],
+        ["Stark, {n}! Der nächste Spieltag wartet schon auf dich.","Strong, {n}! The next matchday is already waiting for you.","Stark, {n}! Da nächste Spuitag wart scho af di."],
+        ["Perfekt, {n}! Ein Tor wie in der 90. Minute.","Perfect, {n}! A goal like in the 90th minute.","Perfekt, {n}! A Tor wia in da 90. Minutn."]],
+ lineMN:["{n}, du bist offiziell ein Stammtisch-Experte (inoffiziell). Die erste Runde geht auf Nobbe!","{n}, you are officially a Stammtisch expert (unofficially). The first round is on Nobbe!","{n}, du bist offiziell a Stammtisch-Experte (inoffiziell). De erste Runde geht af'n Nobbe!"],
+ lineM:["Du bist offiziell ein Stammtisch-Experte (inoffiziell). Die erste Runde geht auf Nobbe!","You are officially a Stammtisch expert (unofficially). The first round is on Nobbe!","Du bist offiziell a Stammtisch-Experte (inoffiziell). De erste Runde geht af'n Nobbe!"],
+ rankL:["Rang","Rank","Rang"],
+ date:["Datum","Date","Datum"],
+ sign:["Arno, Udo & Nobbe (inoffiziell)","Arno, Udo & Nobbe (unofficial)","Arno, Udo & Nobbe (inoffiziell)"],
+ foot:["Inoffizielles Fan-Projekt der FCB-Hardcore-Fans Arno, Udo & Nobbe · kein Produkt des FC Bayern München","Unofficial fan project by the FCB hardcore fans Arno, Udo & Nobbe · not a product of FC Bayern München","Inoffizielles Fan-Projekt vo de FCB-Hardcore-Fans Arno, Udo & Nobbe · koa Produkt vom FC Bayern München"]
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function wrap(s, n){
+  if(s.length <= n) return [s];
+  if(/\s/.test(s)){ const w = s.split(/\s+/), out = []; let cur = ""; w.forEach(x => { if((cur + " " + x).trim().length > n && cur){ out.push(cur); cur = x; } else cur = (cur + " " + x).trim(); }); if(cur) out.push(cur); return out.slice(0, 3); }
+  const out = []; for(let i = 0; i < s.length; i += n) out.push(s.slice(i, i + n)); return out.slice(0, 3);
+}
+const earned = l => starsOf(prog[l.id], l.q.length) >= 1;
+const allEarned = () => LESSONS.every(earned);
+function certSVG(l){
+  const M = !l, g = k => CT[k][li], n = nm.trim();
+  const T = totals(), st = M ? T.st : starsOf(prog[l.id], l.q.length), right = M ? 0 : prog[l.id].best;
+  const d = new Date().toLocaleDateString(({de:"de-DE", en:"en-GB", bar:"de-DE"})[LANGS[li][0]], {day:"2-digit", month:"long", year:"numeric"});
+  const F = 'font-family="Trebuchet MS, Segoe UI, Hiragino Maru Gothic ProN, Yu Gothic UI, Meiryo, sans-serif"';
+  const ew = [...n].reduce((s, c) => s + (/[WMm@]/.test(c) ? 1.05 : /\s/.test(c) ? .3 : /[\u3000-\u9fff\uff00-\uffef]/.test(c) ? 1.25 : /[A-ZÄÖÜ]/.test(c) ? .74 : /[ilj.,'!|]/.test(c) ? .3 : .58), 0);
+  const nsz = n ? Math.max(16, Math.min(64, Math.floor(860 / Math.max(6, ew)))) : 34;
+  const ja = LANGS[li][0] === "ja", tl = M ? wrap(g("didM"), ja ? 30 : 52) : wrap(l.t[li], ja ? 22 : 38);
+  const stars = [0,1,2].map(k => '<text x="' + (561.5 + (k-1)*70) + '" y="' + (M ? 575 : 585) + '" font-size="58" text-anchor="middle" fill="' + (M || k < st ? "#ffc800" : "#d9d9de") + '" stroke="' + (M || k < st ? "#b58900" : "#b8b9bd") + '" stroke-width="2">★</text>').join("");
+  const band = ["#e6003a","#2a4bd7","#ffc800","#1b7a3d","#6b3fa0"].map((c, i) => '<rect x="' + (60 + i*200.6) + '" y="36" width="200.6" height="16" fill="' + c + '"/>').join("");
+  const conf = [[110,150,"#2a4bd7"],[1010,170,"#ffc800"],[130,640,"#1b7a3d"],[1000,650,"#6b3fa0"],[90,330,"#ffc800"],[1030,360,"#e6003a"],[160,230,"#e6003a"],[960,250,"#1b7a3d"]].map(a => '<rect x="' + a[0] + '" y="' + a[1] + '" width="16" height="16" rx="3" transform="rotate(' + (a[0]%40-20) + ' ' + a[0] + ' ' + a[1] + ')" fill="' + a[2] + '"/>').join("");
+  const head = M ? g("headM") : g("head");
+  const hs = Math.min(72, Math.floor(860 / (head.length * 0.78)));
+  const line = hasName() ? fill(M ? CT.lineMN[li] : CT.linesN[Math.max(0, st-1)][li]) : (M ? g("lineM") : CT.lines[Math.max(0, st-1)][li]);
+  const rank = rankName(T.st);
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1123 794" width="1123" height="794" role="img" aria-label="' + esc(head + (n ? " – " + n : "") + (M ? "" : " – " + l.t[li])) + '">'
+   + '<rect width="1123" height="794" rx="28" fill="#ffffff"/>'
+   + '<rect x="14" y="14" width="1095" height="766" rx="22" fill="none" stroke="#e6003a" stroke-width="10"/>'
+   + '<rect x="34" y="34" width="1055" height="726" rx="14" fill="none" stroke="#e1e2e5" stroke-width="2" stroke-dasharray="10 8"/>'
+   + band + conf
+   + '<text x="561.5" y="140" text-anchor="middle" font-size="' + hs + '" font-weight="800" letter-spacing="4" fill="#e6003a" ' + F + '>' + esc(head) + '</text>'
+   + '<text x="561.5" y="172" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="4" fill="#2a4bd7" ' + F + '>STAMMTISCH-QUIZ</text>'
+   + '<text x="561.5" y="203" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("conf")) + '</text>'
+   + '<text x="561.5" y="270" text-anchor="middle" font-size="' + nsz + '" font-weight="800" fill="' + (n ? "#1f2026" : "#b8b9bd") + '" ' + F + '>' + esc(n || t("nameP")) + '</text>'
+   + '<line x1="250" y1="290" x2="873" y2="290" stroke="#e6003a" stroke-width="4" stroke-linecap="round"/>'
+   + (M ? '' : '<text x="561.5" y="338" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("did")) + '</text>')
+   + tl.map((x, i) => '<text x="561.5" y="' + ((M ? 350 : 392) + i*40) + '" text-anchor="middle" font-size="' + (M ? 26 : 34) + '" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(x) + '</text>').join("")
+   + (M ? '<text x="561.5" y="440" text-anchor="middle" font-size="26" font-weight="800" fill="#1b7a3d" ' + F + '>' + esc(t("certMasterBadge")) + '</text>' : '<text x="561.5" y="' + (392 + (tl.length-1)*40 + 50) + '" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2026" ' + F + '>' + esc(right + " / " + l.q.length + " " + g("score")) + '</text>')
+   + stars
+   + '<text x="561.5" y="640" text-anchor="middle" font-size="22" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
+   + '<text x="110" y="712" font-size="15" fill="#565860" ' + F + '>' + esc(g("date") + ": " + d) + '</text>'
+   + '<text x="110" y="736" font-size="15" fill="#565860" ' + F + '>' + esc(g("rankL") + ": " + rank) + '</text>'
+   + '<circle cx="561.5" cy="695" r="38" fill="#ffffff" stroke="#e6003a" stroke-width="5"/><g transform="translate(535.5 677) scale(3.25)">' + logoRects() + '</g>'
+   + '<text x="1013" y="712" text-anchor="end" font-size="16" font-style="italic" fill="#1f2026" ' + F + '>' + esc(g("sign")) + '</text>'
+   + '<line x1="760" y1="720" x2="1013" y2="720" stroke="#1f2026" stroke-width="1.5"/>'
+   + '<text x="561.5" y="759" text-anchor="middle" font-size="16" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(NURL[li][1]) + '</text>'
+   + '<text x="561.5" y="778" text-anchor="middle" font-size="12" fill="#6b6d73" ' + F + '>' + esc(g("foot") + " · v" + VERSION) + '</text>'
+   + '</svg>';
+}
+function renderCert(l){
+  const m = $("#main"); m.replaceChildren(); const M = !l;
+  m.append(crumbBar(t("back"), () => go("home")));
+  m.append(h("h1", {id:"h1", text:"🏅 " + (M ? t("master") : t("certOf") + ": " + l.t[li])}));
+  const box = null; certBlock(m, l);
+  const nameSafe = (nm.trim() || "name").replace(/[^\p{L}\p{N}]+/gu, "_");
+  m.append(h("div", {class:"row"},
+    h("button", {type:"button", class:"btn", onclick:() => savePng(certSVG(l), "fcb_stammtisch_" + (M ? "master" : l.id) + "_" + nameSafe + ".png")}, "⬇ " + t("dl")),
+    h("button", {type:"button", class:"btn ghost", onclick:() => window.print()}, "🖨 " + t("prt")),
+    h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, t("over"))));
+  m.append(nLink());
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches) confetti();
+}
+function savePng(svg, name){
+  const url = URL.createObjectURL(new Blob([svg], {type:"image/svg+xml;charset=utf-8"})), img = new Image();
+  img.onload = () => { const c = document.createElement("canvas"); c.width = 1123; c.height = 794; const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, 1123, 794); x.drawImage(img, 0, 0); URL.revokeObjectURL(url); c.toBlob(b => { const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); a.remove(); }); };
+  img.src = url;
+}
+function certList(){
+  const got = LESSONS.filter(earned); const w = h("section", {"aria-labelledby":"ch"}); 
+  w.append(h("h2", {class:"sec", id:"ch", text:"🏅 " + t("certs")}), h("p", {style:"margin:0 0 12px;color:var(--mute)", text:t("certsHint")}));
+  const g = h("div", {class:"certlist"});
+  if(allEarned()) g.append(h("button", {type:"button", class:"btn mastercard", onclick:() => go("cert", "master")}, "👑 " + t("master")));
+  got.forEach(l => g.append(h("button", {type:"button", class:"btn ghost", onclick:() => go("cert", l.id)}, l.ico + " " + l.t[li])));
+  w.append(g); return got.length ? w : h("section");
+}/* ---------- Routing ---------- */
+function go(v, id){ view = {v, id}; location.hash = v === "home" ? "home" : v + "-" + id; render(); }
+function fromHash(){
+  const x = (location.hash || "").slice(1); const m = x.match(/^(lesson|quiz|cert)-(.+)$/); const known = m && LESSONS.some(l => l.id === m[2]);
+  if(m && m[1] === "cert" && (m[2] === "master" ? allEarned() : known && earned(LESSONS[idxOf(m[2])]))) view = {v:"cert", id:m[2]};
+  else if(known && m[1] === "quiz"){ if(view.v !== "quiz" && view.v !== "result") view = {v:"lesson", id:m[2]}; }
+  else if(known && m[1] === "lesson") view = {v:"lesson", id:m[2]};
+  else view = {v:"home"};
+}let lastKey = "";
+function render(keepScroll){
+  const l = view.id ? LESSONS[idxOf(view.id)] : null;
+  if(view.v === "lesson") renderLesson(l); else if(view.v === "quiz") renderQuiz(l); else if(view.v === "result") renderResult(l); else if(view.v === "cert") renderCert(l); else if(view.v === "namegate") renderGate(l); else renderHome();
+  chrome();
+  const key = view.v + (view.id || "") + (view.n || 0);
+  if(keepScroll === true){ const nb = $("#nx"); if(nb) nb.scrollIntoView({block:"nearest"}); const fb = $(".fb"); if(fb) announce(fb.textContent); }
+  else if(key !== lastKey){ focusMain(); }
+  lastKey = key;
+}
+function chrome(){
+  document.documentElement.lang = LANGS[li][0];
+  document.title = t("title");
+  $(".brand .dot").innerHTML = logoSvg(); $("#bt").textContent = t("title"); $("#bs").textContent = t("sub"); $("#by").textContent = "⚽ " + t("by") + " ⚽"; $("#brand").setAttribute("aria-label", t("title") + " – " + t("over"));
+  $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL"));
+  const T = totals(); $("#coins").textContent = "⚽ " + T.co;
+  const lg = $("#langs"); lg.replaceChildren(); LANGS.forEach((x, i) => lg.append(h("button", {type:"button", lang:x[0], "aria-pressed": String(i === li), "aria-label":x[2], onclick:() => { li = i; save(); render(true); }}, x[1])));
+  const f = $("#foot"); f.replaceChildren(h("p", null, "⚽ ", h("a", {href:NURL[li][0], rel:"noopener", text:t("nSite") + " (" + NURL[li][1] + ")"})), h("p", {text:t("disc")}), h("p", {text:t("trans")}), h("p", {text:t("ver") + " " + VERSION + " · " + STAND}));
+}
+$("#brand").onclick = () => go("home");
+$("#theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; };
+window.addEventListener("hashchange", () => { fromHash(); render(); });
+/* ---------- PWA: Installieren, Offline, Updates ---------- */
+let deferredInstall = null;
+const isStandalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function installCard(){
+  if(isStandalone()) return h("span");
+  if(!deferredInstall && !isIOS()) return h("span");
+  const c = h("section", {class:"instcard", "aria-labelledby":"it"}, h("span", {class:"ii", "aria-hidden":"true"}, "📲"),
+    h("div", null, h("b", {id:"it", text:t("instT")}), h("small", {text:deferredInstall ? t("instS") : t("instIos")})));
+  if(deferredInstall) c.append(h("button", {type:"button", class:"btn", onclick:async () => { const e = deferredInstall; deferredInstall = null; e.prompt(); try{ await e.userChoice; }catch(x){} render(true); }}, t("instB")));
+  return c;
+}
+function snack(text, btn, fn, ms){
+  const old = document.querySelector(".snack"); if(old) old.remove();
+  const s = h("div", {class:"snack", role:"status"}, h("span", {text}));
+  if(btn) s.append(h("button", {type:"button", onclick:() => { fn(); s.remove(); }}, btn));
+  document.body.append(s); if(ms) setTimeout(() => s.remove(), ms);
+}
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredInstall = e; if(view.v === "home" && !editName) render(true); });
+window.addEventListener("appinstalled", () => { deferredInstall = null; if(view.v === "home") render(true); });
+if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
+  let reloading = false, hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if(!hadController){ hadController = true; return; } if(reloading) return; reloading = true; location.reload(); });
+  window.addEventListener("load", () => {
+    const first = !navigator.serviceWorker.controller;
+    navigator.serviceWorker.register("sw.js").then(reg => {
+      const upd = w => snack(t("updT"), t("updB"), () => w.postMessage("SKIP_WAITING"));
+      if(reg.waiting && navigator.serviceWorker.controller) upd(reg.waiting);
+      reg.addEventListener("updatefound", () => { const w = reg.installing; if(w) w.addEventListener("statechange", () => { if(w.state === "installed"){ if(navigator.serviceWorker.controller) upd(w); else snack(t("offT"), null, null, 4500); } }); });
+    }).catch(() => {});
+  });
+}
+fromHash(); render();
+</script>
+</body>
+</html>
