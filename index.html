@@ -82,7 +82,7 @@ button{font:inherit;cursor:pointer}
 .lang{display:flex;gap:6px}
 .lang button,.theme{min-height:44px;min-width:44px;padding:6px 12px;border-radius:999px;border:2px solid rgba(255,255,255,.7);background:transparent;color:#fff;font-weight:700}
 .lang button[aria-pressed="true"]{background:#fff;color:var(--red-d)}
-.theme{font-size:1.1rem;padding:6px}
+.theme{font-size:1.1rem;padding:0;display:inline-flex;align-items:center;justify-content:center;line-height:1}.theme svg{display:block;flex:none}
 /* Layout */
 main{max-width:1060px;margin:0 auto;padding:20px 16px 90px;outline:none}
 .hero{background:var(--card);border-radius:28px;box-shadow:var(--shadow);padding:22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;position:relative;overflow:hidden;border:2px solid var(--line)}
@@ -191,7 +191,7 @@ footer p{margin:6px 0}
 .choice small{display:block;font-size:.92rem;opacity:.92}
 .choice.pri{background:var(--red-d);color:#fff;border-color:transparent}
 .ach{margin-top:10px;padding:10px 14px;border-radius:14px;background:var(--gold);color:#3b2d00;font-weight:800;animation:pop .5s both}
-.nameq{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:14px 0 0;box-shadow:var(--shadow);display:grid;gap:6px;animation:pop .5s both}
+.nameq{scroll-margin:90px 0 24px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:14px 0 0;box-shadow:var(--shadow);display:grid;gap:6px;animation:pop .5s both}
 .nameq label{font-weight:800;font-size:1.1rem}
 .nameq small{color:var(--mute)}
 .nameq input{min-height:48px;font:inherit;font-size:1rem;padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:4px}
@@ -214,8 +214,11 @@ button.chip{font:inherit;font-weight:700;color:var(--ink);cursor:pointer;min-hei
 .stat{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:8px 10px;min-width:0}
 .stat .sv{display:block;font-weight:800;font-size:.98rem;line-height:1.25;overflow-wrap:anywhere}
 .stat .sl{display:block;font-size:.78rem;color:var(--mute);font-weight:700;margin-top:2px}
-.namebtn{padding:6px 0;min-height:44px;text-decoration:none;color:var(--mute);font-weight:700}
-.namebtn:hover{text-decoration:underline}
+.namebtn{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 16px;border-radius:999px;border:2px solid var(--blue);background:var(--card);color:var(--blue);font-weight:800;font-size:.92rem;text-decoration:none;max-width:100%}.namebtn span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.namebtn:hover{background:var(--blue);color:#fff}
+.shdlg{border:2px solid var(--line);border-radius:var(--r);padding:18px;background:var(--card);color:var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.35);width:min(92vw,460px);max-width:none}.shdlg::backdrop{background:rgba(0,0,0,.5)}.shdlg .shx{float:right;min-height:44px;min-width:44px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:1.1rem}.sharecard{margin:0}
+.sharecard .sh{display:flex;gap:14px;align-items:center}.sharecard .si{font-size:1.8rem}.sharecard b{display:block}.sharecard small{color:var(--mute)}
+.sharerow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.sharerow .btn{min-height:44px;padding:8px 16px;font-size:.92rem}.sharerow .btn.ghost{box-shadow:none}
 h2.secrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .lcard.nextup{box-shadow:0 0 0 3px var(--red),var(--shadow)}
@@ -239,6 +242,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .field input{min-height:48px;font:inherit;font-size:1rem;padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
 .certlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
 .certlist .btn{justify-content:flex-start;text-align:left;border-radius:16px;min-height:52px;width:100%}
+.nlinks{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}.nlinks .btn{gap:12px;padding:12px 16px;font-size:.95rem;align-items:center}.nlinks .btn>span:first-child{flex:none;font-size:1.4rem}.nlinks .btn>span:last-child{min-width:0;overflow-wrap:anywhere;hyphens:auto}.nlinks .btn small{font-size:.82rem;margin-top:2px}
 .btn.mastercard{background:#ffc800!important;color:#3b2d00;border:0;box-shadow:0 4px 0 rgba(0,0,0,.2)}
 @page{size:A4 landscape;margin:8mm}
 @media print{body{background:#fff}main>*:not(.certbox){display:none!important}.certbox{box-shadow:none;border:0;padding:0;margin:0}footer{display:none}}
@@ -253,6 +257,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
   <span class="spacer"></span>
   <span class="pill" id="coins" aria-live="polite"></span>
   <div class="lang" role="group" id="langs"></div>
+  <button type="button" class="theme" id="share" aria-label="Teilen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg></button>
   <button type="button" class="theme" id="theme" aria-label="Hell/Dunkel">◐</button>
 </div></header>
 <main id="main" tabindex="-1"></main>
@@ -260,7 +265,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.0.1", STAND = "14.10.2026";
+const VERSION = "1.2.0", STAND = "15.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -290,6 +295,17 @@ const S = {
  nameOk:["Das bin ich","That's me","Des bin i"],
  nameSkip:["Lieber anonym bleiben","Stay anonymous","Liaba anonym bleibm"],
  nameChange:["Name ändern","Change name","Nam ändan"],
+ nameAdd:["Name eintragen","Add your name","Nam eitrong"],
+ shT:["App weitergeben","Share this app","App weidergebn"],
+ shS:["Schick den Link an Freunde, Familie oder dein Team.","Send the link to friends, family or your team.","Schick den Link an Freind, d'Familie oder dei Team."],
+ shX:["Schließen","Close","Zuamacha"],
+ shWa:["WhatsApp","WhatsApp","WhatsApp"],
+ shMail:["E-Mail","Email","E-Mail"],
+ shCopy:["Link kopieren","Copy link","Link kopiern"],
+ shCopied:["Link kopiert","Link copied","Link kopiert"],
+ shFail:["Kopieren nicht möglich. Link bitte markieren und kopieren.","Could not copy. Please select and copy the link.","Kopiern geht ned. Link bitte markiern und kopiern."],
+ shMsg:["Probier mal das Stammtisch-Quiz rund um den FC Bayern: ein kostenloses Quiz-Lernspiel. Läuft im Browser, ohne Anmeldung.","Try the Stammtisch Quiz about FC Bayern: a free quiz game. Runs in your browser, no sign-up.","Probier moi des Stammtisch-Quiz um 'n FC Bayern: a kostnloses Quiz-Spui. Laft im Browser, ohne Anmeidung."],
+ shSubj:["Stammtisch-Quiz: kostenloses Quiz","Stammtisch Quiz: free quiz","Stammtisch-Quiz: kostenloses Quiz"],
  helloN:["Servus {n}! Was weißt du über den FC Bayern?","Hey {n}! How much do you know about FC Bayern?","Servus {n}! Wos woasst du iwa den FC Bayern?"],
  greetN:["Schön, dich am Stammtisch zu sehen, {n}. Das erste Bier gibt's nach dem Quiz.","Great to see you at the Stammtisch, {n}. The first beer comes after the quiz.","Schee, di am Stammtisch zum seng, {n}. Des erste Bier gibt's nach'm Quiz."],
  qFirst:["Anpfiff, {n}!","Kick-off, {n}!","Ofpfiff, {n}!"],
@@ -400,7 +416,7 @@ const t = k => S[k][li];
 const fname = () => { const f = (nm || "").trim().split(/\s+/)[0] || ""; let w = 0, o = ""; for(const c of f){ w += /[\u3000-\u9fff\uff00-\uffef]/.test(c) ? 2 : 1; if(w > 16) break; o += c; } return o; };
 const fill = s => s.replace(/\{n\}/g, fname());
 const hasName = () => fname() !== "";
-let editName = false;
+let editName = false, focusName = false;
 const NURL = [["https://fcbayern.com/de","fcbayern.com/de"],["https://fcbayern.com/en","fcbayern.com/en"],["https://fcbayern.com/de","fcbayern.com/de"]];
 
 
@@ -627,12 +643,14 @@ function renderHome(){
     h("div", null,
       h("h1", {id:"h1", text:hasName() ? fill(t("helloN")) : t("hello")}),
       h("p", {text:t("introH")}),
-      hasName() ? h("button", {type:"button", class:"linkbtn namebtn", "aria-label":t("nameChange") + ": " + fname(), onclick:() => { editName = true; render(true); }}, "✎ " + fname() + " · " + t("nameChange")) : null),
+      null),
     h("div", {class:"ring", style:"--p:" + pct, role:"img", "aria-label": T.dn + " / " + LESSONS.length + " " + t("done")}, h("span", {text:T.dn + "/" + LESSONS.length})),
 h("div", {class:"stats", role:"list"},
         h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"🏅 " + rankName(T.st)}), h("span", {class:"sl", text:t("rank")})),
         h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"⚽ " + T.co}), h("span", {class:"sl", text:t("coins")})),
-        h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"★ " + T.st + "/" + LESSONS.length*3}), h("span", {class:"sl", text:t("starsOf")})))));
+        h("div", {class:"stat", role:"listitem"}, h("span", {class:"sv", text:"★ " + T.st + "/" + LESSONS.length*3}), h("span", {class:"sl", text:t("starsOf")}))),
+    hasName() ? h("button", {type:"button", class:"namebtn", "aria-label":t("nameChange") + ": " + fname(), onclick:() => { editName = true; focusName = true; render(true); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:fname() + " · " + t("nameChange")}))
+      : (!editName ? h("button", {type:"button", class:"namebtn", onclick:() => { editName = true; focusName = true; render(true); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:t("nameAdd")})) : null)));
   if((!hasName() && !ach.skip) || editName){
     const inp = h("input", {id:"nmq", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:t("nameP2"), value:nm});
     const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(true); };
@@ -640,9 +658,14 @@ h("div", {class:"stats", role:"list"},
       h("label", {for:"nmq", id:"nq", text:"👋 " + t("nameQ")}), h("small", {text:t("nameSub")}), inp,
       h("div", {class:"row", style:"justify-content:flex-start;align-items:center;margin-top:8px;gap:6px 14px"},
         h("button", {type:"submit", class:"btn"}, t("nameOk")),
-        h("button", {type:"button", class:"linkbtn", onclick:() => { editName = false; ach.skip = true; if(!hasName()) nm = ""; save(); render(true); }}, t("nameSkip"))));
+        h("button", {type:"button", class:"btn ghost", onclick:() => { editName = false; ach.skip = true; if(!hasName()) nm = ""; save(); render(true); }}, t("nameSkip"))));
     form.onsubmit = e => { e.preventDefault(); done(inp.value); };
     m.append(form);
+    if(focusName){   // nur nach Klick auf Name aendern: Formular in den sichtbaren Bereich holen und Eingabefeld aktivieren
+      focusName = false;
+      const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      requestAnimationFrame(() => { form.scrollIntoView({behavior: rm ? "auto" : "smooth", block:"center"}); inp.focus({preventScroll:true}); inp.select(); });
+    }
   }
   if(nextL){
     const first = started ? h("button", {type:"button", class:"choice pri", onclick:() => go("lesson", nextL.id)}, h("span", {class:"ci", "aria-hidden":"true"}, nextL.ico), h("span", null, h("b", {text:t("contB")}), h("small", {text:nextL.t[li]})))
@@ -784,7 +807,7 @@ function renderResult(l){
 }
 const NHIST = "https://de.wikipedia.org/wiki/FC_Bayern_M%C3%BCnchen", NCORP = "https://en.wikipedia.org/wiki/FC_Bayern_Munich";
 function fcbLinks(){
-  const w = h("section", {"aria-labelledby":"nh"}); const g = h("div", {class:"certlist"});
+  const w = h("section", {"aria-labelledby":"nh"}); const g = h("div", {class:"certlist nlinks"});
   [["⚽", t("nSite"), NURL[li][0], NURL[li][1]], ["📜", t("nHist"), NHIST, "de.wikipedia.org"], ["🌍", t("nCorp"), NCORP, "en.wikipedia.org"]].forEach(x => g.append(h("a", {class:"btn ghost", href:x[2], rel:"noopener"}, h("span", {"aria-hidden":"true"}, x[0]), h("span", null, x[1], h("small", {style:"display:block;font-weight:600;color:var(--mute)", text:x[3]})))));
   w.append(h("h2", {class:"sec", id:"nh", text:"⚽ " + t("nSec")}), g); return w;
 }
@@ -911,12 +934,16 @@ function chrome(){
   document.documentElement.lang = LANGS[li][0];
   document.title = t("title");
   $(".brand .dot").innerHTML = logoSvg(); $("#bt").textContent = t("title"); $("#bs").textContent = t("by"); $("#brand").setAttribute("aria-label", t("title") + " – " + t("over"));
-  $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL"));
+  $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL")); $("#share").setAttribute("aria-label", t("shT")); $("#share").setAttribute("title", t("shT"));
   const T = totals(); $("#coins").textContent = "⚽ " + T.co;
   const lg = $("#langs"); lg.replaceChildren(); LANGS.forEach((x, i) => lg.append(h("button", {type:"button", lang:x[0], "aria-pressed": String(i === li), "aria-label":x[2], onclick:() => { li = i; save(); render(true); }}, x[1])));
   const f = $("#foot"); f.replaceChildren(h("p", null, "⚽ ", h("a", {href:NURL[li][0], rel:"noopener", text:t("nSite") + " (" + NURL[li][1] + ")"})), h("p", {text:t("disc")}), h("p", {text:t("trans")}), h("p", {text:t("ver") + " " + VERSION + " · " + STAND}));
 }
-$("#brand").onclick = () => go("home");
+$("#brand").onclick = () => {
+  if(view.v === "home"){ const rm = matchMedia("(prefers-reduced-motion: reduce)").matches; window.scrollTo({top:0, behavior: rm ? "auto" : "smooth"}); $("#main").focus({preventScroll:true}); }
+  else go("home");
+};
+$("#share").onclick = openShare;
 $("#theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; };
 window.addEventListener("hashchange", () => { fromHash(); render(); });
 /* ---------- PWA: Installieren, Offline, Updates ---------- */
@@ -930,6 +957,29 @@ function installCard(){
     h("div", null, h("b", {id:"it", text:t("instT")}), h("small", {text:deferredInstall ? t("instS") : t("instIos")})));
   if(deferredInstall) c.append(h("button", {type:"button", class:"btn", onclick:async () => { const e = deferredInstall; deferredInstall = null; e.prompt(); try{ await e.userChoice; }catch(x){} render(true); }}, t("instB")));
   return c;
+}
+const SHARE_URL = "https://nosz.github.io/schwaben-fcb-power/";
+function openShare(){
+  if(navigator.share){ navigator.share({title:t("shSubj"), text:t("shMsg"), url:SHARE_URL}).catch(() => {}); return; }
+  document.querySelectorAll(".shdlg").forEach(d => d.remove());
+  const d = h("dialog", {class:"shdlg", "aria-labelledby":"sht"}), x = h("button", {type:"button", class:"shx", "aria-label":t("shX"), onclick:() => d.close()}, "✕");
+  d.append(x, shareCard()); d.addEventListener("close", () => d.remove()); d.addEventListener("click", e => { if(e.target === d) d.close(); });
+  document.body.append(d); d.showModal();
+}
+function shareCard(){
+  const txt = t("shMsg"), enc = encodeURIComponent;
+  const c = h("section", {class:"sharecard", "aria-labelledby":"sht"}, h("div", {class:"sh"}, h("span", {class:"si", "aria-hidden":"true"}, "🔗"), h("div", null, h("b", {id:"sht", text:t("shT")}), h("small", {text:t("shS")}))));
+  const row = h("div", {class:"sharerow"});
+  row.append(h("a", {class:"btn", href:"https://wa.me/?text=" + enc(txt + " " + SHARE_URL), target:"_blank", rel:"noopener noreferrer"}, "💬 " + t("shWa")));
+  row.append(h("a", {class:"btn ghost", href:"mailto:?subject=" + enc(t("shSubj")) + "&body=" + enc(txt + "\r\n\r\n" + SHARE_URL)}, "✉️ " + t("shMail")));
+  row.append(h("button", {type:"button", class:"btn ghost", onclick:async () => {
+    let ok = false;
+    try{ await navigator.clipboard.writeText(SHARE_URL); ok = true; }catch(x){
+      try{ const ta = h("textarea", {readonly:"", style:"position:fixed;left:-9999px"}); ta.value = SHARE_URL; document.body.append(ta); ta.select(); ok = document.execCommand("copy"); ta.remove(); }catch(y){}
+    }
+    snack(ok ? t("shCopied") : t("shFail") + " " + SHARE_URL, null, null, ok ? 2500 : 6000);
+  }}, "📋 " + t("shCopy")));
+  c.append(row); return c;
 }
 function snack(text, btn, fn, ms){
   const old = document.querySelector(".snack"); if(old) old.remove();
