@@ -6,7 +6,7 @@
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.4.1, Stand 14.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.4.5, Stand 14.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
@@ -47,6 +47,10 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.4.5 (15.10.2026): Fehler behoben: Beim Sprung zur Liste der Zertifikate bzw. Pokale (Knopf neben „Name ändern“, nach einem Ergebnis) lag die Überschrift auf dem Handy unter der festen Kopfzeile (133 px hoch, Abstand war nur 90 px). Auf schmalen Bildschirmen (bis 640 px) sind es jetzt 152 px.
+- 1.4.4 (15.10.2026): Auf der Startseite steht neben „Name ändern“ ein Knopf „Meine Zertifikate“ (nur sobald ein Zertifikat verdient ist, auf dem Handy nur mit Symbol und Wort „Zertifikate“); er springt zur Liste der Zertifikate. Dazu UX-Prüfung mit abgeschlossenen Lektionen: 42 Ansichten (Start, Lektion, Namensabfrage, Quiz, Ergebnis, Zertifikat, Meister-Zertifikat in drei Sprachen, hell und dunkel, 360 px) ohne Befund, Klickziel-Test bei 360, 768 und 1280 px bestanden.
+- 1.4.3 (15.10.2026): Die Quellen („Quellen (Stand 14.10.2026)“) stehen nicht mehr als kleine Liste im Lektionstext (nur 17 px hohe Links, unter der WCAG-Mindestgröße von 24 px), sondern unten als Karte mit großen Knöpfen (44 px) direkt über dem Hinweis „Inoffizielles Lernprojekt“, in Lektion, Namensabfrage, Quiz, Ergebnis und Zertifikat der jeweiligen Lektion (nicht auf der Startseite). Gefunden mit assets/testsuite_a11y.js.
+- 1.4.2 (15.10.2026): Unterer Bereich der Lektion überarbeitet: Die Sprechblase („Gag“) ist gleichmäßig rund mit weichem Schatten (vorher wirkte die Ecke unten links abgeschnitten), die feste Leiste unten ist durchgehend mit feiner Linie statt eines Verlaufs, der Inhalt halb ausblendete, und der leere Platz darunter ist kleiner (24 statt 90 px). In einer abgeschlossenen Lektion gibt es keine doppelte Leiste mehr unten, die Knöpfe stehen in der Karte „Geschafft“.
 - 1.4.1 (15.10.2026): Der Link „Mehr vom Verein entdecken“ unter Ergebnis und Zertifikat ist jetzt eine Karte mit Fußball-Symbol, Titel, Adresse und Pfeil (statt eines unterstrichenen Textlinks).
 - 1.4.0 (15.10.2026): Benutzerführung überarbeitet: Ablaufleiste „1 Lesen · 2 Quiz · 3 Zertifikat“ mit aktuellem Schritt in Lektion, Namensabfrage, Quiz, Ergebnis und Zertifikat; die Zurück-Leiste nennt den Standort („Lektion 3 von 7“). Wer eine Lektion schon geschafft hat, sieht in der Lektion oben eine Karte „Geschafft! Dein Zertifikat ist fertig“ mit den Knöpfen „Zertifikat ansehen“ und „Nochmal spielen“ (auch unten fest); auf der Startseite haben geschaffte Kacheln einen Knopf „Zertifikat ansehen“, und „Deine Zertifikate“ steht jetzt direkt über den Lektionen. Das Zertifikat führt zur nächsten Lektion und zu „Alle Zertifikate“.
 - 1.3.0 (15.10.2026): Fußbereich neu gestaltet: Hinweise (inoffiziell, Übersetzung) in einer Karte mit Info-Symbol, Version als Chip darunter. Der Link zur offiziellen Seite im Fuß entfällt, weil er schon im Bereich Mehr vom Verein steht.
