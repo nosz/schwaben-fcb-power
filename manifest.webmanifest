@@ -2,7 +2,7 @@
     "name":  "Stammtisch-Quiz – Fan-Projekt von Arno, Udo \u0026 Nobbe",
     "short_name":  "Stammtisch-Quiz",
     "description":  "Inoffizielles Fan-Projekt der FCB-Hardcore-Fans Arno, Udo \u0026 Nobbe: FC-Bayern-Wissen in 7 Spieltagen mit Quiz, Humor und Zertifikaten. Deutsch, English, Boarisch. Läuft auch offline.",
-    "id":  "./",
+    "id":  "/schwaben-fcb-power/",
     "start_url":  "./",
     "scope":  "./",
     "display":  "standalone",
