@@ -352,7 +352,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.7.0", STAND = "18.10.2026";
+const VERSION = "1.8.1", STAND = "18.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -1172,7 +1172,7 @@ if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
   });
 }
 fromHash(); render();
-/* Ab und zu schaut der kleine Bayer mit Bayernhut vorbei: Zufallssystem mit vielen verschiedenen Auftritten (rein dekorativ, nicht klickbar). Er spricht nur Boarisch, macht Witze über andere Vereine (immer mit Respekt) und fragt am Anfang nach dem Namen. Test: Adresse mit ?lauf=quer|umkehr|wand|rundherum|gucken|huepfer|stolpern|schlafen|moonwalk|turbo|schleichen|stammtisch|brezn|pokaljagd|hutziehen|tor|hallo|karriere|stern|ballon|fass|groesse|dieb|witz|name */
+/* Ab und zu schaut der kleine Bayer mit Bayernhut vorbei: Zufallssystem mit vielen verschiedenen Auftritten (rein dekorativ, nicht klickbar). Er spricht nur Boarisch, macht Witze über andere Vereine (immer mit Respekt) und fragt am Anfang nach dem Namen. Test: Adresse mit ?lauf=gruss|name|quer|umkehr|wand|rundherum|gucken|huepfer|stolpern|schlafen|moonwalk|turbo|schleichen|stammtisch|brezn|pokaljagd|hutziehen|tor|hallo|karriere|stern|ballon|fass|groesse|dieb|witz|name */
 (function(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const MAP = ["........R....",".....GGGGW...","....GGGGGGW..","....GGGGGGG..","....TTTTTTT..","..BBBBBBBBBB.","...SSSSSSSS..","...SDSSSDSS..","...SSSSSSSS..","....SSMMSS...","..RRRRRRRRRR.",".SSRRWRRWRRSS",".SSRLLLLLLRSS","...LLLLLLLL..","...WWW..WWW..","..DDDD..DDDD."];
@@ -1188,8 +1188,13 @@ fromHash(); render();
   const AUA = "Autsch! Des hod weh to!", ZZZ = "Zzz … Brezn …", WACH = "I bin wach! I hob nur d'Augn zua ghabt!", MOON = "Moonwalk, mit Lederhosn!", PSST = "Psst … i bin goar ned da.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Schneller!","Turbo, wia da Kimmich im Mittelfeld!"];
   const PEEK = ["Nur kurz guckn …","Huhu! Da kloane Bayer!","Is do wer dahoam?","Ois guad bei eich?"];
   const NAMEN = ["%N, du schaffst des!","Weiter so, %N!","%N, du bist a Wahnsinn!","Mia san mia, und du bist dabei, %N!","Servus %N, heit foahrt da Meister.","%N, mia san stolz auf di.","Super gmacht, %N. A Brezn hast da verdient!","%N klingt scho wia a Meistertitel.","%N, du bist a Gwinna-Typ!","Kopf hoch, %N. Auf Regn folgt Weißbier."];
-  const NAMEQ = [["Servus! I bin da kloane Bayer. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da kloane Bayer fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"]];
-  const JAGD = ["Bleib steh, Meisterschale!","Aha, de rennt freiwillig zruck noch Minga."];
+  /* Namensfrage: wird mit jeder Wiederholung etwas drängender (und lustiger) */
+  const NAMEQ = [["Servus! I bin da kloane Bayer. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da kloane Bayer fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"],
+    ["Hallo? Hoit! I frog scho wieda: Wia hoaßt'n du?","Ohne Nama kenn i di ned, und i mog di do scho!"],["Schorsch? Franz? Bärbel? Sog's ma, wia du hoaßt!","Trag dein Nama ei, des dauert zwoa Sekunden. Versproch'n!"],["Letzte Chance, dann frog i d'Kellnerin: Wia hoaßt'n du?","Dei Nama macht de App persönlich und mi glücklich!"]];
+  /* Begrüßung, wenn der Name schon da ist: kurzer Witz und Abschied mit Namen */
+  const GRUSS = ["Servus %N! Kurz a Witz fia di:","Griaß di, %N! Pass auf, jetz kimmt oana:","Hoi %N! Bevor i's vergiss, a kurzer Witz:"];
+  const TSCHUESS = ["I komm wieda, %N!"];
+  const KURZWITZE = ["Zwoa Dortmunder an da Gelben Wand. Sagt oana: Mia san laut. Sagt da andere: Mia aa!","Leverkusen wollt immer Meister werdn und hod's gschafft. Respekt! Mia gratulieren, aber nur ganz kurz.","Da HSV hod a berühmte Uhr. Mia hom nur a Brezn-Uhr: Um zehne is Brotzeit.","Köln hod an Geißbock, mia hom a Weißbier. Da Geißbock frisst Gras, des Weißbier is gsünder.","Stuttgart kann ois außer Hochdeitsch. Mia kenna's aa ned, des verbindet.","Frankfurt hod an Adler im Wappen. Mei Hutfeder is kloana, owa mei Humor is größer.","Freiburg hod des scheenste Stadion im Schwarzwald. Mia ham d'Allianz Arena, de leuchtet aa nachts.","Leipzig trinkt aus da Dosn, mia aus da Maß. Prost, ihr Roten Bullen!","Union Berlin singt Eisern Union, mia singa Stern des Südens. Beides is laut!","St. Pauli hod an Totenkopf, mia an Bayernhut. Kopfschmuck is ned alles, aber a bissl!","Augsburg is unser Nachbar. Mia mögn s', a wenn s' uns jedes Mal Nerven kostn.","Wolfsburg baut Autos, mia brauen Bier. Beides bringt di ans Ziel.","Barcelona? Do war moi wos mit 8:2. I sag nix, i schau nur schee.","Real Madrid kann Champions League, mia kenna Weißwurscht. Jeder hod sei Talent."];  const JAGD = ["Bleib steh, Meisterschale!","Aha, de rennt freiwillig zruck noch Minga."];
   const LEVEL = ["Brezn! Jetzt hob i Kraft!","Nur bis zur Halbzeit … dann is wieda guad."];
   const MUENZE = ["Tor!","Noch a Tor!","Hattrick! Mia san mia!"];
   const BOW = ["Dankschee!","Entschuidigung, bin nur kurz im Bild.","Vergelt's Gott!"];
@@ -1634,17 +1639,36 @@ fromHash(); render();
     if(r.top < 70 || r.bottom > innerHeight - 20) el.scrollIntoView({behavior: rm ? "auto" : "smooth", block: "center"});
     el.classList.remove("nudge"); void el.offsetWidth; el.classList.add("nudge"); setTimeout(() => el.classList.remove("nudge"), 4200);
   }
+  /* Zielpunkt der Figur: oberer Rand des Namensfelds (oder des Knopfs "Name eintragen"); holt das Feld dafür sofort in den sichtbaren Bereich */
+  function namensZiel(){
+    const el = document.querySelector(".nameq") || document.querySelector(".herobar .namebtn"); if(!el) return null;
+    const r0 = el.getBoundingClientRect(), d = dim(); if(r0.top < d.hb + 60 || r0.bottom > d.H - 30) el.scrollIntoView({behavior: "auto", block: "center"});
+    const r = el.getBoundingClientRect();
+    return {el, x: Math.min(d.W - 26, Math.max(26, r.right - 34)), y: Math.max(d.hb + 28, Math.min(d.H - 40, r.top - 20))};
+  }
   async function namensfrage(d){
     if(typeof hasName === "function" && hasName()) return;
     ach.nq = (ach.nq || 0) + 1; save();
-    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), q = pick(NAMEQ);
-    await gehe(g, anteil(dir, d, rnd(.35, .6)), undefined, .28);
-    await stehen(g, 300); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600);
+    const q = NAMEQ[Math.min(ach.nq - 1, NAMEQ.length - 1)], z = namensZiel();
+    /* Die Figur läuft direkt an das Namensfeld und steht auf dessen oberer Kante (fehlt das Feld, geht sie ein Stück in den Bildschirm) */
+    const dir = z ? (z.x > d.W / 2 ? -1 : 1) : rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: z ? z.y : b.y, r: 0, f: z ? dir : b.f});
+    await gehe(g, z ? z.x : anteil(dir, d, rnd(.3, .55)), z ? z.y : undefined, .4);
+    if(z) setze(g, {f: z.x > d.W / 2 ? -1 : 1});
+    await stehen(g, 200); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600);
     nameNudge(); sag(g, q[1], 4000, true); await sprung(g, 24); await stehen(g, 2000); drehen(g); await stehen(g, 600); drehen(g); await sprung(g, 20); await stehen(g, 1800);
     await gehe(g, raus(dir, d), undefined, .3);
   }
-  const MUSTER = {quer: [quer, 4], umkehr: [umkehr, 4], wand: [wand, 3], rundherum: [rundherum, 2], gucken: [gucken, 4], huepfer: [huepfer, 3], stolpern: [stolpern, 3], schlafen: [schlafen, 2], moonwalk: [moonwalk, 2], turbo: [turbo, 2], schleichen: [schleichen, 2], stammtisch: [stammtisch, 2], brezn: [brezn, 2], pokaljagd: [pokaljagd, 2], hutziehen: [hutziehen, 2], tor: [tor, 2], hallo: [hallo, 1], karriere: [karriere, 2], stern: [stern, 2], ballon: [ballon, 2], fass: [fass, 2], groesse: [groesse, 2], dieb: [dieb, 2], witz: [witz, 5]};
-  const SPEZIAL = {name: namensfrage};
+  /* Auftritt 26: begrüßt eine Person mit eingetragenem Namen gleich nach dem Start: kurzer Witz, dann "I komm wieda, <Name>!" (einmal je Sitzung) */
+  async function begruessung(d){
+    try{ sessionStorage.setItem("fcb-gruss", "1"); }catch(e){}
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), w = pick(KURZWITZE);
+    await gehe(g, anteil(dir, d, rnd(.3, .55)), undefined, .4);
+    await stehen(g, 200); sag(g, pick(GRUSS), 2400, true); await sprung(g, 26); await stehen(g, 2400);
+    sag(g, w, 4400, true); await stehen(g, 4400); await sprung(g, 22); await stehen(g, 300);
+    sag(g, pick(TSCHUESS), 2800, true); await sprung(g, 30); await stehen(g, 1200); drehen(g); await stehen(g, 300); drehen(g); await stehen(g, 1000);
+    await gehe(g, raus(dir, d), undefined, .35);
+  }  const MUSTER = {quer: [quer, 4], umkehr: [umkehr, 4], wand: [wand, 3], rundherum: [rundherum, 2], gucken: [gucken, 4], huepfer: [huepfer, 3], stolpern: [stolpern, 3], schlafen: [schlafen, 2], moonwalk: [moonwalk, 2], turbo: [turbo, 2], schleichen: [schleichen, 2], stammtisch: [stammtisch, 2], brezn: [brezn, 2], pokaljagd: [pokaljagd, 2], hutziehen: [hutziehen, 2], tor: [tor, 2], hallo: [hallo, 1], karriere: [karriere, 2], stern: [stern, 2], ballon: [ballon, 2], fass: [fass, 2], groesse: [groesse, 2], dieb: [dieb, 2], witz: [witz, 5]};
+  const SPEZIAL = {name: namensfrage, gruss: begruessung};
   function waehle(name){
     if(name && SPEZIAL[name]) return SPEZIAL[name];
     if(name && MUSTER[name]) return MUSTER[name][0];
@@ -1658,13 +1682,15 @@ fromHash(); render();
   }
   const test = (location.search.match(/[?&]lauf=([a-z]*)/) || [])[1];
   /* Wer noch keinen Namen eingetragen hat, wird gleich zu Beginn freundlich gefragt (auf der Startseite, höchstens dreimal) */
-  const brauchtName = () => view && view.v === "home" && typeof hasName === "function" && !hasName() && (ach.nq || 0) < 3;
+  const brauchtName = () => view && view.v === "home" && typeof hasName === "function" && !hasName() && (ach.nq || 0) < 6;
+  const hatName = () => typeof hasName === "function" && hasName();
+  const grussFaellig = () => { try{ return !sessionStorage.getItem("fcb-gruss"); }catch(e){ return true; } };
   (async function(){
-    await wait(test !== undefined ? 1200 : (brauchtName() ? 3500 : rnd(8000, 20000)));
+    await wait(test !== undefined ? 1200 : (brauchtName() ? 1200 : (hatName() ? 2000 : rnd(8000, 20000))));
     let erster = test === undefined; for(;;){
       let n = test || undefined;
-      if(!n && brauchtName() && (erster || R() < .35)) n = "name"; else if(!n && erster && R() < .5) n = "hallo";
-      await auftritt(n); erster = false; await wait(test !== undefined ? 1500 : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000)));
+      if(!n && brauchtName() && (erster || R() < .7)) n = "name"; else if(!n && erster && hatName() && grussFaellig()) n = "gruss"; else if(!n && erster && R() < .5) n = "hallo";
+      await auftritt(n); erster = false; await wait(test !== undefined ? 1500 : (brauchtName() ? rnd(15000, 30000) : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000))));
     }
   })();
 })();

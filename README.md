@@ -6,7 +6,7 @@
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.7.0, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.8.1, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
@@ -28,7 +28,7 @@ Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **D
 - **Startseite:** "Servus! Was weißt du über den FC Bayern?" mit zwei Wegen ("Ich bin neu im Stadion" / "Ich bin schon ewig Fan"). Name optional, nur lokal gespeichert, steckt in Begrüßung, Quiz, Ergebnis und Zertifikat.
 - **Spielmechanik:** 10 Tore je richtiger Antwort, 1 bis 3 Sterne je Spieltag, 5 Ränge von "Bankdrücker" bis "Vereinslegende", Konfetti, Hell- und Dunkelmodus.
 - **Zertifikate:** je Spieltag ein "Stammtisch-Zertifikat", zum Abschluss das "Meisterschalen-Zertifikat" (PNG speichern oder drucken). Unterschrieben "Arno, Udo & Nobbe (inoffiziell)".
-- **Der kleine Bayer:** Ab und zu läuft ein Pixel-Männchen mit Bayernhut über den Bildschirm (rein dekorativ, nicht klickbar, aus bei „Bewegung reduzieren“). Er spricht immer Boarisch, egal welche Sprache eingestellt ist, und macht Witze über andere Vereine, immer respektvoll und mit Augenzwinkern. Zu Beginn fragt er freundlich nach dem Namen und zeigt auf das Eingabefeld (höchstens dreimal). Test mit Adresse `?lauf=witz` (weitere: `name`, `stammtisch`, `brezn`, `tor`, `fass`, `karriere` u. a.).
+- **Der kleine Bayer:** Ab und zu läuft ein Pixel-Männchen mit Bayernhut über den Bildschirm (rein dekorativ, nicht klickbar, aus bei „Bewegung reduzieren“). Er spricht immer Boarisch, egal welche Sprache eingestellt ist, und macht Witze über andere Vereine, immer respektvoll und mit Augenzwinkern. Zu Beginn kommt er sofort: ohne Namen fragt er immer drängender danach und zeigt auf das Eingabefeld (höchstens sechsmal), mit Namen macht er einen kurzen Witz und sagt „I komm wieda, <Name>!“. Test mit Adresse `?lauf=witz` (weitere: `name`, `stammtisch`, `brezn`, `tor`, `fass`, `karriere` u. a.).
 - **Installieren-Knopf:** Auf der Startseite steht direkt nach Begrüßung und Namensfrage „Mir gefällt die App, ich möchte sie installieren“ (nur solange die App nicht installiert ist). Er startet die Installation oder zeigt die passende Anleitung (iPhone, Android, Computer).
 - **PWA:** installierbar, läuft offline, Update-Hinweis. Dateien (alle ins Hauptverzeichnis): `index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `favicon.svg`, `apple-touch-icon.png`, `fcbayern_vorschau.jpg`. Bei jeder neuen Version `VERSION` in `index.html` **und** `sw.js` gemeinsam erhöhen.
 
@@ -49,6 +49,8 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.8.1 (18.10.2026): Bei der Namensfrage läuft der kleine Bayer jetzt direkt an das Eingabefeld und steht auf dessen oberer Kante (die Seite scrollt das Feld vorher in den sichtbaren Bereich); nach übersprungener Namensfrage steht er am Knopf „Name eintragen“.
+- 1.8.0 (18.10.2026): Der kleine Bayer erscheint jetzt sofort nach dem Start (rund 1 Sekunde ohne Namen, rund 2 Sekunden mit Namen). Ohne Namen drängt er freundlich auf die Eintragung, wird dabei mit jeder Wiederholung etwas frecher (bis zu sechs Mal) und fragt in kürzeren Abständen. Mit eingetragenem Namen grüßt er einmal je Sitzung mit einem kurzen Witz über einen anderen Verein und verabschiedet sich mit „I komm wieda, <Name>!“.
 - 1.7.0 (18.10.2026): Neu: der kleine Bayer mit Bayernhut (Boarisch, Witze über andere Vereine, fragt nach dem Namen) und der Installieren-Knopf auf der Startseite (statt der Karte ganz unten).
 - 1.6.0 (15.10.2026): Auf jeder Seite außer der Startseite steht unten eine schlanke Fußzeile mit dem Knopf „Zur Startseite“ (Haus-Symbol), damit man immer wieder auf die Startseite kommt (bei Lektion über der Quellen-Karte). Einheitliche Benennung: Der Zurück-Knopf in der festen Leiste heißt jetzt ebenfalls „Startseite“ (vorher „Übersicht“), in Englisch „Home“.
 - 1.5.8 (15.10.2026): Fehler behoben: Die Fortschrittspunkte im Quiz waren in der festen Leiste auf 6 px zusammengefallen und damit unsichtbar. Sie haben jetzt eine Mindestbreite von 90 px und füllen den Rest der Zeile neben „Frage 1 von 4“.
