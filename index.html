@@ -352,7 +352,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.8.1", STAND = "18.10.2026";
+const VERSION = "1.9.0", STAND = "18.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -1256,7 +1256,8 @@ fromHash(); render();
   function dim(){ const t = document.querySelector(".top"); return {W: document.documentElement.clientWidth, H: innerHeight, hb: t ? t.getBoundingClientRect().bottom : 0}; }
   /* Zustand der Figur: Mittelpunkt x/y, Drehung r (0 Boden, 180 Decke, 90 linke Wand, -90 rechte Wand), Blickrichtung f (1 rechts, -1 links) */
   function T(s){ return "translate(" + (s.x - 19.5) + "px," + (s.y - 24) + "px) rotate(" + s.r + "deg) scale(" + (s.f * (s.z || 1)) + "," + (s.z || 1) + ")"; }
-  function abbruch(){ return document.hidden; }
+  let stopBeiName = false;   // während der Namensfrage: sobald ein Name da ist, sofort aufhören
+  function abbruch(){ return document.hidden || (stopBeiName && typeof hasName === "function" && hasName()); }
   function neu(s){
     const el = document.createElement("div"); el.className = "runner"; el.setAttribute("aria-hidden", "true"); el.appendChild(figur());
     el.style.transform = T(s); document.body.appendChild(el); aktiv.push(el);
@@ -1291,7 +1292,7 @@ fromHash(); render();
     await anim(g, kf, ms, {x: tx, y: ty, r: s0.r, f, z: s0.z});
   }
   const sprung = (g, h) => bogen(g, g.s.x, g.s.y, h || 26, 460);
-  async function stehen(g, ms){ g.el.classList.add("stand"); await wait(ms); g.el.classList.remove("stand"); if(abbruch()) throw new Error("stop"); }
+  async function stehen(g, ms){ g.el.classList.add("stand"); for(let t0 = Date.now(); Date.now() - t0 < ms && !abbruch();) await wait(Math.min(200, ms)); g.el.classList.remove("stand"); if(abbruch()) throw new Error("stop"); }
   const drehen = g => setze(g, {f: -g.s.f});
   function sag(g, txt, ms, muss){
     if(!muss && !redet) return;
@@ -1640,23 +1641,43 @@ fromHash(); render();
     el.classList.remove("nudge"); void el.offsetWidth; el.classList.add("nudge"); setTimeout(() => el.classList.remove("nudge"), 4200);
   }
   /* Zielpunkt der Figur: oberer Rand des Namensfelds (oder des Knopfs "Name eintragen"); holt das Feld dafür sofort in den sichtbaren Bereich */
-  function namensZiel(){
+  const zielVon = el => { const d = dim(), r = el.getBoundingClientRect(); return {el, x: Math.min(d.W - 26, Math.max(26, r.right - 34)), y: Math.max(d.hb + 28, Math.min(d.H - 40, r.top - 20))}; };
+  async function namensZiel(){
     const el = document.querySelector(".nameq") || document.querySelector(".herobar .namebtn"); if(!el) return null;
-    const r0 = el.getBoundingClientRect(), d = dim(); if(r0.top < d.hb + 60 || r0.bottom > d.H - 30) el.scrollIntoView({behavior: "auto", block: "center"});
-    const r = el.getBoundingClientRect();
-    return {el, x: Math.min(d.W - 26, Math.max(26, r.right - 34)), y: Math.max(d.hb + 28, Math.min(d.H - 40, r.top - 20))};
+    const r0 = el.getBoundingClientRect(), d = dim(); if(r0.top < d.hb + 60 || r0.bottom > d.H - 30){ el.scrollIntoView({behavior: "instant", block: "center"}); await wait(180); }   // "instant", denn die Seite scrollt sonst weich; kurze Pause, bis sich die Leiste oben angepasst hat
+    return zielVon(el);
   }
+  /* Steht das Feld nach Layout-Änderungen woanders, geht die Figur zur neuen Stelle */
+  async function anZiel(g, z){ if(!z) return; const n = zielVon(z.el); if(Math.abs(n.y - g.s.y) > 3 || Math.abs(n.x - g.s.x) > 3) await gehe(g, n.x, n.y, .35); }
   async function namensfrage(d){
     if(typeof hasName === "function" && hasName()) return;
-    ach.nq = (ach.nq || 0) + 1; save();
-    const q = NAMEQ[Math.min(ach.nq - 1, NAMEQ.length - 1)], z = namensZiel();
+    ach.nq = (ach.nq || 0) + 1; save(); stopBeiName = true;
+    const q = NAMEQ[Math.min(ach.nq - 1, NAMEQ.length - 1)], z = await namensZiel();
     /* Die Figur läuft direkt an das Namensfeld und steht auf dessen oberer Kante (fehlt das Feld, geht sie ein Stück in den Bildschirm) */
     const dir = z ? (z.x > d.W / 2 ? -1 : 1) : rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: z ? z.y : b.y, r: 0, f: z ? dir : b.f});
     await gehe(g, z ? z.x : anteil(dir, d, rnd(.3, .55)), z ? z.y : undefined, .4);
     if(z) setze(g, {f: z.x > d.W / 2 ? -1 : 1});
-    await stehen(g, 200); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600);
-    nameNudge(); sag(g, q[1], 4000, true); await sprung(g, 24); await stehen(g, 2000); drehen(g); await stehen(g, 600); drehen(g); await sprung(g, 20); await stehen(g, 1800);
+    const geht = () => { if(hatName()) throw new Error("stop"); };   // Name ist da: sofort aufhören, gleich kommt das Lob
+    await anZiel(g, z); geht(); await stehen(g, 200); geht(); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600); geht();
+    await anZiel(g, z); geht(); nameNudge(); sag(g, q[1], 4000, true); await sprung(g, 24); await stehen(g, 2000); geht(); drehen(g); await stehen(g, 600); drehen(g); await sprung(g, 20); await stehen(g, 1800);
     await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 27: kommt sofort wieder, wenn gerade ein Name eingetragen wurde, und lobt auf lustige Art (mit Konfetti) */
+  const LOB = [
+    ["%N! Do hod oana an Nama, der klingt nach Meistertitel!","Mia san mia, und ab heit san mia a du, %N. Servus im Team!","Jetz lern a bissl, nacha wirst a Vereinslegende!"],
+    ["Wunderbar, %N! Jetz kenn i di endlich. Des feiern mia mit am Weißbier!","Fia dei'n Nama kriagst an Ehrenplatz am Stammtisch.","Des Quiz wart scho auf di, %N!"],
+    ["%N, du bist scho jetz da wertvollste Spieler in dera App!","Neuer Rekord: Nama eitrong in unter oana Minuta. Respekt!","Weida so, %N, da Pokal wart!"],
+    ["Grandios, %N! A Nama wia a Elfmeter: sicher und drin!","Da Torwart hod koa Chance ghabt.","Und jetz schiaßn ma dei erstes Quiz, %N!"],
+    ["Servus %N! Ab sofort bist du offiziell Stammgast!","Dei Ehrenkarte lieg i scho am Tisch. Brezn geht aufs Haus!","Probier glei an Spieltag, %N!"],
+    ["%N, mei Hut ziag i vor dir!","Und des will wos hoaßn, bei dem Hut.","Auf geht's, %N, ins erste Quiz!"]];
+  async function lob(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), l = pick(LOB);
+    await gehe(g, anteil(dir, d, rnd(.3, .55)), undefined, .5);
+    await stehen(g, 150); try{ if(typeof confetti === "function") confetti(); }catch(e){}
+    sag(g, l[0], 3200, true); await sprung(g, 34); await stehen(g, 3200);
+    sag(g, l[1], 3400, true); await salto(g); await stehen(g, 2800);
+    sag(g, l[2], 3000, true); await sprung(g, 26); await stehen(g, 2800);
+    await gehe(g, raus(dir, d), undefined, .4);
   }
   /* Auftritt 26: begrüßt eine Person mit eingetragenem Namen gleich nach dem Start: kurzer Witz, dann "I komm wieda, <Name>!" (einmal je Sitzung) */
   async function begruessung(d){
@@ -1668,29 +1689,37 @@ fromHash(); render();
     sag(g, pick(TSCHUESS), 2800, true); await sprung(g, 30); await stehen(g, 1200); drehen(g); await stehen(g, 300); drehen(g); await stehen(g, 1000);
     await gehe(g, raus(dir, d), undefined, .35);
   }  const MUSTER = {quer: [quer, 4], umkehr: [umkehr, 4], wand: [wand, 3], rundherum: [rundherum, 2], gucken: [gucken, 4], huepfer: [huepfer, 3], stolpern: [stolpern, 3], schlafen: [schlafen, 2], moonwalk: [moonwalk, 2], turbo: [turbo, 2], schleichen: [schleichen, 2], stammtisch: [stammtisch, 2], brezn: [brezn, 2], pokaljagd: [pokaljagd, 2], hutziehen: [hutziehen, 2], tor: [tor, 2], hallo: [hallo, 1], karriere: [karriere, 2], stern: [stern, 2], ballon: [ballon, 2], fass: [fass, 2], groesse: [groesse, 2], dieb: [dieb, 2], witz: [witz, 5]};
-  const SPEZIAL = {name: namensfrage, gruss: begruessung};
+  const SPEZIAL = {name: namensfrage, gruss: begruessung, lob: lob};
   function waehle(name){
     if(name && SPEZIAL[name]) return SPEZIAL[name];
     if(name && MUSTER[name]) return MUSTER[name][0];
     return MUSTER[naechstes()][0];
   }
+  let laeuft = false, lobOffen = false;
   async function auftritt(name){
-    if(abbruch()) return;
+    if(abbruch() || laeuft) return; laeuft = true;
     redet = !!name || (!(view && view.v === "quiz") && redetDiesmal());
     try{ await waehle(name)(dim()); } catch(e){ if(!e || e.message !== "stop") console.error("Figur:", e); }
     aktiv.splice(0).forEach(e => e.remove()); document.querySelectorAll(".runbub").forEach(b => b.remove());
+    laeuft = false; stopBeiName = false;
   }
+  /* Warten, aber sofort wach werden, wenn gerade ein Name eingetragen wurde (dann folgt das Lob) */
+  const warte = async ms => { const t0 = Date.now(); while(Date.now() - t0 < ms && !lobOffen) await wait(250); };
   const test = (location.search.match(/[?&]lauf=([a-z]*)/) || [])[1];
   /* Wer noch keinen Namen eingetragen hat, wird gleich zu Beginn freundlich gefragt (auf der Startseite, höchstens dreimal) */
   const brauchtName = () => view && view.v === "home" && typeof hasName === "function" && !hasName() && (ach.nq || 0) < 6;
   const hatName = () => typeof hasName === "function" && hasName();
   const grussFaellig = () => { try{ return !sessionStorage.getItem("fcb-gruss"); }catch(e){ return true; } };
   (async function(){
-    await wait(test !== undefined ? 1200 : (brauchtName() ? 1200 : (hatName() ? 2000 : rnd(8000, 20000))));
+    /* Wird zum ersten Mal ein Name eingetragen (auf Startseite oder in einer Lektion), kommt der kleine Bayer gleich zum Loben */
+    let hatteName = hatName();
+    setInterval(() => { const jetzt = hatName(); if(jetzt && !hatteName && view && (view.v === "home" || view.v === "lesson")) lobOffen = true; hatteName = jetzt; }, 300);
+    await warte(test !== undefined ? 1200 : (brauchtName() ? 1200 : (hatName() ? 2000 : rnd(8000, 20000))));
     let erster = test === undefined; for(;;){
       let n = test || undefined;
-      if(!n && brauchtName() && (erster || R() < .7)) n = "name"; else if(!n && erster && hatName() && grussFaellig()) n = "gruss"; else if(!n && erster && R() < .5) n = "hallo";
-      await auftritt(n); erster = false; await wait(test !== undefined ? 1500 : (brauchtName() ? rnd(15000, 30000) : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000))));
+      if(lobOffen){ lobOffen = false; n = "lob"; await wait(700); }
+      else if(!n && brauchtName() && (erster || R() < .7)) n = "name"; else if(!n && erster && hatName() && grussFaellig()) n = "gruss"; else if(!n && erster && R() < .5) n = "hallo";
+      await auftritt(n); erster = false; await warte(test !== undefined ? 1500 : (brauchtName() ? rnd(15000, 30000) : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000))));
     }
   })();
 })();
