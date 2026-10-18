@@ -314,7 +314,26 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .btn.mastercard{background:#ffc800!important;color:#3b2d00;border:0;box-shadow:0 4px 0 rgba(0,0,0,.2)}
 @page{size:A4 landscape;margin:8mm}
 @media print{body{background:#fff}main>*:not(.certbox){display:none!important}.certbox{box-shadow:none;border:0;padding:0;margin:0}footer{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.install-cta{display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 0;padding:12px 14px;text-align:left;border-radius:var(--r);border:2px solid var(--red);background:var(--red-l);color:var(--ink);box-shadow:var(--shadow);cursor:pointer;font:inherit;min-height:48px}
+.install-cta:hover{border-color:var(--red-d)}.install-cta:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.install-cta .ic-ico{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:var(--card)}
+.install-cta .ic-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.install-cta .ic-text b{font-size:1rem;line-height:1.3}.install-cta .ic-text small{font-size:.85rem;color:var(--mute);line-height:1.35}.install-cta .ic-go{flex:none;font-weight:800;color:var(--red-d)}
+.instol{margin:10px 0 0;padding-left:22px}.instol li{margin:8px 0}
+.runner{position:fixed;left:0;top:0;width:39px;height:48px;z-index:40;pointer-events:none;will-change:transform}
+.runner svg{display:block;width:100%;height:100%;animation:runbob .22s steps(2) infinite}
+.runner.stand svg{animation-play-state:paused}
+@keyframes runbob{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+.runbub{position:fixed;z-index:41;pointer-events:none;background:#fff;color:#222;border:2px solid #222;border-radius:12px;padding:4px 10px;font-family:inherit;font-weight:800;font-size:.85rem;line-height:1.25;width:max-content;max-width:min(80vw,300px);box-shadow:0 2px 0 rgba(0,0,0,.2);animation:pop .3s both}
+.runprop{position:absolute;left:48px;top:6px;font-size:26px;line-height:1;animation:runbob .22s steps(2) infinite}
+.runner.stern svg{animation:runbob .22s steps(2) infinite,sternfarbe .5s linear infinite}
+@keyframes sternfarbe{from{filter:hue-rotate(0deg) saturate(2) brightness(1.3)}to{filter:hue-rotate(360deg) saturate(2) brightness(1.3)}}
+.runprop.ballon,.runprop.traeger{left:4px;top:-32px}
+.runfass{position:fixed;bottom:0;width:64px;height:62px;z-index:42;pointer-events:none;background:repeating-linear-gradient(90deg,#8a5a2b 0 10px,#6b4220 10px 12px,#a06a35 12px 22px);border:3px solid #4a2c12;border-bottom:0;border-radius:20px 20px 0 0}
+.runfass::before,.runfass::after{content:"";position:absolute;left:-3px;right:-3px;height:7px;background:#4d5258;border-radius:2px}.runfass::before{top:12px}.runfass::after{top:38px}
+.runcoin{position:fixed;left:0;top:0;font-size:26px;line-height:1;z-index:39;pointer-events:none}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 rgba(230,0,58,0)}50%{box-shadow:0 0 0 9px rgba(230,0,58,.4)}}
+.nameq.nudge,.namebtn.nudge{animation:nudge .9s ease-in-out 4}
+@media print{.runner,.runbub,.runcoin,.runfass,.install-cta{display:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{.top,.sticky,.lang{display:none}}
 </style>
 </head>
@@ -333,7 +352,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.6.0", STAND = "15.10.2026";
+const VERSION = "1.7.0", STAND = "18.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -390,7 +409,17 @@ const S = {
  instS:["Startet wie eine App und läuft auch ohne Internet.","Opens like an app and works without internet.","Startet wia a App und lafft aa ohne Internet."],
  instB:["Installieren","Install","Installiern"],
  instIos:["Auf dem iPhone: Teilen-Symbol antippen, dann „Zum Home-Bildschirm“.","On iPhone: tap the Share icon, then “Add to Home Screen”.","Aufm iPhone: Teilen-Symbol antippn, dann „Zum Home-Bildschirm“."],
- updT:["Neue Version verfügbar","New version available","Neie Version do"],
+ instHow:["So geht’s","How to","Wia's geht"],
+ instCta:["Mir gefällt die App, ich möchte sie installieren","I like the app, I want to install it","Mir gfoit de App, i mecht sie installiern"],
+ instCtaS:["Ein Tipp, und sie liegt auf deinem Startbildschirm. Gratis, auch ohne Internet.","One tap and it sits on your home screen. Free, and it works offline too.","A Tipp, und sie liegt af deim Startbildschirm. Gratis, aa ohne Internet."],
+ instIosT:["App auf dem iPhone installieren","Install the app on iPhone","App aufm iPhone installiern"],
+ instI1:["Tippe in Safari auf das Teilen-Symbol (Quadrat mit Pfeil nach oben, in der unteren oder oberen Leiste).","In Safari, tap the Share icon (square with an arrow pointing up, in the bottom or top bar).","Tipp in Safari af as Teilen-Symbol (Quadrat mit Pfeil nach obn, in da untan oda obern Leistn)."],
+ instI2:["Scrolle im Menü und wähle „Zum Home-Bildschirm“.","Scroll the menu and choose “Add to Home Screen”.","Scroll im Menü und wähl „Zum Home-Bildschirm“."],
+ instI3:["Tippe oben rechts auf „Hinzufügen“. Danach startet das Stammtisch-Quiz wie eine App.","Tap “Add” at the top right. The Stammtisch Quiz then opens like an app.","Tipp obn rechts af „Hinzufügen“. Danach startet des Stammtisch-Quiz wia a App."],
+ instINote:["Hinweis: Gemeint ist das Teilen-Symbol von Safari, nicht ein Symbol in der App.","Note: this is Safari’s Share icon, not an icon inside the app.","Hinweis: Gmoant is as Teilen-Symbol vo Safari, ned a Symbol in da App."],
+ instMenuT:["App installieren","Install the app","App installiern"],
+ instMenu:["Öffne das Browser-Menü (⋮) und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“. Am Computer findest du das Installieren-Symbol auch in der Adressleiste.","Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”. On a computer you also find the install icon in the address bar.","Mach as Browser-Menü af (⋮) und wähl „App installiern“ oda „Zum Startbildschirm hinzufügen“. Am Computer is des Installiern-Symbol aa in da Adressleistn."],
+ instCancel:["Installation abgebrochen? Kein Problem, du kannst jederzeit neu starten.","Installation cancelled? No problem, you can start again any time.","Installation abbrocha? Koa Problem, du konnst jederzeit neu starten."], updT:["Neue Version verfügbar","New version available","Neie Version do"],
  updB:["Aktualisieren","Update","Aktualisiern"],
  offT:["Bereit für den Offline-Betrieb ✓","Ready for offline use ✓","Bereit fia ohne Internet ✓"],
  spruchT:["Stammtisch-Spruch & Fakt","Stammtisch saying & fact","Stammtisch-Spruch & Fakt"],
@@ -749,6 +778,7 @@ h("div", {class:"stats", role:"list"},
       requestAnimationFrame(() => { form.scrollIntoView({behavior: rm ? "auto" : "smooth", block:"center"}); inp.focus({preventScroll:true}); inp.select(); });
     }
   }
+  m.append(installCta());
   if(nextL){
     const first = started ? h("button", {type:"button", class:"choice pri", onclick:() => go("lesson", nextL.id)}, h("span", {class:"ci", "aria-hidden":"true"}, nextL.ico), h("span", null, h("b", {text:t("contB")}), h("small", {text:nextL.t[li]})))
                           : h("button", {type:"button", class:"choice pri", onclick:() => go("lesson", LESSONS[0].id)}, h("span", {class:"ci", "aria-hidden":"true"}, "🌱"), h("span", null, h("b", {text:t("newB")}), h("small", {text:t("newS")})));
@@ -772,7 +802,6 @@ h("div", {class:"stats", role:"list"},
     g.append(cell);
   });
   m.append(g);
-  m.append(installCard());
   m.append(fcbLinks());
   m.append(h("p", {style:"margin-top:26px;text-align:center"}, h("button", {type:"button", class:"btn ghost", onclick:() => { if(confirm(t("resetQ"))){ prog = {}; save(); render(); } }}, "↺ " + t("reset"))));
 }
@@ -1077,18 +1106,29 @@ $("#share").onclick = openShare;
 $("#theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; };
 window.addEventListener("hashchange", () => { fromHash(); render(); });
 /* ---------- PWA: Installieren, Offline, Updates ---------- */
-let deferredInstall = null;
+let deferredInstall = null, installState = "";   // installState: "" | "cancelled" | "done"
 const isStandalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
 const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-function installCard(){
-  if(isStandalone()) return h("span");
-  if(!deferredInstall && !isIOS()) return h("span");
-  const c = h("section", {class:"instcard", "aria-labelledby":"it"}, h("span", {class:"ii", "aria-hidden":"true"}, "📲"),
-    h("div", null, h("b", {id:"it", text:t("instT")}), h("small", {text:deferredInstall ? t("instS") : t("instIos")})));
-  if(deferredInstall) c.append(h("button", {type:"button", class:"btn", onclick:async () => { const e = deferredInstall; deferredInstall = null; e.prompt(); try{ await e.userChoice; }catch(x){} render(true); }}, t("instB")));
-  return c;
+function hilfeDialog(titel, kids){
+  document.querySelectorAll(".shdlg").forEach(d => d.remove());
+  const d = h("dialog", {class:"shdlg", "aria-labelledby":"iht"}, h("button", {type:"button", class:"shx", "aria-label":t("shX"), onclick:() => d.close()}, "✕"), h("p", {class:"shh"}, h("b", {id:"iht", text:titel})), ...kids);
+  d.addEventListener("click", ev => { if(ev.target === d) d.close(); }); d.addEventListener("close", () => d.remove());
+  document.body.append(d); d.showModal();
 }
-const SHARE_URL = "https://nosz.github.io/schwaben-fcb-power/";
+const iosHelp = () => hilfeDialog(t("instIosT"), [h("ol", {class:"instol"}, h("li", {text:t("instI1")}), h("li", {text:t("instI2")}), h("li", {text:t("instI3")})), h("p", {class:"shh"}, h("small", {text:t("instINote")}))]);
+const menuHelp = () => hilfeDialog(t("instMenuT"), [h("p", {text:installState === "cancelled" ? t("instCancel") + " " + t("instMenu") : t("instMenu")})]);
+async function doInstall(){
+  const e = deferredInstall; if(!e) return; let res = null;
+  try{ await e.prompt(); res = await e.userChoice; }catch(x){}
+  deferredInstall = null; installState = res && res.outcome === "accepted" ? "done" : "cancelled"; render(true);
+}
+/* Knopf auf der Startseite: nur solange die App nicht installiert ist, damit niemand in Einstellungen suchen muss */
+const installAction = () => { if(deferredInstall) doInstall(); else if(isIOS()) iosHelp(); else menuHelp(); };
+function installCta(){
+  if(isStandalone() || installState === "done") return h("span");
+  return h("button", {type:"button", class:"install-cta", id:"installCta", "aria-haspopup":"dialog", onclick:installAction},
+    h("span", {class:"ic-ico", "aria-hidden":"true"}, "📲"), h("span", {class:"ic-text"}, h("b", {text:t("instCta")}), h("small", {text:t("instCtaS")})), h("span", {class:"ic-go", "aria-hidden":"true"}, "→"));
+}const SHARE_URL = "https://nosz.github.io/schwaben-fcb-power/";
 function openShare(){
   if(navigator.share){ navigator.share({title:t("shSubj"), text:t("shMsg"), url:SHARE_URL}).catch(() => {}); return; }
   document.querySelectorAll(".shdlg").forEach(d => d.remove());
@@ -1118,7 +1158,7 @@ function snack(text, btn, fn, ms){
   document.body.append(s); if(ms) setTimeout(() => s.remove(), ms);
 }
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredInstall = e; if(view.v === "home" && !editName) render(true); });
-window.addEventListener("appinstalled", () => { deferredInstall = null; if(view.v === "home") render(true); });
+window.addEventListener("appinstalled", () => { deferredInstall = null; installState = "done"; if(view.v === "home") render(true); });
 if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
   let reloading = false, hadController = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener("controllerchange", () => { if(!hadController){ hadController = true; return; } if(reloading) return; reloading = true; location.reload(); });
@@ -1132,6 +1172,502 @@ if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
   });
 }
 fromHash(); render();
+/* Ab und zu schaut der kleine Bayer mit Bayernhut vorbei: Zufallssystem mit vielen verschiedenen Auftritten (rein dekorativ, nicht klickbar). Er spricht nur Boarisch, macht Witze über andere Vereine (immer mit Respekt) und fragt am Anfang nach dem Namen. Test: Adresse mit ?lauf=quer|umkehr|wand|rundherum|gucken|huepfer|stolpern|schlafen|moonwalk|turbo|schleichen|stammtisch|brezn|pokaljagd|hutziehen|tor|hallo|karriere|stern|ballon|fass|groesse|dieb|witz|name */
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const MAP = ["........R....",".....GGGGW...","....GGGGGGW..","....GGGGGGG..","....TTTTTTT..","..BBBBBBBBBB.","...SSSSSSSS..","...SDSSSDSS..","...SSSSSSSS..","....SSMMSS...","..RRRRRRRRRR.",".SSRRWRRWRRSS",".SSRLLLLLLRSS","...LLLLLLLL..","...WWW..WWW..","..DDDD..DDDD."];
+  const COL = {R:"#dc052d", G:"#2f6b3a", W:"#ffffff", T:"#8a5a2b", B:"#3f8a4d", S:"#ffc8a0", D:"#2b1b1b", M:"#b3261e", L:"#7b4a22"};
+  const NS = "http://www.w3.org/2000/svg";
+  const R = Math.random, pick = a => a[Math.floor(R() * a.length)], rnd = (a, b) => a + R() * (b - a);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  /* Alle Sprüche sind Boarisch. Die ersten neun sind allgemeine Reaktionen (werden von einzelnen Auftritten gezielt gewählt), danach Witze und Stammtisch-Weisheiten. */
+  const SAG = ["Hoppla!","Mia san mia!","Falsche Richtung!","Wo is'n da Pokal? Ah, scho wieda bei uns.","Do is ja wos los!","Kurze Pause, de Brezn wart.","I nimm de Abkürzung.","A Weißbier wär jetz guad.","I woar des ned.",
+    "Servus mitanand!","Griaß eich, ihr Leit!","I hob mei Hutfeder extra poliert.","Brezn, Weißwurscht, Bier: des is mei Taktik.","Weißwurscht nach zwölfe? Des is Majestätsbeleidigung.","Ohne Leberkas koa Training.","A Hut macht no koan Meister. Bei uns schon.",
+    "Des Quiz is guad. Erst lerna, nacha Brezn.","Fünf Minutn lerna, dann a Halbe. Fast.","Wissn is wia a Meisterschale: schee und schwa zum Hebn.","Mia gwinna gern. Aber mia gunna aa wos.",
+    "Dortmund hod de gelbe Wand. Respekt, de is laut!","Leverkusen hod 2024 Meister gmacht. Hut ab! Meiner bleibt aber aufm Kopf.","Schalke: Herz und Seele. Mia drücka de Daumen.","Da HSV hod de Uhr. Möge de nie wieda stehnbleibn.","Köln hod an Geißbock. Mia ham a Weißbier. Jeda wia er mog.","Union Berlin singt eisern. Mia singa weißblau.","Frankfurt hod an Adler. Guad flieg'n kenna's.","Stuttgart sagt, ma kann ois außer Hochdeitsch. Mia aa, mir san uns einig.","Freiburg: scheenstes Stadion im Schwarzwald. Neidlos!","Wolfsburg hod de Autofabrik. Mia hom d'Brauerei.","Leipzig trinkt aus da Dosn. Mia aus da Maß. Prost!","Mainz hod Fastnacht. Mia hom Oktoberfest. Fast des Gleiche.","Augsburg kämpft geg'n uns bis zum Schluss. Nervig, aber bewunderswert.","Heidenheim: von da Alb in d'Bundesliga. A Märchen!","Hoffenheim: vom Dorf in d'Bundesliga. Respekt!","St. Pauli hod an Totenkopf und a Herz. Mia an Hut und a Herz.","Bremen: grün-weiß mit Tradition. Schee, dass es de gibt.","De Sechzger san unsa Nachbarn. Blau und stolz!","Da Club aus Nürnberg hod neun Titel. I sog's ganz leise.","Barcelona? Da war doch moi wos mit 8:2 … I sag nix.","Real Madrid kennt uns guad. Meistens aus da Champions League.","Heit foahrt da Meister. I woaß aa ned wohin."];
+  const AUA = "Autsch! Des hod weh to!", ZZZ = "Zzz … Brezn …", WACH = "I bin wach! I hob nur d'Augn zua ghabt!", MOON = "Moonwalk, mit Lederhosn!", PSST = "Psst … i bin goar ned da.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Schneller!","Turbo, wia da Kimmich im Mittelfeld!"];
+  const PEEK = ["Nur kurz guckn …","Huhu! Da kloane Bayer!","Is do wer dahoam?","Ois guad bei eich?"];
+  const NAMEN = ["%N, du schaffst des!","Weiter so, %N!","%N, du bist a Wahnsinn!","Mia san mia, und du bist dabei, %N!","Servus %N, heit foahrt da Meister.","%N, mia san stolz auf di.","Super gmacht, %N. A Brezn hast da verdient!","%N klingt scho wia a Meistertitel.","%N, du bist a Gwinna-Typ!","Kopf hoch, %N. Auf Regn folgt Weißbier."];
+  const NAMEQ = [["Servus! I bin da kloane Bayer. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da kloane Bayer fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"]];
+  const JAGD = ["Bleib steh, Meisterschale!","Aha, de rennt freiwillig zruck noch Minga."];
+  const LEVEL = ["Brezn! Jetzt hob i Kraft!","Nur bis zur Halbzeit … dann is wieda guad."];
+  const MUENZE = ["Tor!","Noch a Tor!","Hattrick! Mia san mia!"];
+  const BOW = ["Dankschee!","Entschuidigung, bin nur kurz im Bild.","Vergelt's Gott!"];
+  const BOWEND = "I geh scho wieda. Pfiat eich!";
+  const KOPF = "Aufm Kopf gsehn is Bayern trotzdem obn.", HATSCHI = "Hatschi! Prost!";
+  /* Stammtisch-Solo: vier Sätze, die Figur spielt beide Rollen und dreht sich dabei um */
+  const SZENEN = [
+    ["Mia ham heuer wieda 34 Spiele gwunna!","Des san 34 Spiele, ned 34 Siege!","Aber in meim Kopf scho.","Dei Kopf spuit ned in da Bundesliga!"],
+    ["I schau nur Dortmund-Spiele, wegn da Stimmung.","Du bist doch Bayern-Fan!","Aber de gelbe Wand is a Wahnsinn.","Respekt geht in beide Richtungen. Stimmt."],
+    ["I hob heit no koa Brezn gessn.","Des is a Notfall!","Ohne Brezn koa Taktik.","Nacha geh endlich zum Bäcker!"],
+    ["Da Schiri hod mi ang'schaut!","Des is sei Job!","Er hod aber seltsam gschaut.","Du host ja an Bayernhut auf!"]];
+  /* Witze über andere Vereine: Frage und Pointe, immer respektvoll und mit Augenzwinkern */
+  const WITZE = [
+    ["Dortmund hod de gelbe Wand.","Mia ham de Meisterschale. Aber de Wand is lauter, des geb i zua."],
+    ["Warum hod Leverkusen so lang Vizekusen ghoaßn?","Weil's oft Zweita worn san. Seit 2024 hoaßt's: Leverkusen, Respekt!"],
+    ["Beim HSV hängt a berühmte Uhr.","Mia wünschen eana, dass de nie wieda stehnbleibt."],
+    ["Schalke singt: Blau und weiß, wie lieb ich dich.","Mia sand aa nur weiß-rot. Aber mia mögen eich, ihr Knappen."],
+    ["Köln hod an Geißbock im Wappen.","Mia ham a Weißbier. Des is sozusagen da Geißbock vo Bayern."],
+    ["Union Berlin singt: Eisern Union.","Mia sing'n: Weißwurscht-Weißbier-Union. Klingt weicher, schmeckt besser."],
+    ["Frankfurt hod an Adler im Wappen.","I hob a Feder am Hut. Da Adler is größer, mei Feder is schöner."],
+    ["Stuttgart sagt: Mia kenna ois, außer Hochdeitsch.","Mia kenna des aa ned. Do san ma uns einig, ihr Schwoben."],
+    ["Freiburg hod des scheenste Stadion im Schwarzwald.","Und de beste Jugendarbeit. Neidlos: Hut ab! Mei Hut aa."],
+    ["Wolfsburg hod a Autofabrik hinterm Stadion.","Mia ham d'Brauerei in da Nähe. Wer is da besser vorbereitet?"],
+    ["Leipzig trinkt aus da Dosn.","Mia aus da Maß. Beides is flüssig, aber nur oans macht Spaß."],
+    ["Da TSV 1860 is unsa Nachbar in Minga.","Blau und stolz. Mia san koa Feinde, mia san Nachbarn mit Humor."],
+    ["Da Club aus Nürnberg hod neun Meistertitel.","Des sog i ganz leise, wei mia a poar mehr ham. Aber Respekt!"],
+    ["Barcelona? Do war doch moi wos mit 8:2.","I sag nix. I schau nur ganz unschuldig."],
+    ["Real Madrid hod uns in da Champions League oft ärgert.","Owa a Weißwurscht kennan s' ned. Do san mia vorn."],
+    ["Mainz feiert Fastnacht.","Mia feiern Oktoberfest. Gleiche Idee: Kostüm, Bier und guade Laune."],
+    ["Augsburg kämpft in jedem Spiel geg'n uns bis zur letzten Minute.","Nervig, aber bewunderswert. Mia drücka eich bei de andern Spiele."],
+    ["Heidenheim kimmt vo da Schwäbischn Alb.","Vo da Alb in d'Bundesliga: des is a Märchen. Mia klatschn mit."],
+    ["Hoffenheim kimmt aus am Dorf.","Aus am Dorf in d'Bundesliga: des is Respekt-Pflicht. Hut ab!"],
+    ["St. Pauli hod an Totenkopf und a Herz.","Mia ham an Bayernhut und a Herz. Passt, jeda mit sei'm Kopfschmuck."],
+    ["Wann wird Bayern Meister?","Fruaha oder später. Meistens fruaha."],
+    ["Wos sagt da Bayern-Fan nach ana Niederlag?","Des war a Test für de Meisterschaft."]];
+  const aktiv = []; let redet = true;
+  /* Profi-Zufallsmix: Mischbeutel statt reinem Zufall. Jedes Muster kommt pro Runde gemaess Gewicht vor und nie zweimal direkt hintereinander; genau einer von fuenf Auftritten redet; die Startrichtung wechselt meistens. */
+  let lastDir = 1, beutel = [], letzte = null, redeBeutel = [], redeLetzte = false;
+  const mische = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(R() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const rd = () => { lastDir = R() < .7 ? -lastDir : lastDir; return lastDir; };
+  function naechstes(){
+    if(!beutel.length){ for(const k in MUSTER) for(let i = 0; i < MUSTER[k][1]; i++) beutel.push(k); mische(beutel); }
+    const erlaubt = (view && view.v === "quiz") ? ["gucken", "wand"] : null, ok = k => k !== letzte && (!erlaubt || erlaubt.includes(k));
+    if(erlaubt && !beutel.some(ok)){ letzte = pick(erlaubt.filter(k => k !== letzte)); return letzte; }
+    let i = beutel.findIndex(ok);
+    if(i < 0){ const mehr = []; for(const k in MUSTER) for(let n = 0; n < MUSTER[k][1]; n++) mehr.push(k); beutel.push(...mische(mehr)); i = beutel.findIndex(k => k !== letzte); }
+    letzte = beutel.splice(i, 1)[0]; return letzte;
+  }
+  function redetDiesmal(){
+    if(!redeBeutel.length){ redeBeutel = mische([true, true, true, false, false]); if(redeLetzte && redeBeutel[0]) redeBeutel.reverse(); }
+    redeLetzte = redeBeutel.shift(); return redeLetzte;
+  }
+  function figur(){
+    const s = document.createElementNS(NS, "svg");
+    s.setAttribute("viewBox", "0 0 13 16"); s.setAttribute("shape-rendering", "crispEdges"); s.setAttribute("aria-hidden", "true");
+    MAP.forEach((row, y) => [...row].forEach((c, x) => { if(COL[c]){ const r = document.createElementNS(NS, "rect"); r.setAttribute("x", x); r.setAttribute("y", y); r.setAttribute("width", 1); r.setAttribute("height", 1); r.setAttribute("fill", COL[c]); s.appendChild(r); } }));
+    return s;
+  }
+  function dim(){ const t = document.querySelector(".top"); return {W: document.documentElement.clientWidth, H: innerHeight, hb: t ? t.getBoundingClientRect().bottom : 0}; }
+  /* Zustand der Figur: Mittelpunkt x/y, Drehung r (0 Boden, 180 Decke, 90 linke Wand, -90 rechte Wand), Blickrichtung f (1 rechts, -1 links) */
+  function T(s){ return "translate(" + (s.x - 19.5) + "px," + (s.y - 24) + "px) rotate(" + s.r + "deg) scale(" + (s.f * (s.z || 1)) + "," + (s.z || 1) + ")"; }
+  function abbruch(){ return document.hidden; }
+  function neu(s){
+    const el = document.createElement("div"); el.className = "runner"; el.setAttribute("aria-hidden", "true"); el.appendChild(figur());
+    el.style.transform = T(s); document.body.appendChild(el); aktiv.push(el);
+    return {el, s: Object.assign({}, s)};
+  }
+  function setze(g, p){ g.s = Object.assign({}, g.s, p); g.el.style.transform = T(g.s); }
+  async function anim(g, kf, ms, ende){
+    if(abbruch()) throw new Error("stop");
+    const a = g.el.animate(kf, {duration: ms, easing: "linear", fill: "forwards"});
+    g.s = ende;
+    /* Alle 300 ms pruefen, ob abgebrochen werden muss (Quiz gestartet, Tab im Hintergrund); der Pruefer beendet sich selbst */
+    const pruef = new Promise((_, nein) => { const iv = setInterval(() => { if(abbruch()){ clearInterval(iv); nein(new Error("stop")); } }, 300); a.finished.then(() => clearInterval(iv), () => clearInterval(iv)); });
+    try{ await Promise.race([a.finished, pruef]); } catch(e){ a.cancel(); throw e; }
+    g.el.style.transform = T(g.s); a.cancel();
+  }
+  function blick(g, dx, dy){
+    const r = g.s.r; let f = g.s.f;
+    if(r === 0 || r === 180){ if(Math.abs(dx) > 1){ const d = Math.sign(dx); f = r === 180 ? -d : d; } }
+    else if(Math.abs(dy) > 1){ const d = Math.sign(dy); f = r === 90 ? d : -d; }
+    return f;
+  }
+  async function gehe(g, x, y, v){
+    const s0 = g.s, e = {x: x === undefined ? s0.x : x, y: y === undefined ? s0.y : y, r: s0.r, z: s0.z};
+    e.f = blick(g, e.x - s0.x, e.y - s0.y); setze(g, {f: e.f});
+    const ms = Math.max(250, Math.hypot(e.x - s0.x, e.y - s0.y) / (v || rnd(.13, .3)));
+    await anim(g, [{transform: T(g.s)}, {transform: T(e)}], ms, e);
+  }
+  async function bogen(g, tx, ty, h, ms){
+    const f = blick(g, tx - g.s.x, ty - g.s.y); setze(g, {f});
+    const s0 = g.s, rr = s0.r * Math.PI / 180, ux = Math.sin(rr), uy = -Math.cos(rr), kf = [];
+    for(let i = 0; i <= 12; i++){ const u = i / 12, k = 4 * h * u * (1 - u); kf.push({transform: T({x: s0.x + (tx - s0.x) * u + ux * k, y: s0.y + (ty - s0.y) * u + uy * k, r: s0.r, f, z: s0.z})}); }
+    await anim(g, kf, ms, {x: tx, y: ty, r: s0.r, f, z: s0.z});
+  }
+  const sprung = (g, h) => bogen(g, g.s.x, g.s.y, h || 26, 460);
+  async function stehen(g, ms){ g.el.classList.add("stand"); await wait(ms); g.el.classList.remove("stand"); if(abbruch()) throw new Error("stop"); }
+  const drehen = g => setze(g, {f: -g.s.f});
+  function sag(g, txt, ms, muss){
+    if(!muss && !redet) return;
+    document.querySelectorAll(".runbub").forEach(x => x.remove());
+    const vn = (typeof fname === "function" ? fname() : ""), nn = vn.slice(0, 12) + (vn.length > 12 ? "…" : "");
+    txt = txt.replace(/%N/g, nn || "Spezi");
+    const b = document.createElement("div"); b.className = "runbub"; b.textContent = txt; b.setAttribute("aria-hidden", "true"); document.body.appendChild(b);
+    const d = dim(), rr = g.s.r * Math.PI / 180, cx = g.s.x + Math.sin(rr) * 44 * (g.s.z || 1), cy = g.s.y - Math.cos(rr) * 44 * (g.s.z || 1), w = b.offsetWidth, h = b.offsetHeight;
+    b.style.left = Math.max(4, Math.min(d.W - w - 4, cx - w / 2)) + "px"; b.style.top = Math.max(4, Math.min(d.H - h - 4, cy - h / 2)) + "px";
+    setTimeout(() => b.remove(), ms || 1600);
+  }
+  const spruch = (g, arr) => { if(R() < .65) sag(g, (arr || (R() < .35 ? pick(NAMEN) : pick(SAG)))); };
+  function bahn(d, name, dir){
+    if(name === "boden") return {y: d.H - 30, r: 0, f: dir};
+    if(name === "decke") return {y: (R() < .5 || d.hb < 20) ? 24 : d.hb + 26, r: 180, f: -dir};
+    return {y: rnd(d.hb + 70, Math.max(d.hb + 90, d.H - 90)), r: 0, f: dir};
+  }
+  async function aktion(g){
+    const l = [() => sprung(g, rnd(24, 44)), async () => { spruch(g); await stehen(g, 1500); }, () => salto(g), () => tanzen(g), async () => { await stehen(g, rnd(400, 1000)); await sprung(g); }];
+    if(g.s.r === 0) l.push(() => liegen(g, rnd(900, 1500), AUA), () => niesen(g), () => kopfstand(g), () => verbeugen(g, 2, pick(BOW)));
+    await pick(l)();
+  }
+  /* Auftritt 1: quer ueber den Bildschirm (Boden, Decke kopfueber oder mittendrin), mit 0 bis 2 Stopps */
+  async function quer(d){
+    const dir = rd(), b = bahn(d, pick(["boden","boden","decke","mitte"]), dir);
+    const g = neu({x: dir > 0 ? -40 : d.W + 40, y: b.y, r: b.r, f: b.f});
+    const n = pick([0, 0, 1, 2]);
+    for(let i = 0; i < n; i++){ const x = (i + 1 + rnd(-.3, .3)) / (n + 1) * d.W; await gehe(g, dir > 0 ? x : d.W - x); await aktion(g); }
+    await gehe(g, dir > 0 ? d.W + 40 : -40);
+  }
+  /* Auftritt 2: dreht nach einer Strecke um, manchmal mehrfach */
+  async function umkehr(d){
+    const dir = rd(), b = bahn(d, pick(["boden","decke","mitte"]), dir);
+    const g = neu({x: dir > 0 ? -40 : d.W + 40, y: b.y, r: b.r, f: b.f});
+    let richtung = dir;
+    for(let i = 0, n = pick([1, 1, 2, 3]); i < n; i++){
+      const cur = Math.max(0, Math.min(d.W, g.s.x)); let x;
+      if(richtung > 0){ const lo = cur + d.W * .15, hi = d.W * .9; x = lo < hi ? rnd(lo, hi) : hi; }
+      else { const lo = d.W * .1, hi = cur - d.W * .15; x = lo < hi ? rnd(lo, hi) : lo; }
+      await gehe(g, x);
+      await stehen(g, rnd(300, 700)); spruch(g, pick([SAG[0], SAG[2], SAG[3]])); await stehen(g, rnd(600, 1100));
+      drehen(g); richtung = -richtung; await stehen(g, 350);
+      if(R() < .3) await sprung(g);
+    }
+    await gehe(g, richtung > 0 ? d.W + 40 : -40);
+  }
+  /* Auftritt 3: klettert oder rutscht am linken oder rechten Rand, manchmal mit Umkehr */
+  async function wand(d){
+    const links = R() < .5, r = links ? 90 : -90, x = links ? 24 : d.W - 24, hoch = R() < .5;
+    const start = hoch ? d.H + 40 : -40, ende = hoch ? -40 : d.H + 40;
+    const g = neu({x, y: start, r, f: 1});
+    if(R() < .45){
+      await gehe(g, x, rnd(.3, .7) * d.H, rnd(.1, .2));
+      await stehen(g, 500); spruch(g, pick([SAG[0], SAG[2], SAG[4]])); await stehen(g, 1100);
+      drehen(g); await stehen(g, 400);
+      await gehe(g, x, start, rnd(.12, .25));
+    } else {
+      if(R() < .5){ await gehe(g, x, rnd(.3, .7) * d.H, rnd(.1, .2)); await aktion(g); }
+      await gehe(g, x, ende, rnd(.1, .22));
+    }
+  }
+  /* Auftritt 4: einmal rund um den Bildschirm (Boden, Wand, Decke kopfueber, Wand), rechts oder links herum */
+  async function rundherum(d){
+    const sp = R() < .5, W = d.W, H = d.H, yB = H - 30, yT = 24, xL = 24, xR = W - 24;
+    const X = x => sp ? W - x : x, Rr = r => sp ? (r === 90 ? -90 : r === -90 ? 90 : r) : r;
+    const pts = [{x: xR, y: yB, r: 0}, {x: xR, y: yT, r: -90}, {x: xL, y: yT, r: 180}, {x: xL, y: yB, r: 90}, {x: W + 40, y: yB, r: 0}];
+    const lauf = pts.slice(0, pick([2, 3, 4, 5])).map(p => Object.assign({}, p)), l = lauf[lauf.length - 1];
+    if(l.r === -90) l.y = -40; else if(l.r === 180) l.x = -40; else if(l.r === 90) l.y = H + 40;
+    const g = neu({x: X(-40), y: yB, r: Rr(0), f: 1});
+    for(const p of lauf){
+      if(R() < .35 && g.s.x > 0 && g.s.x < W) await sprung(g);
+      setze(g, {r: Rr(p.r)});
+      await gehe(g, X(p.x), p.y, rnd(.2, .35));
+    }
+  }
+  /* Auftritt 5: schaut nur kurz von einem Rand herein, manchmal springt er danach heraus und rennt los */
+  async function gucken(d){
+    const k = pick(["unten","unten","oben","links","rechts"]), W = d.W, H = d.H, yy = rnd(Math.min(H * .5, d.hb + 60), H * .8), xx = rnd(.1, .9) * W;
+    let s, p;
+    if(k === "unten"){ s = {x: xx, y: H + 50, r: 0, f: pick([1, -1])}; p = {x: xx, y: H + rnd(-6, 14)}; }
+    else if(k === "oben"){ s = {x: xx, y: -50, r: 180, f: pick([1, -1])}; p = {x: xx, y: rnd(-14, 6)}; }
+    else if(k === "links"){ s = {x: -50, y: yy, r: 0, f: 1}; p = {x: rnd(-6, 10), y: yy}; }
+    else { s = {x: W + 50, y: yy, r: 0, f: -1}; p = {x: W + rnd(-10, 6), y: yy}; }
+    const g = neu(s);
+    await gehe(g, p.x, p.y, .1);
+    const a = R();
+    if(a < .35){ await stehen(g, 500); drehen(g); await stehen(g, 600); drehen(g); await stehen(g, 500); }
+    else if(a < .7){ spruch(g, pick(PEEK)); await stehen(g, 1700); }
+    else await sprung(g, 30);
+    if(k === "unten" && R() < .3){
+      const dir = rd();
+      await gehe(g, g.s.x, H - 30, .15);
+      await gehe(g, dir > 0 ? W + 40 : -40, H - 30, rnd(.2, .3));
+    } else await gehe(g, s.x, s.y, .22);
+  }
+  /* Auftritt 6: huepft in Bogen ueber den Bildschirm, am Boden oder mittendrin */
+  async function huepfer(d){
+    const dir = rd(), mitte = R() < .5, b = bahn(d, mitte ? "mitte" : "boden", dir);
+    const g = neu({x: dir > 0 ? -40 : d.W + 40, y: b.y, r: 0, f: b.f});
+    const n = Math.round(rnd(3, 7)), schritt = (d.W + 80) / n;
+    for(let i = 1; i <= n; i++){
+      const ty = mitte ? Math.max(d.hb + 60, Math.min(d.H - 60, g.s.y + rnd(-45, 45))) : b.y;
+      await bogen(g, dir > 0 ? -40 + schritt * i : d.W + 40 - schritt * i, ty, rnd(40, 90), rnd(520, 760));
+      if(R() < .2) await stehen(g, 400);
+    }
+  }
+  /* Salto: volle Drehung waehrend eines Sprungs an Ort und Stelle */
+  async function salto(g){
+    const s0 = g.s, rr = s0.r * Math.PI / 180, ux = Math.sin(rr), uy = -Math.cos(rr), kf = [];
+    for(let i = 0; i <= 16; i++){ const u = i / 16, k = 4 * 46 * u * (1 - u); kf.push({transform: T({x: s0.x + ux * k, y: s0.y + uy * k, r: s0.r + 360 * s0.f * u, f: s0.f})}); }
+    await anim(g, kf, 720, s0);
+  }
+  /* Hinfallen und liegen bleiben (nur am Boden), dann wieder aufstehen */
+  async function liegen(g, ms, text){
+    const s0 = g.s, w = Object.assign({}, s0, {r: s0.r + 80 * s0.f, y: s0.y + 5}), tot = 250 + ms + 350;
+    sag(g, text, ms + 400, text === ZZZ); g.el.classList.add("stand");
+    try{ await anim(g, [{transform: T(s0), offset: 0}, {transform: T(w), offset: 250 / tot}, {transform: T(w), offset: (250 + ms) / tot}, {transform: T(s0), offset: 1}], tot, s0); }
+    finally{ g.el.classList.remove("stand"); }
+  }
+  async function tanzen(g){
+    sag(g, TANZ, 2400);
+    for(let i = 0; i < 4; i++){ drehen(g); await sprung(g, 16); }
+  }
+  async function rueckwaerts(g, x, v){
+    const s0 = g.s, e = {x, y: s0.y, r: s0.r, z: s0.z}; e.f = -blick(g, e.x - s0.x, 0); setze(g, {f: e.f});
+    await anim(g, [{transform: T(g.s)}, {transform: T(e)}], Math.max(250, Math.abs(e.x - s0.x) / (v || rnd(.13, .25))), e);
+  }
+  const rein = (dir, d) => dir > 0 ? -40 : d.W + 40, raus = (dir, d) => dir > 0 ? d.W + 40 : -40, anteil = (dir, d, u) => dir > 0 ? u * d.W : d.W - u * d.W;
+  /* Auftritt 7: stolpert und faellt hin (ein- oder zweimal) */
+  async function stolpern(d){
+    const dir = rd(), b = bahn(d, pick(["boden","boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), n = pick([1, 1, 2]);
+    for(let i = 0; i < n; i++){
+      await gehe(g, anteil(dir, d, (i + 1 + rnd(-.25, .25)) / (n + 1)));
+      await liegen(g, rnd(900, 1600), AUA); await stehen(g, 300); spruch(g, pick([SAG[0], SAG[5], SAG[8]])); await stehen(g, 600);
+    }
+    await gehe(g, raus(dir, d));
+  }
+  /* Auftritt 8: legt sich hin und schlaeft, wacht erschrocken auf und rennt davon */
+  async function schlafen(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, rnd(.3, .7)));
+    await liegen(g, 2800, ZZZ);
+    sag(g, WACH, 1400); await sprung(g, 54); await stehen(g, 500);
+    await gehe(g, raus(dir, d), undefined, rnd(.4, .6));
+  }
+  /* Auftritt 9: Moonwalk, also rueckwaerts laufen */
+  async function moonwalk(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte","decke"]), dir), g = neu({x: rein(dir, d), y: b.y, r: b.r, f: -b.f});
+    await rueckwaerts(g, anteil(dir, d, rnd(.4, .6)));
+    sag(g, MOON, 1500); await stehen(g, 1200);
+    await rueckwaerts(g, raus(dir, d));
+  }
+  /* Auftritt 10: wird immer schneller */
+  async function turbo(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, .3), undefined, .1); sag(g, TURBO[0], 1300);
+    await gehe(g, anteil(dir, d, .55), undefined, .28); sag(g, TURBO[1], 1300);
+    await gehe(g, raus(dir, d), undefined, .8);
+  }
+  /* Auftritt 11: schleicht auf Zehenspitzen, schaut sich um und rennt dann los */
+  async function schleichen(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte","decke"]), dir), g = neu({x: rein(dir, d), y: b.y, r: b.r, f: b.f}), n = pick([3, 4, 5]);
+    for(let i = 0; i < n; i++){
+      await gehe(g, anteil(dir, d, (i + 1) / (n + 1)), undefined, .06);
+      if(i === 0){ sag(g, PSST, 1900); await stehen(g, 1900); } else await stehen(g, rnd(400, 900));
+      if(R() < .5){ drehen(g); await stehen(g, 500); drehen(g); }
+    }
+    await gehe(g, raus(dir, d), undefined, .6);
+  }
+  /* Verbeugen (nur am Boden): nach vorn kippen, kurz halten, aufrichten */
+  async function verbeugen(g, n, text){
+    const s0 = g.s, w = Object.assign({}, s0, {r: s0.r + 38 * s0.f}), kf = [{transform: T(s0), offset: 0}];
+    for(let i = 0; i < n; i++){ kf.push({transform: T(w), offset: (i + .35) / n}, {transform: T(w), offset: (i + .65) / n}, {transform: T(s0), offset: (i + 1) / n}); }
+    if(text) sag(g, text, n * 1100 + 400);
+    await anim(g, kf, n * 1100, s0);
+  }
+  /* Kopfstand mit Rolle zurueck */
+  async function kopfstand(g){
+    const s0 = g.s, h = Object.assign({}, s0, {r: s0.r + 180}), e = Object.assign({}, s0, {r: s0.r + 360});
+    sag(g, KOPF, 3000);
+    await anim(g, [{transform: T(s0), offset: 0}, {transform: T(h), offset: .15}, {transform: T(h), offset: .8}, {transform: T(e), offset: 1}], 3000, s0);
+  }
+  async function niesen(g){
+    await stehen(g, 400); sag(g, HATSCHI, 1200); await stehen(g, 700);
+    await rueckwaerts(g, g.s.x - g.s.f * 70, .6); await stehen(g, 400);
+  }
+  /* Auftritt 12: Stammtisch-Solo: eine einzige Figur spielt beide Rollen und dreht sich dabei um */
+  async function stammtisch(d){
+    const dir = rd(), b = bahn(d, "boden", dir), sz = pick(SZENEN), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, rnd(.35, .65)), undefined, .25);
+    sag(g, sz[0], 2300, true); await stehen(g, 2300);
+    drehen(g); await stehen(g, 300); sag(g, sz[1], 2300, true); await sprung(g, 22); await stehen(g, 1900);
+    drehen(g); await stehen(g, 300); sag(g, sz[2], 2300, true); await stehen(g, 2300);
+    drehen(g); await stehen(g, 300); sag(g, sz[3], 2500, true);
+    await Promise.all([sprung(g, 36), stehen(g, 700)]);
+    await liegen(g, 900, AUA); await stehen(g, 400);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 13: isst eine Brezn, wird gross, rennt, schrumpft wieder (befristet) */
+  async function brezn(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, .3));
+    const px = g.s.x + dir * 54, m = document.createElement("div"); m.className = "runcoin"; m.textContent = "🥨"; m.setAttribute("aria-hidden", "true");
+    m.style.left = (px - 13) + "px"; m.style.top = (b.y - 14) + "px"; document.body.appendChild(m); aktiv.push(m);
+    await gehe(g, px, undefined, .15); m.remove();
+    const boden = g.s.y + 24, gross = Object.assign({}, g.s, {z: 1.9, y: boden - 24 * 1.9});
+    sag(g, LEVEL[0], 2000);
+    await anim(g, [{transform: T(g.s)}, {transform: T(gross)}], 900, gross);
+    await gehe(g, anteil(dir, d, .7), undefined, .3);
+    sag(g, LEVEL[1], 1500); await stehen(g, 900);
+    const klein = Object.assign({}, g.s, {z: 1, y: boden - 24});
+    await anim(g, [{transform: T(g.s)}, {transform: T(klein)}], 600, klein);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 14: jagt einen Pokal, der immer schneller davonrennt */
+  async function pokaljagd(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    const p = document.createElement("span"); p.className = "runprop"; p.textContent = "🏆"; p.setAttribute("aria-hidden", "true"); g.el.appendChild(p);
+    await gehe(g, anteil(dir, d, .3), undefined, .28);
+    sag(g, JAGD[0], 1500); await stehen(g, 500);
+    p.animate([{left: "48px"}, {left: "170px"}], {duration: 1800, fill: "forwards", easing: "ease-in"});
+    await gehe(g, anteil(dir, d, .65), undefined, .45);
+    p.animate([{opacity: 1}, {opacity: 0}], {duration: 600, fill: "forwards"});
+    await stehen(g, 500); sag(g, JAGD[1], 2000); await stehen(g, 2000);
+    await gehe(g, raus(dir, d), undefined, .15);
+  }
+  /* Auftritt 15: Hutzieh-Wanderung, ganz hoeflich (Dankschee) */
+  async function hutziehen(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), n = pick([2, 3]);
+    for(let i = 0; i < n; i++){ await gehe(g, anteil(dir, d, (i + 1) / (n + 1)), undefined, .2); await verbeugen(g, i === 0 ? 3 : 2, BOW[i % BOW.length]); }
+    sag(g, BOWEND, 2500); await verbeugen(g, 2); await stehen(g, 600);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 16: Tore schiessen, jeweils mit Kopfstoss im Sprung */
+  async function tor(d){
+    const dir = rd(), b = bahn(d, "boden", dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), n = pick([2, 3]);
+    for(let i = 0; i < n; i++){
+      const x = anteil(dir, d, (i + 1) / (n + 1)), c = document.createElement("div"); c.className = "runcoin"; c.textContent = "⚽"; c.setAttribute("aria-hidden", "true");
+      c.style.left = (x - 13) + "px"; c.style.top = (b.y - 100) + "px"; document.body.appendChild(c); aktiv.push(c);
+      await gehe(g, x - dir * 4, undefined, rnd(.2, .35));
+      const j = sprung(g, 66); setTimeout(() => { c.remove(); sag(g, MUENZE[i === n - 1 ? 2 : (i === 0 ? 0 : 1)], 1700); }, 230); await j;
+      await stehen(g, 500);
+    }
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 17: begruesst die Person mit Namen und sagt etwas Kurzes */
+  async function hallo(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, rnd(.35, .65)), undefined, .28);
+    await stehen(g, 300); sag(g, pick(NAMEN), 2600, true); await sprung(g, 30); await stehen(g, 300); await sprung(g, 30); await stehen(g, 1500);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Weitere Gags im Stil von Brezn: Groesse, Requisiten, Verwandlungen */
+  const TITEL = ["Ersatzbankerl","Stammspieler","Kapitän","Ehrenpräsident"];
+  const URLAUB = "Urlaub am Tegernsee!", STERN = "Unbesiegbar! Zumindest bis zum Schlusspfiff.", BALLON = ["Wheee! Ois guad!","Pfiat eich!"], FASS = ["Gleich wieda do!","Überraschung! Prost!"], GROESSE = ["Mini-Maß!","Riesn-Maß! Prost!"];
+  /* Groesse aendern, die Fuesse bleiben am Boden */
+  async function skaliere(g, z, ms){
+    const z0 = g.s.z || 1, boden = g.s.y + 24 * z0, e = Object.assign({}, g.s, {z, y: boden - 24 * z});
+    await anim(g, [{transform: T(g.s)}, {transform: T(e)}], ms || 700, e);
+  }
+  /* Etwas Essbares neben der Figur ablegen und hinlaufen */
+  async function esse(g, dir, emoji){
+    const px = g.s.x + dir * 54, boden = g.s.y + 24 * (g.s.z || 1), m = document.createElement("div");
+    m.className = "runcoin"; m.textContent = emoji || "🥨"; m.setAttribute("aria-hidden", "true");
+    m.style.left = (px - 13) + "px"; m.style.top = (boden - 28) + "px"; document.body.appendChild(m); aktiv.push(m);
+    await gehe(g, px, undefined, .15); m.remove();
+  }
+  /* Auftritt 18: Karriere in vier Brezn vom Ersatzbankerl zum Ehrenpraesidenten, dann Urlaub */
+  async function karriere(d){
+    const dir = rd(), b = bahn(d, "boden", dir), zs = [.55, .9, 1.4, 2.1];
+    const g = neu({x: rein(dir, d), y: b.y + 24 - 24 * zs[0], r: 0, f: b.f, z: zs[0]});
+    await gehe(g, anteil(dir, d, .12), undefined, .25); sag(g, TITEL[0], 1600, true); await stehen(g, 1200);
+    for(let i = 0; i < 3; i++){
+      await gehe(g, anteil(dir, d, .2 + i * .18), undefined, .22);
+      await esse(g, dir); sag(g, TITEL[i + 1], 1600, true); await skaliere(g, zs[i + 1], 700); await stehen(g, 900);
+    }
+    sag(g, URLAUB, 1600, true); await sprung(g, 40);
+    await gehe(g, raus(dir, d), undefined, .5);
+  }
+  /* Auftritt 19: Stern, bunt blinkend und unbesiegbar, rennt sehr schnell */
+  async function stern(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, .3)); await esse(g, dir, "⭐");
+    g.el.classList.add("stern"); sag(g, STERN, 2000); await sprung(g, 30);
+    await gehe(g, raus(dir, d), undefined, .9);
+  }
+  /* Auftritt 20: haelt sich an einem Luftballon fest und schwebt davon */
+  async function ballon(d){
+    const dir = rd(), b = bahn(d, "boden", dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, rnd(.3, .6)));
+    const p = document.createElement("span"); p.className = "runprop ballon"; p.textContent = "🎈"; p.setAttribute("aria-hidden", "true"); g.el.appendChild(p);
+    await sprung(g, 24); sag(g, BALLON[0], 1500); await stehen(g, 500);
+    await gehe(g, g.s.x + dir * rnd(60, 140), -70, .08);
+  }
+  /* Auftritt 21: verschwindet in einem Bierfass und taucht aus einem anderen wieder auf */
+  function fassBauen(x){ const el = document.createElement("div"); el.className = "runfass"; el.setAttribute("aria-hidden", "true"); el.style.left = (x - 32) + "px"; document.body.appendChild(el); aktiv.push(el); return el; }
+  async function fass(d){
+    const dir = rd(), b = bahn(d, "boden", dir), H = d.H, x1 = anteil(dir, d, rnd(.25, .4)), x2 = anteil(dir, d, rnd(.6, .8));
+    const g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    fassBauen(x1);
+    await gehe(g, x1 - dir * 62); await bogen(g, x1, H - 86, 40, 600);
+    sag(g, FASS[0], 1500); await stehen(g, 700);
+    await gehe(g, x1, H - 30, .1);
+    fassBauen(x2); setze(g, {x: x2, y: H - 30}); await stehen(g, 1000);
+    await gehe(g, x2, H - 86, .1);
+    sag(g, FASS[1], 1500); await bogen(g, x2 + dir * 60, H - 30, 36, 500);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 22: Mini-Modus, dann Mega-Modus */
+  async function groesse(d){
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f});
+    await gehe(g, anteil(dir, d, .25)); sag(g, GROESSE[0], 1400); await skaliere(g, .4, 500);
+    await gehe(g, anteil(dir, d, .5), undefined, .35);
+    sag(g, GROESSE[1], 1600); await skaliere(g, 2.4, 900);
+    await gehe(g, anteil(dir, d, .8), undefined, .25);
+    await skaliere(g, 1, 500); await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 23: schleicht sich an, klaut die Meisterschale und rennt damit davon */
+  const DIEB = ["Psst … ned hinschaun.","I leih ma de Schale nur aus!"];
+  async function dieb(d){
+    const dir = rd(), b = bahn(d, "boden", dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), x = anteil(dir, d, rnd(.4, .65)), boden = b.y + 24;
+    const tr = document.createElement("div"); tr.className = "runcoin"; tr.textContent = "🏆"; tr.setAttribute("aria-hidden", "true");
+    tr.style.left = (x - 13) + "px"; tr.style.top = (boden - 28) + "px"; document.body.appendChild(tr); aktiv.push(tr);
+    await gehe(g, x - dir * 130, undefined, .2);
+    sag(g, DIEB[0], 1800);
+    for(let i = 0; i < 2; i++){ await gehe(g, g.s.x + dir * 40, undefined, .05); await stehen(g, 300); drehen(g); await stehen(g, 450); drehen(g); }
+    await gehe(g, x - dir * 40, undefined, .06);
+    await sprung(g, 26); tr.remove();
+    const p = document.createElement("span"); p.className = "runprop traeger"; p.textContent = "🏆"; p.setAttribute("aria-hidden", "true"); g.el.appendChild(p);
+    sag(g, DIEB[1], 1800);
+    await gehe(g, raus(dir, d), undefined, .75);
+  }
+  /* Auftritt 24: erzählt einen Witz über einen anderen Verein (Frage, Pause, Pointe) und freut sich selbst darüber */
+  async function witz(d){
+    const dir = rd(), b = bahn(d, pick(["boden","boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), w = pick(WITZE);
+    await gehe(g, anteil(dir, d, rnd(.35, .65)), undefined, .25);
+    await stehen(g, 300); sag(g, w[0], 3400, true); await stehen(g, 3400);
+    sag(g, w[1], 3600, true); await sprung(g, 30); await stehen(g, 700); drehen(g); await sprung(g, 22); await stehen(g, 2600);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  /* Auftritt 25: fragt nach dem Namen und zeigt auf das Eingabefeld (nur auf der Startseite, höchstens dreimal insgesamt) */
+  function nameNudge(){
+    const el = document.querySelector(".nameq") || document.querySelector(".herobar .namebtn"); if(!el) return;
+    const rm = matchMedia("(prefers-reduced-motion: reduce)").matches, r = el.getBoundingClientRect();
+    if(r.top < 70 || r.bottom > innerHeight - 20) el.scrollIntoView({behavior: rm ? "auto" : "smooth", block: "center"});
+    el.classList.remove("nudge"); void el.offsetWidth; el.classList.add("nudge"); setTimeout(() => el.classList.remove("nudge"), 4200);
+  }
+  async function namensfrage(d){
+    if(typeof hasName === "function" && hasName()) return;
+    ach.nq = (ach.nq || 0) + 1; save();
+    const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), q = pick(NAMEQ);
+    await gehe(g, anteil(dir, d, rnd(.35, .6)), undefined, .28);
+    await stehen(g, 300); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600);
+    nameNudge(); sag(g, q[1], 4000, true); await sprung(g, 24); await stehen(g, 2000); drehen(g); await stehen(g, 600); drehen(g); await sprung(g, 20); await stehen(g, 1800);
+    await gehe(g, raus(dir, d), undefined, .3);
+  }
+  const MUSTER = {quer: [quer, 4], umkehr: [umkehr, 4], wand: [wand, 3], rundherum: [rundherum, 2], gucken: [gucken, 4], huepfer: [huepfer, 3], stolpern: [stolpern, 3], schlafen: [schlafen, 2], moonwalk: [moonwalk, 2], turbo: [turbo, 2], schleichen: [schleichen, 2], stammtisch: [stammtisch, 2], brezn: [brezn, 2], pokaljagd: [pokaljagd, 2], hutziehen: [hutziehen, 2], tor: [tor, 2], hallo: [hallo, 1], karriere: [karriere, 2], stern: [stern, 2], ballon: [ballon, 2], fass: [fass, 2], groesse: [groesse, 2], dieb: [dieb, 2], witz: [witz, 5]};
+  const SPEZIAL = {name: namensfrage};
+  function waehle(name){
+    if(name && SPEZIAL[name]) return SPEZIAL[name];
+    if(name && MUSTER[name]) return MUSTER[name][0];
+    return MUSTER[naechstes()][0];
+  }
+  async function auftritt(name){
+    if(abbruch()) return;
+    redet = !!name || (!(view && view.v === "quiz") && redetDiesmal());
+    try{ await waehle(name)(dim()); } catch(e){ if(!e || e.message !== "stop") console.error("Figur:", e); }
+    aktiv.splice(0).forEach(e => e.remove()); document.querySelectorAll(".runbub").forEach(b => b.remove());
+  }
+  const test = (location.search.match(/[?&]lauf=([a-z]*)/) || [])[1];
+  /* Wer noch keinen Namen eingetragen hat, wird gleich zu Beginn freundlich gefragt (auf der Startseite, höchstens dreimal) */
+  const brauchtName = () => view && view.v === "home" && typeof hasName === "function" && !hasName() && (ach.nq || 0) < 3;
+  (async function(){
+    await wait(test !== undefined ? 1200 : (brauchtName() ? 3500 : rnd(8000, 20000)));
+    let erster = test === undefined; for(;;){
+      let n = test || undefined;
+      if(!n && brauchtName() && (erster || R() < .35)) n = "name"; else if(!n && erster && R() < .5) n = "hallo";
+      await auftritt(n); erster = false; await wait(test !== undefined ? 1500 : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000)));
+    }
+  })();
+})();
 /* Feste Orientierungsleiste: Hoehen messen, Schatten nur wenn festgeheftet */
 function syncHH(){
   const r = document.documentElement.style, e = document.querySelector(".top"), n = document.querySelector(".stickynav");
