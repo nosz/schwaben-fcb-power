@@ -6,7 +6,7 @@
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.9.0, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.10.0, Stand 18.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
@@ -49,6 +49,7 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.10.0 (18.10.2026): Der kleine Bayer heißt jetzt **Seppl** und stellt sich beim allerersten Auftritt auf lustige Art vor (drei Fassungen mit je zwei Sprechblasen, einmalig, danach Namensfrage bzw. Begrüßung). Die Sprechblase ist schöner: größere Rundung, rote Kontur im Vereinston, weicher Schatten und ein Zipfel, der immer auf Seppl zeigt (auch an Wand und Decke).
 - 1.9.0 (18.10.2026): Trägt jemand zum ersten Mal seinen Namen ein (Startseite oder Lektion), hört der kleine Bayer mit der Namensfrage sofort auf, kommt gleich wieder und lobt auf lustige Art mit dem Vornamen (sechs Lob-Reihen mit je drei Sätzen, Konfetti, Sprung und Salto). Wer seinen Namen nur ändert, wird nicht noch einmal gelobt.
 - 1.8.1 (18.10.2026): Bei der Namensfrage läuft der kleine Bayer jetzt direkt an das Eingabefeld und steht auf dessen oberer Kante (die Seite scrollt das Feld vorher in den sichtbaren Bereich); nach übersprungener Namensfrage steht er am Knopf „Name eintragen“.
 - 1.8.0 (18.10.2026): Der kleine Bayer erscheint jetzt sofort nach dem Start (rund 1 Sekunde ohne Namen, rund 2 Sekunden mit Namen). Ohne Namen drängt er freundlich auf die Eintragung, wird dabei mit jeder Wiederholung etwas frecher (bis zu sechs Mal) und fragt in kürzeren Abständen. Mit eingetragenem Namen grüßt er einmal je Sitzung mit einem kurzen Witz über einen anderen Verein und verabschiedet sich mit „I komm wieda, <Name>!“.

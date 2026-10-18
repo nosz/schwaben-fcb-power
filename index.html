@@ -323,7 +323,12 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .runner svg{display:block;width:100%;height:100%;animation:runbob .22s steps(2) infinite}
 .runner.stand svg{animation-play-state:paused}
 @keyframes runbob{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
-.runbub{position:fixed;z-index:41;pointer-events:none;background:#fff;color:#222;border:2px solid #222;border-radius:12px;padding:4px 10px;font-family:inherit;font-weight:800;font-size:.85rem;line-height:1.25;width:max-content;max-width:min(80vw,300px);box-shadow:0 2px 0 rgba(0,0,0,.2);animation:pop .3s both}
+.runbub{--zp:50%;position:fixed;z-index:41;pointer-events:none;background:#fff;color:#222;border:2.5px solid var(--red);border-radius:18px;padding:8px 14px;font-family:inherit;font-weight:800;font-size:.88rem;line-height:1.3;width:max-content;max-width:min(80vw,300px);box-shadow:0 4px 14px rgba(0,0,0,.2),0 1px 0 rgba(0,0,0,.08);animation:pop .3s both}
+.runbub::before{content:"";position:absolute;width:13px;height:13px;background:#fff;border:2.5px solid var(--red);transform:translate(-50%,-50%) rotate(45deg);border-radius:0 0 4px 0}
+.runbub.zu::before{left:var(--zp);top:100%;border-top:0;border-left:0}
+.runbub.zo::before{left:var(--zp);top:0;border-bottom:0;border-right:0;border-radius:4px 0 0 0}
+.runbub.zl::before{left:0;top:var(--zp);border-top:0;border-right:0;border-radius:0 0 0 4px}
+.runbub.zr::before{left:100%;top:var(--zp);border-bottom:0;border-left:0;border-radius:0 4px 0 0}
 .runprop{position:absolute;left:48px;top:6px;font-size:26px;line-height:1;animation:runbob .22s steps(2) infinite}
 .runner.stern svg{animation:runbob .22s steps(2) infinite,sternfarbe .5s linear infinite}
 @keyframes sternfarbe{from{filter:hue-rotate(0deg) saturate(2) brightness(1.3)}to{filter:hue-rotate(360deg) saturate(2) brightness(1.3)}}
@@ -352,7 +357,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.9.0", STAND = "18.10.2026";
+const VERSION = "1.10.0", STAND = "18.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -1186,10 +1191,20 @@ fromHash(); render();
     "Des Quiz is guad. Erst lerna, nacha Brezn.","Fünf Minutn lerna, dann a Halbe. Fast.","Wissn is wia a Meisterschale: schee und schwa zum Hebn.","Mia gwinna gern. Aber mia gunna aa wos.",
     "Dortmund hod de gelbe Wand. Respekt, de is laut!","Leverkusen hod 2024 Meister gmacht. Hut ab! Meiner bleibt aber aufm Kopf.","Schalke: Herz und Seele. Mia drücka de Daumen.","Da HSV hod de Uhr. Möge de nie wieda stehnbleibn.","Köln hod an Geißbock. Mia ham a Weißbier. Jeda wia er mog.","Union Berlin singt eisern. Mia singa weißblau.","Frankfurt hod an Adler. Guad flieg'n kenna's.","Stuttgart sagt, ma kann ois außer Hochdeitsch. Mia aa, mir san uns einig.","Freiburg: scheenstes Stadion im Schwarzwald. Neidlos!","Wolfsburg hod de Autofabrik. Mia hom d'Brauerei.","Leipzig trinkt aus da Dosn. Mia aus da Maß. Prost!","Mainz hod Fastnacht. Mia hom Oktoberfest. Fast des Gleiche.","Augsburg kämpft geg'n uns bis zum Schluss. Nervig, aber bewunderswert.","Heidenheim: von da Alb in d'Bundesliga. A Märchen!","Hoffenheim: vom Dorf in d'Bundesliga. Respekt!","St. Pauli hod an Totenkopf und a Herz. Mia an Hut und a Herz.","Bremen: grün-weiß mit Tradition. Schee, dass es de gibt.","De Sechzger san unsa Nachbarn. Blau und stolz!","Da Club aus Nürnberg hod neun Titel. I sog's ganz leise.","Barcelona? Da war doch moi wos mit 8:2 … I sag nix.","Real Madrid kennt uns guad. Meistens aus da Champions League.","Heit foahrt da Meister. I woaß aa ned wohin."];
   const AUA = "Autsch! Des hod weh to!", ZZZ = "Zzz … Brezn …", WACH = "I bin wach! I hob nur d'Augn zua ghabt!", MOON = "Moonwalk, mit Lederhosn!", PSST = "Psst … i bin goar ned da.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Schneller!","Turbo, wia da Kimmich im Mittelfeld!"];
-  const PEEK = ["Nur kurz guckn …","Huhu! Da kloane Bayer!","Is do wer dahoam?","Ois guad bei eich?"];
+  const PEEK = ["Nur kurz guckn …","Huhu! Da Seppl!","Is do wer dahoam?","Ois guad bei eich?"];
   const NAMEN = ["%N, du schaffst des!","Weiter so, %N!","%N, du bist a Wahnsinn!","Mia san mia, und du bist dabei, %N!","Servus %N, heit foahrt da Meister.","%N, mia san stolz auf di.","Super gmacht, %N. A Brezn hast da verdient!","%N klingt scho wia a Meistertitel.","%N, du bist a Gwinna-Typ!","Kopf hoch, %N. Auf Regn folgt Weißbier."];
+  /* Vorstellung beim allerersten Auftritt: Seppl sagt, wer er ist (zwei Sprechblasen, eine der drei Fassungen) */
+  const VORSTELLUNG = [["Servus! I bin da Seppl, da kloane Bayer. Offiziell Chef vom Quiz.","Mei Beruf: Brezn bewachn. Mei Hobby: Brezn bewachn. Mei Schwächn: aa."],
+    ["Griaß eich! Seppl is mei Nama, Seppl bleibt a so. Mei Hut ko mehr als i!","Mei Größe? Genau richtig: ned zu groß, ned zu kloa, grad wia a Brezn."],
+    ["Pfiat di Langeweil! I bin da Seppl, des kloane Wunder vo Bayern.","I bin so kloa, mi sehng bloß de, de aa wirklich hischaun."]];
+  async function vorstellen(g){
+    if(ach.seppl) return; ach.seppl = true; save();
+    const v = pick(VORSTELLUNG);
+    await stehen(g, 200); sag(g, v[0], 3400, true); await sprung(g, 30); await stehen(g, 3400);
+    sag(g, v[1], 3600, true); await salto(g); await stehen(g, 3000);
+  }
   /* Namensfrage: wird mit jeder Wiederholung etwas drängender (und lustiger) */
-  const NAMEQ = [["Servus! I bin da kloane Bayer. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da kloane Bayer fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"],
+  const NAMEQ = [["Servus! Mi kennst ja jetz. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da Seppl fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"],
     ["Hallo? Hoit! I frog scho wieda: Wia hoaßt'n du?","Ohne Nama kenn i di ned, und i mog di do scho!"],["Schorsch? Franz? Bärbel? Sog's ma, wia du hoaßt!","Trag dein Nama ei, des dauert zwoa Sekunden. Versproch'n!"],["Letzte Chance, dann frog i d'Kellnerin: Wia hoaßt'n du?","Dei Nama macht de App persönlich und mi glücklich!"]];
   /* Begrüßung, wenn der Name schon da ist: kurzer Witz und Abschied mit Namen */
   const GRUSS = ["Servus %N! Kurz a Witz fia di:","Griaß di, %N! Pass auf, jetz kimmt oana:","Hoi %N! Bevor i's vergiss, a kurzer Witz:"];
@@ -1294,6 +1309,13 @@ fromHash(); render();
   const sprung = (g, h) => bogen(g, g.s.x, g.s.y, h || 26, 460);
   async function stehen(g, ms){ g.el.classList.add("stand"); for(let t0 = Date.now(); Date.now() - t0 < ms && !abbruch();) await wait(Math.min(200, ms)); g.el.classList.remove("stand"); if(abbruch()) throw new Error("stop"); }
   const drehen = g => setze(g, {f: -g.s.f});
+  /* Sprechblase mit Zipfel: der Zipfel sitzt an der Kante, die der Figur am nächsten ist (unten, oben, links oder rechts), und zeigt auf sie */
+  function zipfel(b, g, bl, bt, w, h){
+    const fx = g.s.x - bl, fy = g.s.y - bt, dx = fx - w / 2, dy = fy - h / 2, waag = Math.abs(dx) * h > Math.abs(dy) * w;
+    const seite = waag ? (dx > 0 ? "r" : "l") : (dy > 0 ? "u" : "o");
+    b.classList.add("z" + seite);
+    b.style.setProperty("--zp", Math.round(waag ? Math.max(14, Math.min(h - 14, fy)) : Math.max(16, Math.min(w - 16, fx))) + "px");
+  }
   function sag(g, txt, ms, muss){
     if(!muss && !redet) return;
     document.querySelectorAll(".runbub").forEach(x => x.remove());
@@ -1301,7 +1323,8 @@ fromHash(); render();
     txt = txt.replace(/%N/g, nn || "Spezi");
     const b = document.createElement("div"); b.className = "runbub"; b.textContent = txt; b.setAttribute("aria-hidden", "true"); document.body.appendChild(b);
     const d = dim(), rr = g.s.r * Math.PI / 180, cx = g.s.x + Math.sin(rr) * 44 * (g.s.z || 1), cy = g.s.y - Math.cos(rr) * 44 * (g.s.z || 1), w = b.offsetWidth, h = b.offsetHeight;
-    b.style.left = Math.max(4, Math.min(d.W - w - 4, cx - w / 2)) + "px"; b.style.top = Math.max(4, Math.min(d.H - h - 4, cy - h / 2)) + "px";
+    const bl = Math.max(4, Math.min(d.W - w - 4, cx - w / 2)), bt = Math.max(4, Math.min(d.H - h - 4, cy - h / 2));
+    b.style.left = bl + "px"; b.style.top = bt + "px"; zipfel(b, g, bl, bt, w, h);
     setTimeout(() => b.remove(), ms || 1600);
   }
   const spruch = (g, arr) => { if(R() < .65) sag(g, (arr || (R() < .35 ? pick(NAMEN) : pick(SAG)))); };
@@ -1658,7 +1681,7 @@ fromHash(); render();
     await gehe(g, z ? z.x : anteil(dir, d, rnd(.3, .55)), z ? z.y : undefined, .4);
     if(z) setze(g, {f: z.x > d.W / 2 ? -1 : 1});
     const geht = () => { if(hatName()) throw new Error("stop"); };   // Name ist da: sofort aufhören, gleich kommt das Lob
-    await anZiel(g, z); geht(); await stehen(g, 200); geht(); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600); geht();
+    await anZiel(g, z); geht(); await vorstellen(g); geht(); await anZiel(g, z); geht(); await stehen(g, 200); geht(); sag(g, q[0], 3600, true); await sprung(g, 28); await stehen(g, 3600); geht();
     await anZiel(g, z); geht(); nameNudge(); sag(g, q[1], 4000, true); await sprung(g, 24); await stehen(g, 2000); geht(); drehen(g); await stehen(g, 600); drehen(g); await sprung(g, 20); await stehen(g, 1800);
     await gehe(g, raus(dir, d), undefined, .3);
   }
@@ -1684,7 +1707,7 @@ fromHash(); render();
     try{ sessionStorage.setItem("fcb-gruss", "1"); }catch(e){}
     const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), w = pick(KURZWITZE);
     await gehe(g, anteil(dir, d, rnd(.3, .55)), undefined, .4);
-    await stehen(g, 200); sag(g, pick(GRUSS), 2400, true); await sprung(g, 26); await stehen(g, 2400);
+    await vorstellen(g); await stehen(g, 200); sag(g, pick(GRUSS), 2400, true); await sprung(g, 26); await stehen(g, 2400);
     sag(g, w, 4400, true); await stehen(g, 4400); await sprung(g, 22); await stehen(g, 300);
     sag(g, pick(TSCHUESS), 2800, true); await sprung(g, 30); await stehen(g, 1200); drehen(g); await stehen(g, 300); drehen(g); await stehen(g, 1000);
     await gehe(g, raus(dir, d), undefined, .35);
