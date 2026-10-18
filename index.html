@@ -340,6 +340,13 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 .nameq.nudge,.namebtn.nudge{animation:nudge .9s ease-in-out 4}
 @media print{.runner,.runbub,.runcoin,.runfass,.install-cta{display:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{.top,.sticky,.lang{display:none}}
+.theme.off{position:relative;opacity:.75}.theme.off::after{content:"";position:absolute;left:9px;right:9px;top:50%;height:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1.5px var(--red);transform:rotate(-45deg)}
+.certitem{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}.certrow{display:flex;gap:8px;align-items:stretch}.certrow .certbar{flex:1}.sharecert.sm{min-height:44px;padding:6px 14px;white-space:nowrap}
+.nextcol{display:flex;flex-direction:column;gap:10px;align-items:stretch;flex:1 1 100%;max-width:560px}.nextcol .btn{justify-content:center}
+.sharecert{gap:10px;display:inline-flex;align-items:center}.sharecert .shico{display:inline-flex;flex:none}.sharecert .shico svg{display:block}
+.sharecert.big{min-height:64px;padding:12px 28px;font-size:1.15rem;font-weight:800;line-height:1.25;text-align:center;box-shadow:0 5px 0 rgba(0,0,0,.22),0 12px 28px rgba(230,0,58,.38)}
+.sharecert.big:hover{transform:translateY(-1px)}
+.btn.mini{min-height:40px;padding:6px 16px;font-size:.92rem;font-weight:700;box-shadow:none;opacity:.92}
 </style>
 </head>
 <body>
@@ -350,6 +357,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
   <span class="pill" id="coins" aria-live="polite"></span>
   <div class="lang" role="group" id="langs"></div>
   <button type="button" class="theme" id="share" aria-label="Teilen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg></button>
+  <button type="button" class="theme" id="dinoBtn" aria-pressed="true">🥨</button>
   <button type="button" class="theme" id="theme" aria-label="Hell/Dunkel">◐</button>
 </div></header>
 <main id="main" tabindex="-1"></main>
@@ -357,7 +365,7 @@ h2.secrow .cnt{font-size:.9rem;color:var(--mute);font-weight:700}
 <div id="live" class="sr" aria-live="polite"></div>
 <script>
 "use strict";
-const VERSION = "1.10.0", STAND = "18.10.2026";
+const VERSION = "1.11.0", STAND = "18.10.2026";
 const LANGS = [["de","DE","Deutsch"],["en","EN","English"],["bar","BAR","Boarisch"]];
 const KEY = "fcb_stammtisch_v1";
 let li = 0, prog = {}, nm = "", ach = {}, view = {v:"home"};
@@ -397,6 +405,14 @@ const S = {
  shCopied:["Link kopiert","Link copied","Link kopiert"],
  shFail:["Kopieren nicht möglich. Link bitte markieren und kopieren.","Could not copy. Please select and copy the link.","Kopiern geht ned. Link bitte markiern und kopiern."],
  shMsg:["Probier mal das Stammtisch-Quiz rund um den FC Bayern: ein kostenloses Quiz-Lernspiel. Läuft im Browser, ohne Anmeldung.","Try the Stammtisch Quiz about FC Bayern: a free quiz game. Runs in your browser, no sign-up.","Probier moi des Stammtisch-Quiz um 'n FC Bayern: a kostnloses Quiz-Spui. Laft im Browser, ohne Anmeidung."],
+ shCert:["Zertifikat den Freunden zeigen (Angeben ist Ehrensache)","Show friends your certificate (bragging is tradition)","Zertifikat de Freind zoang (Angebn is Ehrnsach)"],
+ shShort:["Teilen","Share","Teiln"],
+ shCertSubj:["Mein FC-Bayern-Zertifikat (inoffizielles Fan-Quiz)","My FC Bayern certificate (unofficial fan quiz)","Mei FC-Bayern-Zertifikat (inoffiziells Fan-Quiz)"],
+ shCertNoImg:["Tipp: Dein Gerät teilt hier nur den Text mit Link. Speichere das Zertifikat als Bild und hänge es an.","Tip: your device only shares the text with the link here. Save the certificate as an image and attach it.","Tipp: Dei Gerät teit do nur den Text mit Link. Speicher as Zertifikat ois Bild und häng as o."],
+ dinoHide:["Seppl ausblenden","Hide Seppl","Seppl ausblenda"],
+ dinoShow:["Seppl einblenden","Show Seppl","Seppl einblenda"],
+ dinoGone:["Seppl bleibt jetzt weg. Du kannst ihn oben mit dem Seppl-Symbol wieder einblenden.","Seppl will stay away now. You can bring him back with the Seppl icon at the top.","Da Seppl bleibt jetz weg. Du kannst eam obn mit'm Seppl-Symbol wieda einblenda."],
+ dinoBack:["Seppl ist wieder da!","Seppl is back!","Da Seppl is wieda do!"],
  shSubj:["Stammtisch-Quiz: kostenloses Quiz","Stammtisch Quiz: free quiz","Stammtisch-Quiz: kostenloses Quiz"],
  helloN:["Servus {n}! Was weißt du über den FC Bayern?","Hey {n}! How much do you know about FC Bayern?","Servus {n}! Wos woasst du iwa den FC Bayern?"],
  greetN:["Schön, dich am Stammtisch zu sehen, {n}. Das erste Bier gibt's nach dem Quiz.","Great to see you at the Stammtisch, {n}. The first beer comes after the quiz.","Schee, di am Stammtisch zum seng, {n}. Des erste Bier gibt's nach'm Quiz."],
@@ -803,7 +819,7 @@ h("div", {class:"stats", role:"list"},
       h("h3", {text:l.t[li]}), h("p", {text:l.sub[li]}),
       h("span", {class:"foot"}, h("span", {text:"⏱ " + l.min + " " + t("min")}), p ? starRow(s) : h("span", {text:t("start") + " →"})));
     const cell = h("div", {class:"lcell"}, b);
-    if(s >= 1) cell.append(h("button", {type:"button", class:"certbar", "aria-label":t("certView") + ": " + l.t[li], onclick:() => go("cert", l.id)}, "🏅 " + t("certView")));
+    if(s >= 1) cell.append(h("div", {class:"certrow"}, h("button", {type:"button", class:"certbar", "aria-label":t("certView") + ": " + l.t[li], onclick:() => go("cert", l.id)}, "🏅 " + t("certView")), certShareButton(l, true)));
     g.append(cell);
   });
   m.append(g);
@@ -951,13 +967,61 @@ function renderResult(l){
     h("h1", {id:"h1", text:hasName() ? fill(t(pass ? "passN" : "tryN")) : (pass ? t("pass") : t("tryAgain"))}),
     h("p", {text:t("res") + ": " + view.right + " " + t("of") + " " + n + " · " + view.right*10 + " " + t("coins")})));
   if(pass){ m.append(h("p", {class:"pitch", style:"margin:0 0 6px", text:"🏅 " + t("certNow")})); certBlock(m, l); }
-  const save1 = () => savePng(certSVG(l), "fcb_stammtisch_" + l.id + "_" + (nm.trim() || "name").replace(/[^\p{L}\p{N}]+/gu, "_") + ".png");
-  const bNext = nxt && pass ? h("button", {type:"button", class:"btn", onclick:() => go("lesson", nxt.id)}, t("nextL") + " →") : null;
-  const bSave = pass ? h("button", {type:"button", class:"btn" + (bNext ? " ghost" : ""), onclick:save1}, "⬇ " + t("dl")) : null;
-  const bRetry = h("button", {type:"button", class:"btn" + (pass ? " ghost" : ""), onclick:() => startQuiz(l)}, "↺ " + t("retry"));
-  const bHome = h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, t("over"));
-  m.append(h("div", {class:"row"}, bNext, bSave, bRetry, bHome));  m.append(nLink());
+  const save1 = () => savePng(certSVG(l), certFileName(l));
+  const bNext = nxt && pass ? h("button", {type:"button", class:"btn ghost", onclick:() => go("lesson", nxt.id)}, t("nextL") + " →") : null;
+  const bShare = pass ? certShareButton(l) : null;
+  const bSave = pass ? h("button", {type:"button", class:"btn ghost mini", onclick:save1}, "⬇ " + t("dl")) : null;
+  const bRetry = h("button", {type:"button", class:"btn" + (pass ? " ghost mini" : ""), onclick:() => startQuiz(l)}, "↺ " + t("retry"));
+  const bHome = h("button", {type:"button", class:"btn ghost mini", onclick:() => go("home")}, t("over"));   // Teilen ist der auffälligste Knopf und steht ganz oben, darunter "Nächster Spieltag"; Speichern und Drucken sind klein
+  m.append(h("div", {class:"row", style:"align-items:flex-start"}, bShare ? h("div", {class:"nextcol"}, bShare, bNext) : null, bSave, bRetry, bHome));  m.append(nLink());
   if(pass) confetti();
+}
+/* ---------- Zertifikat teilen: Text je nach Spieltag, mit Link zur App ---------- */
+/* Platzhalter: {r} richtige Antworten, {n} Fragen. Der Link zur App wird beim Teilen angehängt. */
+const SHT = {
+ gruendung:["Blitzstart im FC-Bayern-Fanquiz geschafft: {r} von {n} richtig. 1900 im Weinhaus gegründet, erster Stammtisch inklusive. Und du? Spiel mit:","Quick start in the FC Bayern fan quiz done: {r} of {n} correct. Founded in 1900 in a wine house, first Stammtisch included. And you? Play along:","Blitzstart im FC-Bayern-Fanquiz gschafft: {r} vo {n} richtig. 1900 im Weinhaus gründt, erschta Stammtisch inklusive. Und du? Spui mit:"],
+ meister:["Spieltag „Die Meistermaschine“ gewonnen: {r} von {n} richtig. Elf Titel in Folge, und die Vitrine ist trotzdem noch nicht zu. Wie viele kennst du? Spiel mit:","Matchday “The title machine” won: {r} of {n} correct. Eleven titles in a row, and the trophy cabinet still is not full. How many do you know? Play along:","Spuitag „De Meistamaschin“ gwunna: {r} vo {n} richtig. Elf Titl hintanand, und de Vitrin is trotzdem no ned zua. Wia vui kennst du? Spui mit:"],
+ legenden:["Legenden-Spieltag bestanden: {r} von {n} richtig. Beckenbauer, Müller, Kahn und Neuer habe ich im Kopf. Wie gut kennst du die Bayern-Legenden? Spiel mit:","Legends matchday passed: {r} of {n} correct. Beckenbauer, Müller, Kahn and Neuer are all in my head. How well do you know the Bayern legends? Play along:","Legendn-Spuitag bstandn: {r} vo {n} richtig. Beckenbauer, Müller, Kahn und Neuer hob i im Kopf. Wia guad kennst du de Bayern-Legendn? Spui mit:"],
+ europa:["Europa-Spieltag geschafft: {r} von {n} richtig. Sechs Europapokal-Titel und ein Finale dahoam, bei den Elfmetern bin ich im Quiz besser. Spiel mit:","Europe matchday done: {r} of {n} correct. Six European titles and a final at home, and in the quiz my penalties go in. Play along:","Europa-Spuitag gschafft: {r} vo {n} richtig. Sechs Europapokal-Titl und a Finale dahoam, bei de Elfmeter bin i im Quiz bessa. Spui mit:"],
+ arena:["Zahlen-Spieltag gewonnen: {r} von {n} richtig. Allianz Arena, mehr als 432.500 Mitglieder, 4.425 Fanclubs: alles im Kopf. Schaffst du das auch? Spiel mit:","Numbers matchday won: {r} of {n} correct. Allianz Arena, more than 432,500 members, 4,425 fan clubs: all in my head. Can you do it too? Play along:","Zahln-Spuitag gwunna: {r} vo {n} richtig. Allianz Arena, mehr ois 432.500 Mitglieda, 4.425 Fanclubs: olles im Kopf. Schaffst as du aa? Spui mit:"],
+ spitznamen:["Spieltag „Spitznamen & Triple“ bestanden: {r} von {n} richtig. Stern des Südens, FC Hollywood, zwei Trebles: ich kenne sie alle. Und du? Spiel mit:","Matchday “Nicknames & treble” passed: {r} of {n} correct. Star of the South, FC Hollywood, two trebles: I know them all. And you? Play along:","Spuitag „Spitznam & Triple“ bstandn: {r} vo {n} richtig. Stern vom Süden, FC Hollywood, zwoa Trebles: i kenn s’ olle. Und du? Spui mit:"],
+ boss:["Bossrunde bezwungen: {r} von {n} richtig. Elfmeterschießen im Fanquiz, und der Schuss sitzt! Traust du dir das auch zu? Spiel mit:","Boss round beaten: {r} of {n} correct. Penalty shoot-out in the fan quiz, and the shot went in! Do you fancy your chances too? Play along:","Bossrundn bezwungan: {r} vo {n} richtig. Elfmeterschiaßn im Fanquiz, und da Schuss sitzt! Traust as dir aa zua? Spui mit:"],
+ master:["Alle sieben Spieltage im FC-Bayern-Fanquiz gemeistert: Das Meisterschalen-Zertifikat gehört mir! Wer fordert mich heraus? Spiel mit:","All seven matchdays in the FC Bayern fan quiz mastered: the championship trophy certificate is mine! Who dares to challenge me? Play along:","Olle sieme Spuitag im FC-Bayern-Fanquiz gmoastert: Des Meistaschaln-Zertifikat ghört mir! Wer fordert mi raus? Spui mit:"]
+};
+const certShareText = l => {   // Text hängt vom Zertifikat ab: Meister-Zertifikat oder Spieltag (nur direkt nach dem letzten Quiz zählt das Meister-Zertifikat)
+  const k = !l || (view.v === "result" && allEarned()) ? "master" : l.id, tx = (SHT[k] || SHT.master)[li], p = (l && prog[l.id]) || {};
+  return tx.replace(/\{r\}/g, p.best != null ? p.best : (view.right || 0)).replace(/\{n\}/g, l ? l.q.length : LESSONS.length);
+};
+const certFileName = l => "fcb_stammtisch_" + (l ? l.id : "master") + "_" + (nm.trim() || "name").replace(/[^\p{L}\p{N}]+/gu, "_") + ".png";
+function certPngBlob(svg){
+  return new Promise((ok, fail) => {
+    const url = URL.createObjectURL(new Blob([svg], {type:"image/svg+xml;charset=utf-8"})), img = new Image();
+    img.onload = () => { const c = document.createElement("canvas"); c.width = 1123; c.height = 794; const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, 1123, 794); x.drawImage(img, 0, 0); URL.revokeObjectURL(url); c.toBlob(b => b ? ok(b) : fail(new Error("png")), "image/png"); };
+    img.onerror = () => { URL.revokeObjectURL(url); fail(new Error("svg")); };
+    img.src = url;
+  });
+}
+/* Teilen: erst Bild + Text über das Teilen-Menü des Geräts, sonst nur Text mit Link, sonst Fenster mit WhatsApp, E-Mail und Link kopieren */
+/* Teilen-Symbol: dasselbe wie oben in der Kopfzeile (drei verbundene Punkte) */
+const shareIcon = size => { const s = document.createElement("span"); s.className = "shico"; s.setAttribute("aria-hidden", "true"); s.innerHTML = '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" focusable="false" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>'; return s; };
+function certShareButton(l, compact){
+  let pre = null, preLang = -1;   // Bild schon beim Anzeigen vorbereiten, damit der Klick sofort teilen kann (Safari verlangt das); gilt nur für die aktuell eingestellte Sprache
+  const prep = () => { if(pre && preLang === li) return pre; preLang = li; return (pre = certPngBlob(certSVG(l)).then(b => new File([b], certFileName(l), {type:"image/png"}))); };
+  if(!compact) prep().catch(() => { pre = null; });
+  const btn = h("button", {type:"button", class:"btn sharecert" + (compact ? " sm" : " big"), "aria-label":t("shCert"), title:t("shCert"), onclick:async () => {
+    const text = certShareText(l), full = text + "\n\n" + SHARE_URL, title = t("shCertSubj");
+    if(navigator.share){
+      try{ const f = await prep(); if(navigator.canShare && navigator.canShare({files:[f]})){ await navigator.share({files:[f], title, text:full}); return; } }catch(e){ if(e && e.name === "AbortError") return; }
+      try{ await navigator.share({title, text, url:SHARE_URL}); snack(t("shCertNoImg"), null, null, 6000); return; }catch(e){ if(e && e.name === "AbortError") return; }
+    }
+    document.querySelectorAll(".shdlg").forEach(d => d.remove());
+    const d = h("dialog", {class:"shdlg", "aria-labelledby":"sht"}), x = h("button", {type:"button", class:"shx", "aria-label":t("shX"), onclick:() => d.close()}, "✕");
+    d.append(x, shareCard(text, title), h("p", {class:"small", style:"margin:10px 0 0;color:var(--mute)", text:t("shCertNoImg")}));
+    d.addEventListener("close", () => d.remove()); d.addEventListener("click", e => { if(e.target === d) d.close(); });
+    document.body.append(d); d.showModal();
+  }}, shareIcon(compact ? 20 : 28), h("span", {class:"shl", text:t(compact ? "shShort" : "shCert")}));
+  if(compact){ const warm = () => { prep().catch(() => { pre = null; }); }; btn.addEventListener("pointerdown", warm); btn.addEventListener("focus", warm); }
+  return btn;
 }
 const NHIST = "https://de.wikipedia.org/wiki/FC_Bayern_M%C3%BCnchen", NCORP = "https://en.wikipedia.org/wiki/FC_Bayern_Munich";
 function fcbLinks(){
@@ -974,12 +1038,14 @@ function certBlock(m, l){
 }
 /* ---------- Zertifikate ---------- */
 const CT = {
- head:["STAMMTISCH-ZERTIFIKAT","STAMMTISCH CERTIFICATE","STAMMTISCH-ZERTIFIKAT"],
+ head:["STAMMTISCH-ZERTIFIKAT","STAMMTISCH CERTIFICATE","STAMMTISCH-ZEATIFIKAT"],
  headM:["MEISTERSCHALEN-ZERTIFIKAT","CHAMPIONSHIP TROPHY CERTIFICATE","MEISTASCHALN-ZERTIFIKAT"],
  conf:["Hiermit wird feierlich und mit Bierdeckel-Stempel bestätigt, dass","It is hereby solemnly and with a beer-mat stamp confirmed that","Hiermit wird feierlich und mit Bierdeckl-Stempe bstätigt, dass"],
  did:["den Spieltag gewonnen hat:","has won the matchday:","an Spuitag gwunna hod:"],
  didM:["alle sieben Spieltage gewonnen hat und damit Stammtisch-Wissen auf Profi-Niveau besitzt.","has won all seven matchdays and now holds pro-level Stammtisch knowledge.","olle sieme Spuitag gwunna hod und damit Stammtisch-Wissn af Profi-Niveau hod."],
  score:["richtig","correct","richtig"],
+ qHead:["Das habe ich gewusst:","What I knew:","Des hob i gwusst:"],
+ qHeadM:["Alle sieben Spieltage gemeistert:","All seven matchdays mastered:","Olle sieme Spuitag gmoastert:"],
  lines:[["Geschafft! Jede Vereinslegende hat mal auf der Bank angefangen.","Done! Every club legend started out on the bench.","Gschafft! Jede Vereinslegende hod moi af da Bank ogfanga."],
         ["Stark! Der nächste Spieltag wartet schon auf dich.","Strong! The next matchday is already waiting for you.","Stark! Da nächste Spuitag wart scho af di."],
         ["Perfekt! Ein Tor wie in der 90. Minute.","Perfect! A goal like in the 90th minute.","Perfekt! A Tor wia in da 90. Minutn."]],
@@ -1001,6 +1067,45 @@ function wrap(s, n){
 }
 const earned = l => starsOf(prog[l.id], l.q.length) >= 1;
 const allEarned = () => LESSONS.every(earned);
+/* ---------- Urkunde: Infos aus dem Quiz (Fragen und richtige Antworten) als Tabelle im Kasten ---------- */
+/* Zu lange Texte: erst kleinere Schrift (15 bis 11 px, bis zu 2 Zeilen je Eintrag), dann nur 1 Zeile mit "…" */
+function wrapN(s, max, maxLines){
+  const w = String(s).split(/\s+/), out = []; let cur = "";
+  w.forEach(x => { if(cur && (cur + " " + x).length > max){ out.push(cur); cur = x; } else cur = cur ? cur + " " + x : x; });
+  if(cur) out.push(cur);
+  if(out.length > maxLines){ const keep = out.slice(0, maxLines); let last = keep[maxLines - 1]; if(last.length > max - 1) last = last.slice(0, max - 1); keep[maxLines - 1] = last.replace(/[\s,.;:]+$/, "") + "…"; return keep; }
+  return out;
+}
+function certQLayout(l){
+  const items = l ? l.q.map(x => [x.q[li], x.a[0][li]]) : LESSONS.map((x, i) => [(i + 1) + ". " + x.t[li], ""]);
+  const QW = 540, AW = 290, BUDGET = 136;
+  for(const [maxLines, sizes] of [[2, [15, 14, 13, 12, 11]], [1, [12, 11]]]){
+    for(const f of sizes){
+      const lh = Math.round(f * 1.28), rows = items.map(([q, a]) => { const ql = wrapN(q, Math.floor(QW / (f * .53)), maxLines), al = a ? wrapN(a, Math.floor(AW / (f * .56)), maxLines) : []; return {q: ql, a: al, h: Math.max(ql.length, al.length) * lh + 6}; });
+      const total = rows.reduce((s, r) => s + r.h, 0);
+      if(total <= BUDGET || (maxLines === 1 && f === 11)) return {f, lh, rows, total};
+    }
+  }
+}
+function certQBlock(l, F){
+  const M = !l, items = certQLayout(l);
+  if(M){   // Meister-Zertifikat: die sieben Spieltage in zwei Spalten
+    const col = i => LESSONS.slice(i * 4, i * 4 + 4).map((x, k) => { const s = (i * 4 + k + 1) + ". " + x.t[li], r = wrapN(s, 44, 1)[0]; return '<text x="' + (i ? 596 : 150) + '" y="' + (556 + k * 21) + '" font-size="14.5" fill="#2c2f36" ' + F + '><tspan fill="#1b7a3d" font-weight="800">✓ </tspan>' + esc(r) + '</text>'; }).join("");
+    return '<rect x="110" y="502" width="903" height="116" rx="14" fill="#fef0f3" stroke="#fad1dc" stroke-width="2"/>'
+      + '<text x="561.5" y="526" text-anchor="middle" font-size="14" font-weight="800" letter-spacing="3" fill="#2a4bd7" ' + F + '>' + esc(CT.qHeadM[li].toUpperCase()) + '</text>' + col(0) + col(1);
+  }
+  const {f, lh, rows, total} = items, top = 460, hdr = 32, H = hdr + total + 10;
+  let y = top + hdr + 2, out = '<rect x="110" y="' + top + '" width="903" height="' + H + '" rx="14" fill="#fef0f3" stroke="#fad1dc" stroke-width="2"/>'
+    + '<text x="561.5" y="' + (top + 23) + '" text-anchor="middle" font-size="14" font-weight="800" letter-spacing="3" fill="#2a4bd7" ' + F + '>' + esc(CT.qHead[li].toUpperCase()) + '</text>'
+    + '<line x1="134" y1="' + (top + hdr - 4) + '" x2="989" y2="' + (top + hdr - 4) + '" stroke="#fad1dc" stroke-width="1.5"/>';
+  rows.forEach((r, i) => {
+    out += '<text x="138" y="' + (y + f) + '" font-size="' + f + '" font-weight="800" fill="#1b7a3d" ' + F + '>✓</text>'
+      + r.q.map((s, k) => '<text x="162" y="' + (y + f + k * lh) + '" font-size="' + f + '" fill="#2c2f36" ' + F + '>' + esc(s) + '</text>').join("")
+      + r.a.map((s, k) => '<text x="700" y="' + (y + f + k * lh) + '" font-size="' + f + '" font-weight="700" fill="#e6003a" ' + F + '>' + (k === 0 ? '→ ' : '  ') + esc(s) + '</text>').join("");
+    y += r.h; if(i < rows.length - 1) out += '<line x1="162" y1="' + (y - 3) + '" x2="989" y2="' + (y - 3) + '" stroke="#fce6eb" stroke-width="1"/>';
+  });
+  return out;
+}
 function certSVG(l){
   const M = !l, g = k => CT[k][li], n = nm.trim();
   const T = totals(), st = M ? T.st : starsOf(prog[l.id], l.q.length), right = M ? 0 : prog[l.id].best;
@@ -1008,8 +1113,10 @@ function certSVG(l){
   const F = 'font-family="Trebuchet MS, Segoe UI, Hiragino Maru Gothic ProN, Yu Gothic UI, Meiryo, sans-serif"';
   const ew = [...n].reduce((s, c) => s + (/[WMm@]/.test(c) ? 1.05 : /\s/.test(c) ? .3 : /[\u3000-\u9fff\uff00-\uffef]/.test(c) ? 1.25 : /[A-ZÄÖÜ]/.test(c) ? .74 : /[ilj.,'!|]/.test(c) ? .3 : .58), 0);
   const nsz = n ? Math.max(16, Math.min(64, Math.floor(860 / Math.max(6, ew)))) : 34;
-  const ja = LANGS[li][0] === "ja", tl = M ? wrap(g("didM"), ja ? 30 : 52) : wrap(l.t[li], ja ? 22 : 38);
-  const stars = [0,1,2].map(k => '<text x="' + (561.5 + (k-1)*70) + '" y="' + (M ? 575 : 585) + '" font-size="58" text-anchor="middle" fill="' + (M || k < st ? "#ffc800" : "#d9d9de") + '" stroke="' + (M || k < st ? "#b58900" : "#b8b9bd") + '" stroke-width="2">★</text>').join("");
+  const ja = LANGS[li][0] === "ja", tl = M ? wrap(g("didM"), ja ? 30 : 52) : [l.t[li]], tsz = M ? 26 : Math.max(20, Math.min(34, Math.floor(860 / Math.max(1, l.t[li].length * .6))));
+  const qB = certQBlock(M ? null : l, F), o = M ? 0 : -14;
+  const footTxt = g("foot") + " · v" + VERSION, footSz = Math.max(11, Math.min(15, Math.floor(860 / (footTxt.length * .53))));
+  const stars = [0,1,2].map(k => '<text x="' + (561.5 + (k-1)*70) + '" y="' + (M ? 490 : 440) + '" font-size="' + (M ? 58 : 54) + '" text-anchor="middle" fill="' + (M || k < st ? "#ffc800" : "#d9d9de") + '" stroke="' + (M || k < st ? "#b58900" : "#b8b9bd") + '" stroke-width="2">★</text>').join("");
   const band = ["#e6003a","#2a4bd7","#ffc800","#1b7a3d","#6b3fa0"].map((c, i) => '<rect x="' + (60 + i*200.6) + '" y="36" width="200.6" height="16" fill="' + c + '"/>').join("");
   const conf = [[110,150,"#2a4bd7"],[1010,170,"#ffc800"],[130,640,"#1b7a3d"],[1000,650,"#6b3fa0"],[90,330,"#ffc800"],[1030,360,"#e6003a"],[160,230,"#e6003a"],[960,250,"#1b7a3d"]].map(a => '<rect x="' + a[0] + '" y="' + a[1] + '" width="16" height="16" rx="3" transform="rotate(' + (a[0]%40-20) + ' ' + a[0] + ' ' + a[1] + ')" fill="' + a[2] + '"/>').join("");
   const head = M ? g("headM") : g("head");
@@ -1020,25 +1127,27 @@ function certSVG(l){
   return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1123 794" width="1123" height="794" role="img" aria-label="' + esc(head + (n ? " – " + n : "") + (M ? "" : " – " + l.t[li])) + '">'
    + '<rect width="1123" height="794" rx="28" fill="#ffffff"/>'
    + '<rect x="14" y="14" width="1095" height="766" rx="22" fill="none" stroke="#e6003a" stroke-width="10"/>'
+   + '<rect x="25" y="25" width="1073" height="744" rx="17" fill="none" stroke="#ffc800" stroke-width="2.5"/>'
    + '<rect x="34" y="34" width="1055" height="726" rx="14" fill="none" stroke="#e1e2e5" stroke-width="2" stroke-dasharray="10 8"/>'
    + band + conf
-   + '<text x="561.5" y="140" text-anchor="middle" font-size="' + hs + '" font-weight="800" letter-spacing="4" fill="#e6003a" ' + F + '>' + esc(head) + '</text>'
-   + '<text x="561.5" y="172" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="4" fill="#2a4bd7" ' + F + '>STAMMTISCH-QUIZ</text>'
-   + '<text x="561.5" y="203" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("conf")) + '</text>'
-   + '<text x="561.5" y="270" text-anchor="middle" font-size="' + nsz + '" font-weight="800" fill="' + (n ? "#1f2026" : "#b8b9bd") + '" ' + F + '>' + esc(n || t("nameP")) + '</text>'
-   + '<line x1="250" y1="290" x2="873" y2="290" stroke="#e6003a" stroke-width="4" stroke-linecap="round"/>'
-   + (M ? '' : '<text x="561.5" y="338" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("did")) + '</text>')
-   + tl.map((x, i) => '<text x="561.5" y="' + ((M ? 350 : 392) + i*40) + '" text-anchor="middle" font-size="' + (M ? 26 : 34) + '" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(x) + '</text>').join("")
-   + (M ? '<text x="561.5" y="440" text-anchor="middle" font-size="26" font-weight="800" fill="#1b7a3d" ' + F + '>' + esc(t("certMasterBadge")) + '</text>' : '<text x="561.5" y="' + (392 + (tl.length-1)*40 + 50) + '" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2026" ' + F + '>' + esc(right + " / " + l.q.length + " " + g("score")) + '</text>')
-   + stars
-   + '<text x="561.5" y="640" text-anchor="middle" font-size="' + lsz + '" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
-   + '<text x="110" y="712" font-size="15" fill="#565860" ' + F + '>' + esc(g("date") + ": " + d) + '</text>'
-   + '<text x="110" y="736" font-size="15" fill="#565860" ' + F + '>' + esc(g("rankL") + ": " + rank) + '</text>'
-   + '<circle cx="561.5" cy="695" r="38" fill="#ffffff" stroke="#e6003a" stroke-width="5"/><g transform="translate(535.5 677) scale(3.25)">' + logoRects() + '</g>'
-   + '<text x="1013" y="712" text-anchor="end" font-size="16" font-style="italic" fill="#1f2026" ' + F + '>' + esc(g("sign")) + '</text>'
-   + '<line x1="760" y1="720" x2="1013" y2="720" stroke="#1f2026" stroke-width="1.5"/>'
-   + '<text x="561.5" y="759" text-anchor="middle" font-size="16" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(NURL[li][1]) + '</text>'
-   + '<text x="561.5" y="778" text-anchor="middle" font-size="12" fill="#6b6d73" ' + F + '>' + esc(g("foot") + " · v" + VERSION) + '</text>'
+   + '<text x="561.5" y="' + (140 + o) + '" text-anchor="middle" font-size="' + hs + '" font-weight="800" letter-spacing="4" fill="#e6003a" ' + F + '>' + esc(head) + '</text>'
+   + '<text x="561.5" y="' + (172 + o) + '" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="4" fill="#2a4bd7" ' + F + '>STAMMTISCH-QUIZ</text>'
+   + '<text x="561.5" y="' + (203 + o) + '" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("conf")) + '</text>'
+   + '<text x="561.5" y="' + (270 + o) + '" text-anchor="middle" font-size="' + nsz + '" font-weight="800" fill="' + (n ? "#1f2026" : "#b8b9bd") + '" ' + F + '>' + esc(n || t("nameP")) + '</text>'
+   + '<line x1="250" y1="' + (290 + o) + '" x2="873" y2="' + (290 + o) + '" stroke="#e6003a" stroke-width="4" stroke-linecap="round"/>'
+   + (M ? '' : '<text x="561.5" y="' + (332 + o) + '" text-anchor="middle" font-size="22" fill="#4d4f54" ' + F + '>' + esc(g("did")) + '</text>')
+   + tl.map((x, i) => '<text x="561.5" y="' + ((M ? 350 : 376 + o) + i*40) + '" text-anchor="middle" font-size="' + tsz + '" font-weight="700" fill="#2a4bd7" ' + F + '>' + esc(x) + '</text>').join("")
+   + (M ? '<text x="561.5" y="440" text-anchor="middle" font-size="26" font-weight="800" fill="#1b7a3d" ' + F + '>' + esc(t("certMasterBadge")) + '</text>' : '<text x="561.5" y="' + (418 + o) + '" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2026" ' + F + '>' + esc(right + " / " + l.q.length + " " + g("score")) + '</text>')
+   + stars + qB
+   + '<text x="561.5" y="646" text-anchor="middle" font-size="' + lsz + '" font-style="italic" fill="#4d4f54" ' + F + '>' + esc(line) + '</text>'
+   + '<text x="110" y="700" font-size="15" fill="#565860" ' + F + '>' + esc(g("date") + ": " + d) + '</text>'
+   + '<text x="110" y="722" font-size="15" fill="#565860" ' + F + '>' + esc(g("rankL") + ": " + rank) + '</text>'
+   + '<circle cx="561.5" cy="686" r="30" fill="#ffffff" stroke="#e6003a" stroke-width="4.5"/><g transform="translate(541.5 672.2) scale(2.5)">' + logoRects() + '</g>'
+   + '<text x="1013" y="696" text-anchor="end" font-size="16" font-style="italic" fill="#1f2026" ' + F + '>' + esc(g("sign")) + '</text>'
+   + '<line x1="760" y1="704" x2="1013" y2="704" stroke="#1f2026" stroke-width="1.5"/>'
+   + '<text x="561.5" y="734" text-anchor="middle" font-size="17" font-weight="800" fill="#2a4bd7" ' + F + '>' + esc(NURL[li][1]) + '</text>'
+   + '<line x1="110" y1="740" x2="1013" y2="740" stroke="#d6e4f5" stroke-width="1.5"/>'
+   + '<text x="561.5" y="754" text-anchor="middle" font-size="' + footSz + '" font-weight="600" fill="#2c2f36" ' + F + '>' + esc(footTxt) + '</text>'
    + '</svg>';
 }
 function renderCert(l){
@@ -1048,12 +1157,13 @@ function renderCert(l){
   m.append(h("h1", {id:"h1", text:"🏅 " + (M ? t("master") : t("certOf") + ": " + l.t[li])}));
   const box = null; certBlock(m, l);
   const nameSafe = (nm.trim() || "name").replace(/[^\p{L}\p{N}]+/gu, "_");
-  m.append(h("div", {class:"row"},
-    h("button", {type:"button", class:"btn", onclick:() => savePng(certSVG(l), "fcb_stammtisch_" + (M ? "master" : l.id) + "_" + nameSafe + ".png")}, "⬇ " + t("dl")),
-    h("button", {type:"button", class:"btn ghost", onclick:() => window.print()}, "🖨 " + t("prt")),
-    (!M && LESSONS[idxOf(l.id) + 1]) ? h("button", {type:"button", class:"btn ghost", onclick:() => go("lesson", LESSONS[idxOf(l.id) + 1].id)}, t("nextL") + " →") : null,
-    h("button", {type:"button", class:"btn ghost", onclick:toCerts}, "🏅 " + t("certAll")),
-    h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, t("over"))));
+  const nxtL = !M && LESSONS[idxOf(l.id) + 1], bShare = certShareButton(l), bNextL = nxtL ? h("button", {type:"button", class:"btn ghost", onclick:() => go("lesson", nxtL.id)}, t("nextL") + " →") : null;
+  m.append(h("div", {class:"row", style:"align-items:flex-start"},
+    h("div", {class:"nextcol"}, bShare, bNextL),
+    h("button", {type:"button", class:"btn ghost mini", onclick:() => savePng(certSVG(l), "fcb_stammtisch_" + (M ? "master" : l.id) + "_" + nameSafe + ".png")}, "⬇ " + t("dl")),
+    h("button", {type:"button", class:"btn ghost mini", onclick:() => window.print()}, "🖨 " + t("prt")),
+    h("button", {type:"button", class:"btn ghost mini", onclick:toCerts}, "🏅 " + t("certAll")),
+    h("button", {type:"button", class:"btn ghost mini", onclick:() => go("home")}, t("over"))));
   m.append(nLink());
   if(!matchMedia("(prefers-reduced-motion: reduce)").matches) confetti();
 }
@@ -1066,8 +1176,8 @@ function certList(){
   const got = LESSONS.filter(earned); const w = h("section", {"aria-labelledby":"ch"}); 
   w.append(h("h2", {class:"sec", id:"ch", text:"🏅 " + t("certs")}), h("p", {style:"margin:0 0 12px;color:var(--mute)", text:t("certsHint")}));
   const g = h("div", {class:"certlist"});
-  if(allEarned()) g.append(h("button", {type:"button", class:"btn mastercard", onclick:() => go("cert", "master")}, "👑 " + t("master")));
-  got.forEach(l => g.append(h("button", {type:"button", class:"btn ghost", onclick:() => go("cert", l.id)}, l.ico + " " + l.t[li])));
+  if(allEarned()) g.append(h("div", {class:"certitem"}, h("button", {type:"button", class:"btn mastercard", onclick:() => go("cert", "master")}, "👑 " + t("master")), certShareButton(null, true)));
+  got.forEach(l => g.append(h("div", {class:"certitem"}, h("button", {type:"button", class:"btn ghost", onclick:() => go("cert", l.id)}, l.ico + " " + l.t[li]), certShareButton(l, true))));
   w.append(g); return got.length ? w : h("section");
 }/* ---------- Routing ---------- */
 function go(v, id){ view = {v, id}; location.hash = v === "home" ? "home" : v + "-" + id; render(); }
@@ -1091,7 +1201,7 @@ function chrome(){
   document.documentElement.lang = LANGS[li][0];
   document.title = t("title");
   $(".brand .dot").innerHTML = logoSvg(); $("#bt").textContent = t("title"); $("#bs").textContent = t("by"); $("#brand").setAttribute("aria-label", t("title") + " – " + t("over"));
-  $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL")); $("#share").setAttribute("aria-label", t("shT")); $("#share").setAttribute("title", t("shT"));
+  $("#skip").textContent = t("skip"); $("#theme").setAttribute("aria-label", t("themeL")); $("#theme").setAttribute("title", t("themeL")); dinoBtnUpdate(); $("#share").setAttribute("aria-label", t("shT")); $("#share").setAttribute("title", t("shT"));
   const T = totals(); $("#coins").textContent = "⚽ " + T.co;
   const lg = $("#langs"); lg.replaceChildren(); LANGS.forEach((x, i) => lg.append(h("button", {type:"button", lang:x[0], "aria-pressed": String(i === li), "aria-label":x[2], onclick:() => { li = i; save(); render(true); }}, x[1])));
   const sl = view.id ? LESSONS[idxOf(view.id)] : null;
@@ -1107,6 +1217,8 @@ $("#brand").onclick = () => {
   if(view.v === "home"){ const rm = matchMedia("(prefers-reduced-motion: reduce)").matches; window.scrollTo({top:0, behavior: rm ? "auto" : "smooth"}); $("#main").focus({preventScroll:true}); }
   else go("home");
 };
+function dinoBtnUpdate(){ const b = $("#dinoBtn"), an = !ach.noDino, l = t(an ? "dinoHide" : "dinoShow"); b.classList.toggle("off", !an); b.setAttribute("aria-pressed", String(an)); b.setAttribute("aria-label", l); b.setAttribute("title", l); }
+$("#dinoBtn").onclick = () => { ach.noDino = !ach.noDino; save(); dinoBtnUpdate(); snack(t(ach.noDino ? "dinoGone" : "dinoBack"), null, null, ach.noDino ? 5000 : 2500); };
 $("#share").onclick = openShare;
 $("#theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; };
 window.addEventListener("hashchange", () => { fromHash(); render(); });
@@ -1141,12 +1253,12 @@ function openShare(){
   d.append(x, shareCard()); d.addEventListener("close", () => d.remove()); d.addEventListener("click", e => { if(e.target === d) d.close(); });
   document.body.append(d); d.showModal();
 }
-function shareCard(){
-  const txt = t("shMsg"), enc = encodeURIComponent;
+function shareCard(txt = t("shMsg"), subj = t("shSubj")){
+  const enc = encodeURIComponent;
   const c = h("section", {class:"sharecard", "aria-labelledby":"sht"}, h("div", {class:"sh"}, h("span", {class:"si", "aria-hidden":"true"}, "🔗"), h("div", null, h("b", {id:"sht", text:t("shT")}), h("small", {text:t("shS")}))));
   const row = h("div", {class:"sharerow"});
   row.append(h("a", {class:"btn", href:"https://wa.me/?text=" + enc(txt + " " + SHARE_URL), target:"_blank", rel:"noopener noreferrer"}, "💬 " + t("shWa")));
-  row.append(h("a", {class:"btn ghost", href:"mailto:?subject=" + enc(t("shSubj")) + "&body=" + enc(txt + "\r\n\r\n" + SHARE_URL)}, "✉️ " + t("shMail")));
+  row.append(h("a", {class:"btn ghost", href:"mailto:?subject=" + enc(subj) + "&body=" + enc(txt + "\r\n\r\n" + SHARE_URL)}, "✉️ " + t("shMail")));
   row.append(h("button", {type:"button", class:"btn ghost", onclick:async () => {
     let ok = false;
     try{ await navigator.clipboard.writeText(SHARE_URL); ok = true; }catch(x){
@@ -1186,6 +1298,132 @@ fromHash(); render();
   const R = Math.random, pick = a => a[Math.floor(R() * a.length)], rnd = (a, b) => a + R() * (b - a);
   const wait = ms => new Promise(r => setTimeout(r, ms));
   /* Alle Sprüche sind Boarisch. Die ersten neun sind allgemeine Reaktionen (werden von einzelnen Auftritten gezielt gewählt), danach Witze und Stammtisch-Weisheiten. */
+  /* Alle Texte der Figur in den drei Sprachen: Die Figur spricht immer so wie die oben im Menue eingestellte Sprache. sprache() waehlt bei jedem Auftritt und bei jeder Sprechblase die passenden Texte. */
+  let SAG, AUA, ZZZ, WACH, MOON, PSST, TANZ, TURBO, PEEK, NAMEN, VORSTELLUNG, NAMEQ, GRUSS, TSCHUESS, KURZWITZE, JAGD, LEVEL, MUENZE, BOW, BOWEND, KOPF, HATSCHI, SZENEN, WITZE, TITEL, URLAUB, STERN, BALLON, FASS, GROESSE, DIEB, LOB;
+  const DINO_TXT = {
+  de: () => {
+  const SAG = ["Hoppla!","Mia san mia!","Falsche Richtung!","Wo ist denn der Pokal? Ah, schon wieder bei uns.","Da ist ja was los!","Kurze Pause, die Breze wartet.","Ich nehme die Abkürzung.","Ein Weißbier wäre jetzt gut.","Ich war das nicht.",
+    "Servus miteinander!","Grüß euch, ihr Leute!","Ich habe meine Hutfeder extra poliert.","Breze, Weißwurst, Bier: Das ist meine Taktik.","Weißwurst nach zwölf? Das ist Majestätsbeleidigung.","Ohne Leberkäs kein Training.","Ein Hut macht noch keinen Meister. Bei uns schon.",
+    "Das Quiz ist gut. Erst lernen, danach Breze.","Fünf Minuten lernen, dann eine Halbe. Fast.","Wissen ist wie eine Meisterschale: schön und schwer zu heben.","Wir gewinnen gern. Aber wir gönnen auch was.",
+    "Dortmund hat die Gelbe Wand. Respekt, die ist laut!","Leverkusen ist 2024 Meister geworden. Hut ab! Meiner bleibt aber auf dem Kopf.","Schalke: Herz und Seele. Wir drücken die Daumen.","Der HSV hat die Uhr. Möge sie nie wieder stehen bleiben.","Köln hat einen Geißbock. Wir haben ein Weißbier. Jeder, wie er mag.","Union Berlin singt Eisern. Wir singen Weißblau.","Frankfurt hat einen Adler. Gut fliegen können die.","Stuttgart sagt, man kann alles außer Hochdeutsch. Wir auch nicht, da sind wir uns einig.","Freiburg: schönstes Stadion im Schwarzwald. Neidlos!","Wolfsburg hat die Autofabrik. Wir haben die Brauerei.","Leipzig trinkt aus der Dose. Wir aus dem Maßkrug. Prost!","Mainz hat Fastnacht. Wir haben Oktoberfest. Fast dasselbe.","Augsburg kämpft bis zum Schluss gegen uns. Nervig, aber bewundernswert.","Heidenheim: von der Alb in die Bundesliga. Ein Märchen!","Hoffenheim: vom Dorf in die Bundesliga. Respekt!","St. Pauli hat einen Totenkopf und ein Herz. Wir einen Hut und ein Herz.","Bremen: Grün-Weiß mit Tradition. Schön, dass es die gibt.","Die Sechzger sind unsere Nachbarn. Blau und stolz!","Der Club aus Nürnberg hat neun Titel. Ich sage es ganz leise.","Barcelona? Da war doch mal was mit 8:2 … Ich sage nichts.","Real Madrid kennt uns gut. Meistens aus der Champions League.","Heute fährt der Meister. Ich weiß auch nicht, wohin."];
+  const AUA = "Autsch! Das tut weh!", ZZZ = "Zzz … Breze …", WACH = "Ich bin wach! Ich hatte nur die Augen zu!", MOON = "Moonwalk, mit Lederhose!", PSST = "Psst … ich bin gar nicht da.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Schneller!","Turbo, wie Kimmich im Mittelfeld!"];
+  const PEEK = ["Nur kurz gucken …","Huhu! Der Seppl!","Ist da jemand zu Hause?","Alles gut bei euch?"];
+  const NAMEN = ["%N, du schaffst das!","Weiter so, %N!","%N, du bist der Wahnsinn!","Mia san mia, und du bist dabei, %N!","Servus %N, heute fährt der Meister.","%N, wir sind stolz auf dich.","Super gemacht, %N. Eine Breze hast du dir verdient!","%N klingt schon wie ein Meistertitel.","%N, du bist ein Gewinner-Typ!","Kopf hoch, %N. Auf Regen folgt Weißbier."];
+  const VORSTELLUNG = [["Servus! Ich bin der Seppl, der kleine Bayer. Offiziell Chef vom Quiz.","Mein Beruf: Brezen bewachen. Mein Hobby: Brezen bewachen. Meine Schwäche: auch."],
+    ["Grüß euch! Seppl ist mein Name, Seppl bleibt er auch. Mein Hut kann mehr als ich!","Meine Größe? Genau richtig: nicht zu groß, nicht zu klein, genau wie eine Breze."],
+    ["Tschüss, Langeweile! Ich bin der Seppl, das kleine Wunder aus Bayern.","Ich bin so klein, mich sehen nur die, die wirklich hinschauen."]];
+  const NAMEQ = [["Servus! Mich kennst du ja jetzt. Wie darf ich dich nennen?","Trag deinen Namen ein, dann sage ich Servus mit Namen!"],["Grüß dich! Mia san mia, aber wer bist du?","Schreib deinen Namen rein, das macht es gleich persönlicher."],["Hoi! Der Seppl fragt: Wie heißt du denn?","Dein Name kommt aufs Zertifikat. Das wird schön!"],
+    ["Hallo? Moment mal! Ich frage schon wieder: Wie heißt du?","Ohne Namen kenne ich dich nicht, und ich mag dich doch schon!"],["Schorsch? Franz? Bärbel? Sag mir, wie du heißt!","Trag deinen Namen ein, das dauert zwei Sekunden. Versprochen!"],["Letzte Chance, dann frage ich die Kellnerin: Wie heißt du?","Dein Name macht die App persönlich und mich glücklich!"]];
+  const GRUSS = ["Servus %N! Kurz ein Witz für dich:","Grüß dich, %N! Pass auf, jetzt kommt einer:","Hoi %N! Bevor ich es vergesse, ein kurzer Witz:"];
+  const TSCHUESS = ["Ich komme wieder, %N!"];
+  const KURZWITZE = ["Zwei Dortmunder an der Gelben Wand. Sagt der eine: Wir sind laut. Sagt der andere: Wir auch!","Leverkusen wollte immer Meister werden und hat es geschafft. Respekt! Wir gratulieren, aber nur ganz kurz.","Der HSV hat eine berühmte Uhr. Wir haben nur eine Brezen-Uhr: Um zehn ist Brotzeit.","Köln hat einen Geißbock, wir ein Weißbier. Der Geißbock frisst Gras, das Weißbier ist gesünder.","Stuttgart kann alles außer Hochdeutsch. Wir können es auch nicht, das verbindet.","Frankfurt hat einen Adler im Wappen. Meine Hutfeder ist kleiner, aber mein Humor ist größer.","Freiburg hat das schönste Stadion im Schwarzwald. Wir haben die Allianz Arena, die leuchtet auch nachts.","Leipzig trinkt aus der Dose, wir aus dem Maßkrug. Prost, ihr Roten Bullen!","Union Berlin singt Eisern Union, wir singen Stern des Südens. Beides ist laut!","St. Pauli hat einen Totenkopf, wir einen Bayernhut. Kopfschmuck ist nicht alles, aber ein bisschen!","Augsburg ist unser Nachbar. Wir mögen sie, auch wenn sie uns jedes Mal Nerven kosten.","Wolfsburg baut Autos, wir brauen Bier. Beides bringt dich ans Ziel.","Barcelona? Da war mal was mit 8:2. Ich sage nichts, ich schaue nur schön.","Real Madrid kann Champions League, wir können Weißwurst. Jeder hat sein Talent."];  const JAGD = ["Bleib stehen, Meisterschale!","Aha, die rennt freiwillig zurück nach München."];
+  const LEVEL = ["Breze! Jetzt habe ich Kraft!","Nur bis zur Halbzeit … dann ist wieder gut."];
+  const MUENZE = ["Tor!","Noch ein Tor!","Hattrick! Mia san mia!"];
+  const BOW = ["Dankeschön!","Entschuldigung, ich bin nur kurz im Bild.","Vergelt’s Gott!"];
+  const BOWEND = "Ich gehe schon wieder. Pfiat eich!";
+  const KOPF = "Auf dem Kopf gesehen ist Bayern trotzdem oben.", HATSCHI = "Hatschi! Prost!";
+  const SZENEN = [
+    ["Wir haben heuer wieder 34 Spiele gewonnen!","Das sind 34 Spiele, keine 34 Siege!","Aber in meinem Kopf schon.","Dein Kopf spielt nicht in der Bundesliga!"],
+    ["Ich schaue nur Dortmund-Spiele, wegen der Stimmung.","Du bist doch Bayern-Fan!","Aber die Gelbe Wand ist der Wahnsinn.","Respekt geht in beide Richtungen. Stimmt."],
+    ["Ich habe heute noch keine Breze gegessen.","Das ist ein Notfall!","Ohne Breze keine Taktik.","Dann geh endlich zum Bäcker!"],
+    ["Der Schiri hat mich angeschaut!","Das ist sein Job!","Er hat aber seltsam geschaut.","Du hast ja einen Bayernhut auf!"]];
+  const WITZE = [
+    ["Dortmund hat die Gelbe Wand.","Wir haben die Meisterschale. Aber die Wand ist lauter, das gebe ich zu."],
+    ["Warum hieß Leverkusen so lange Vizekusen?","Weil sie oft Zweite geworden sind. Seit 2024 heißt es: Leverkusen, Respekt!"],
+    ["Beim HSV hängt eine berühmte Uhr.","Wir wünschen ihnen, dass sie nie wieder stehen bleibt."],
+    ["Schalke singt: Blau und weiß, wie lieb ich dich.","Wir sind auch nur weiß-rot. Aber wir mögen euch, ihr Knappen."],
+    ["Köln hat einen Geißbock im Wappen.","Wir haben ein Weißbier. Das ist sozusagen der Geißbock von Bayern."],
+    ["Union Berlin singt: Eisern Union.","Wir singen: Weißwurst-Weißbier-Union. Klingt weicher, schmeckt besser."],
+    ["Frankfurt hat einen Adler im Wappen.","Ich habe eine Feder am Hut. Der Adler ist größer, meine Feder ist schöner."],
+    ["Stuttgart sagt: Wir können alles, außer Hochdeutsch.","Wir können das auch nicht. Da sind wir uns einig, ihr Schwaben."],
+    ["Freiburg hat das schönste Stadion im Schwarzwald.","Und die beste Jugendarbeit. Neidlos: Hut ab! Mein Hut auch."],
+    ["Wolfsburg hat eine Autofabrik hinter dem Stadion.","Wir haben die Brauerei in der Nähe. Wer ist da besser vorbereitet?"],
+    ["Leipzig trinkt aus der Dose.","Wir aus dem Maßkrug. Beides ist flüssig, aber nur eines macht Spaß."],
+    ["Der TSV 1860 ist unser Nachbar in München.","Blau und stolz. Wir sind keine Feinde, wir sind Nachbarn mit Humor."],
+    ["Der Club aus Nürnberg hat neun Meistertitel.","Das sage ich ganz leise, weil wir ein paar mehr haben. Aber Respekt!"],
+    ["Barcelona? Da war doch mal was mit 8:2.","Ich sage nichts. Ich schaue nur ganz unschuldig."],
+    ["Real Madrid hat uns in der Champions League oft geärgert.","Aber eine Weißwurst kennen sie nicht. Da sind wir vorn."],
+    ["Mainz feiert Fastnacht.","Wir feiern Oktoberfest. Gleiche Idee: Kostüm, Bier und gute Laune."],
+    ["Augsburg kämpft in jedem Spiel bis zur letzten Minute gegen uns.","Nervig, aber bewundernswert. Wir drücken euch bei den anderen Spielen die Daumen."],
+    ["Heidenheim kommt von der Schwäbischen Alb.","Von der Alb in die Bundesliga: Das ist ein Märchen. Wir klatschen mit."],
+    ["Hoffenheim kommt aus einem Dorf.","Aus einem Dorf in die Bundesliga: Das ist Respekt-Pflicht. Hut ab!"],
+    ["St. Pauli hat einen Totenkopf und ein Herz.","Wir haben einen Bayernhut und ein Herz. Passt, jeder mit seinem Kopfschmuck."],
+    ["Wann wird Bayern Meister?","Früher oder später. Meistens früher."],
+    ["Was sagt der Bayern-Fan nach einer Niederlage?","Das war ein Test für die Meisterschaft."]];
+  const TITEL = ["Ersatzbankerl","Stammspieler","Kapitän","Ehrenpräsident"];
+  const URLAUB = "Urlaub am Tegernsee!", STERN = "Unbesiegbar! Zumindest bis zum Schlusspfiff.", BALLON = ["Wheee! Alles gut!","Pfiat eich!"], FASS = ["Gleich wieder da!","Überraschung! Prost!"], GROESSE = ["Mini-Maß!","Riesen-Maß! Prost!"];
+  const DIEB = ["Psst … nicht hinschauen.","Ich leihe mir die Schale nur aus!"];
+  const LOB = [
+    ["%N! Da hat jemand einen Namen, der klingt nach Meistertitel!","Mia san mia, und ab heute bist du es auch, %N. Servus im Team!","Jetzt lerne ein bisschen, dann wirst du Vereinslegende!"],
+    ["Wunderbar, %N! Jetzt kenne ich dich endlich. Das feiern wir mit einem Weißbier!","Für deinen Namen bekommst du den Ehrenplatz am Stammtisch.","Das Quiz wartet schon auf dich, %N!"],
+    ["%N, du bist jetzt schon der wertvollste Spieler in dieser App!","Neuer Rekord: Namen eingetragen in unter einer Minute. Respekt!","Weiter so, %N, der Pokal wartet!"],
+    ["Grandios, %N! Ein Name wie ein Elfmeter: sicher und drin!","Der Torwart hatte keine Chance.","Und jetzt schießen wir dein erstes Quiz, %N!"],
+    ["Servus %N! Ab sofort bist du offiziell Stammgast!","Deine Ehrenkarte liegt schon auf dem Tisch. Die Breze geht aufs Haus!","Probier gleich einen Spieltag, %N!"],
+    ["%N, meinen Hut ziehe ich vor dir!","Und das will etwas heißen, bei diesem Hut.","Auf geht’s, %N, ins erste Quiz!"]];
+  return {SAG, AUA, ZZZ, WACH, MOON, PSST, TANZ, TURBO, PEEK, NAMEN, VORSTELLUNG, NAMEQ, GRUSS, TSCHUESS, KURZWITZE, JAGD, LEVEL, MUENZE, BOW, BOWEND, KOPF, HATSCHI, SZENEN, WITZE, TITEL, URLAUB, STERN, BALLON, FASS, GROESSE, DIEB, LOB};
+  },
+  en: () => {
+  const SAG = ["Oops!","Mia san mia!","Wrong way!","Where is the cup? Oh, with us again.","Now that is something!","Quick break, the pretzel is waiting.","I am taking the shortcut.","A wheat beer would be nice now.","It was not me.",
+    "Servus, everyone!","Greetings, folks!","I polished my hat feather specially.","Pretzel, white sausage, beer: that is my tactic.","White sausage after noon? That is an insult to the crown.","No training without Leberkäs.","One hat does not make a champion. Here it does.",
+    "The quiz is good. Learn first, pretzel after.","Learn for five minutes, then a half-litre. Almost.","Knowledge is like the championship trophy: lovely and hard to lift.","We like to win. But we like to treat ourselves too.",
+    "Dortmund has the Yellow Wall. Respect, it is loud!","Leverkusen won the title in 2024. Hats off! Mine stays on my head, though.","Schalke: heart and soul. We keep our fingers crossed.","HSV has the clock. May it never stop again.","Cologne has a billy goat. We have a wheat beer. Each to their own.","Union Berlin sing Eisern. We sing white and blue.","Frankfurt has an eagle. They can fly well.","Stuttgart says you can do anything except standard German. We cannot either, so we agree.","Freiburg: the prettiest stadium in the Black Forest. No envy!","Wolfsburg has the car factory. We have the brewery.","Leipzig drinks from a can. We drink from a stein. Cheers!","Mainz has carnival. We have Oktoberfest. Almost the same.","Augsburg fight us until the end. Annoying, but admirable.","Heidenheim: from the Alb to the Bundesliga. A fairy tale!","Hoffenheim: from a village to the Bundesliga. Respect!","St. Pauli has a skull and a heart. We have a hat and a heart.","Bremen: green and white with tradition. Good that they exist.","The Sechzger are our neighbours. Blue and proud!","The Club from Nuremberg has nine titles. I say it very quietly.","Barcelona? There was something with 8–2 once … I say nothing.","Real Madrid know us well. Mostly from the Champions League.","The champion is on his way today. I do not know where either."];
+  const AUA = "Ouch! That hurts!", ZZZ = "Zzz … pretzel …", WACH = "I am awake! I only had my eyes shut!", MOON = "Moonwalk, in lederhosen!", PSST = "Psst … I am not even here.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Faster!","Turbo, like Kimmich in midfield!"];
+  const PEEK = ["Just a quick peek …","Hello! It is Seppl!","Is anyone home?","All good with you?"];
+  const NAMEN = ["%N, you can do it!","Keep it up, %N!","%N, you are amazing!","Mia san mia, and you are part of it, %N!","Servus %N, the champion is on his way today.","%N, we are proud of you.","Well done, %N. You have earned a pretzel!","%N already sounds like a championship title.","%N, you are a winner type!","Chin up, %N. After rain comes wheat beer."];
+  const VORSTELLUNG = [["Servus! I am Seppl, the little Bavarian. Officially head of the quiz.","My job: guarding pretzels. My hobby: guarding pretzels. My weakness: also pretzels."],
+    ["Greetings! Seppl is my name, and Seppl it stays. My hat can do more than I can!","My size? Just right: not too big, not too small, just like a pretzel."],
+    ["Goodbye, boredom! I am Seppl, the little wonder from Bavaria.","I am so small that only those who really look can see me."]];
+  const NAMEQ = [["Servus! You know me now. What may I call you?","Enter your name and I will say Servus with your name!"],["Greetings! Mia san mia, but who are you?","Write your name in, it makes things more personal right away."],["Hoi! Seppl asks: what is your name?","Your name goes on the certificate. That will look lovely!"],
+    ["Hello? Hold on! I am asking again: what is your name?","I do not know you without a name, and I already like you!"],["Schorsch? Franz? Bärbel? Tell me what you are called!","Enter your name, it takes two seconds. Promise!"],["Last chance, then I will ask the waitress: what is your name?","Your name makes the app personal and me happy!"]];
+  const GRUSS = ["Servus %N! A quick joke for you:","Greetings, %N! Listen up, here comes one:","Hoi %N! Before I forget, a short joke:"];
+  const TSCHUESS = ["I will be back, %N!"];
+  const KURZWITZE = ["Two Dortmund fans at the Yellow Wall. Says one: We are loud. Says the other: So are we!","Leverkusen always wanted to be champions and made it. Respect! We congratulate them, but only very briefly.","HSV has a famous clock. We only have a pretzel clock: at ten it is snack time.","Cologne has a billy goat, we have a wheat beer. The goat eats grass, the wheat beer is healthier.","Stuttgart can do everything except standard German. We cannot either, which brings us together.","Frankfurt has an eagle on the crest. My hat feather is smaller, but my humour is bigger.","Freiburg has the prettiest stadium in the Black Forest. We have the Allianz Arena, which glows at night too.","Leipzig drinks from a can, we drink from a stein. Cheers, you Red Bulls!","Union Berlin sing Eisern Union, we sing Stern des Südens. Both are loud!","St. Pauli has a skull, we have a Bavarian hat. Headgear is not everything, but it helps a little!","Augsburg is our neighbour. We like them, even though they cost us nerves every time.","Wolfsburg builds cars, we brew beer. Both get you where you are going.","Barcelona? There was something with 8–2. I say nothing, I just look pretty.","Real Madrid can do Champions League, we can do white sausage. Everyone has a talent."];  const JAGD = ["Stop right there, championship trophy!","Aha, it is running back to Munich voluntarily."];
+  const LEVEL = ["Pretzel! Now I have strength!","Only until half-time … then it is fine again."];
+  const MUENZE = ["Goal!","Another goal!","Hat-trick! Mia san mia!"];
+  const BOW = ["Thank you!","Sorry, I am only in the picture for a moment.","God bless you!"];
+  const BOWEND = "I am leaving again. See you, everyone!";
+  const KOPF = "Seen upside down, Bayern are still on top.", HATSCHI = "Achoo! Cheers!";
+  const SZENEN = [
+    ["We won 34 games again this year!","That is 34 games, not 34 wins!","But in my head it is.","Your head does not play in the Bundesliga!"],
+    ["I only watch Dortmund games, for the atmosphere.","But you are a Bayern fan!","But the Yellow Wall is amazing.","Respect goes both ways. True."],
+    ["I have not eaten a pretzel yet today.","That is an emergency!","No pretzel, no tactics.","Then finally go to the bakery!"],
+    ["The ref looked at me!","That is his job!","But he looked strange.","You are wearing a Bavarian hat!"]];
+  const WITZE = [
+    ["Dortmund has the Yellow Wall.","We have the championship trophy. But the wall is louder, I admit."],
+    ["Why was Leverkusen called Neverkusen for so long?","Because they often finished second. Since 2024 it is: Leverkusen, respect!"],
+    ["A famous clock hangs at HSV.","We wish that it never stops again."],
+    ["Schalke sing: Blue and white, how I love you.","We are only white and red. But we like you, you Miners."],
+    ["Cologne has a billy goat on the crest.","We have a wheat beer. That is, so to speak, the billy goat of Bavaria."],
+    ["Union Berlin sing: Eisern Union.","We sing: White-sausage-wheat-beer Union. Sounds softer, tastes better."],
+    ["Frankfurt has an eagle on the crest.","I have a feather on my hat. The eagle is bigger, my feather is prettier."],
+    ["Stuttgart says: We can do everything, except standard German.","We cannot do that either. We agree there, you Swabians."],
+    ["Freiburg has the prettiest stadium in the Black Forest.","And the best youth work. No envy: hats off! My hat too."],
+    ["Wolfsburg has a car factory behind the stadium.","We have the brewery nearby. Who is better prepared?"],
+    ["Leipzig drinks from a can.","We drink from a stein. Both are liquid, but only one is fun."],
+    ["TSV 1860 is our neighbour in Munich.","Blue and proud. We are not enemies, we are neighbours with humour."],
+    ["The Club from Nuremberg has nine championship titles.","I say that very quietly, because we have a few more. But respect!"],
+    ["Barcelona? There was something with 8–2.","I say nothing. I just look completely innocent."],
+    ["Real Madrid often annoyed us in the Champions League.","But they do not know white sausage. We are ahead there."],
+    ["Mainz celebrates carnival.","We celebrate Oktoberfest. Same idea: costume, beer and good mood."],
+    ["Augsburg fight us in every game until the last minute.","Annoying, but admirable. We keep our fingers crossed for you in the other games."],
+    ["Heidenheim comes from the Swabian Alb.","From the Alb to the Bundesliga: that is a fairy tale. We applaud."],
+    ["Hoffenheim comes from a village.","From a village to the Bundesliga: respect is compulsory. Hats off!"],
+    ["St. Pauli has a skull and a heart.","We have a Bavarian hat and a heart. Fits, everyone with their own headgear."],
+    ["When will Bayern be champions?","Sooner or later. Usually sooner."],
+    ["What does the Bayern fan say after a defeat?","That was a test for the championship."]];
+  const TITEL = ["Bench warmer","Regular starter","Captain","Honorary president"];
+  const URLAUB = "Holiday at Lake Tegernsee!", STERN = "Invincible! At least until the final whistle.", BALLON = ["Wheee! All good!","See you, everyone!"], FASS = ["Right back!","Surprise! Cheers!"], GROESSE = ["Mini stein!","Giant stein! Cheers!"];
+  const DIEB = ["Psst … do not look.","I am only borrowing the trophy!"];
+  const LOB = [
+    ["%N! Someone has a name that sounds like a championship title!","Mia san mia, and from today you are too, %N. Servus to the team!","Now learn a little, then you will become a club legend!"],
+    ["Wonderful, %N! Now I finally know you. We celebrate that with a wheat beer!","For your name you get the seat of honour at the Stammtisch.","The quiz is already waiting for you, %N!"],
+    ["%N, you are already the most valuable player in this app!","New record: name entered in under a minute. Respect!","Keep it up, %N, the cup is waiting!"],
+    ["Brilliant, %N! A name like a penalty: safe and in!","The goalkeeper had no chance.","And now we shoot your first quiz, %N!"],
+    ["Servus %N! From now on you are officially a regular!","Your guest pass is already on the table. The pretzel is on the house!","Try a matchday right away, %N!"],
+    ["%N, I take my hat off to you!","And that means something, with this hat.","Off you go, %N, to your first quiz!"]];
+  return {SAG, AUA, ZZZ, WACH, MOON, PSST, TANZ, TURBO, PEEK, NAMEN, VORSTELLUNG, NAMEQ, GRUSS, TSCHUESS, KURZWITZE, JAGD, LEVEL, MUENZE, BOW, BOWEND, KOPF, HATSCHI, SZENEN, WITZE, TITEL, URLAUB, STERN, BALLON, FASS, GROESSE, DIEB, LOB};
+  },
+  bar: () => {
   const SAG = ["Hoppla!","Mia san mia!","Falsche Richtung!","Wo is'n da Pokal? Ah, scho wieda bei uns.","Do is ja wos los!","Kurze Pause, de Brezn wart.","I nimm de Abkürzung.","A Weißbier wär jetz guad.","I woar des ned.",
     "Servus mitanand!","Griaß eich, ihr Leit!","I hob mei Hutfeder extra poliert.","Brezn, Weißwurscht, Bier: des is mei Taktik.","Weißwurscht nach zwölfe? Des is Majestätsbeleidigung.","Ohne Leberkas koa Training.","A Hut macht no koan Meister. Bei uns schon.",
     "Des Quiz is guad. Erst lerna, nacha Brezn.","Fünf Minutn lerna, dann a Halbe. Fast.","Wissn is wia a Meisterschale: schee und schwa zum Hebn.","Mia gwinna gern. Aber mia gunna aa wos.",
@@ -1193,20 +1431,11 @@ fromHash(); render();
   const AUA = "Autsch! Des hod weh to!", ZZZ = "Zzz … Brezn …", WACH = "I bin wach! I hob nur d'Augn zua ghabt!", MOON = "Moonwalk, mit Lederhosn!", PSST = "Psst … i bin goar ned da.", TANZ = "♪ Schuhplattler! ♫", TURBO = ["Schneller!","Turbo, wia da Kimmich im Mittelfeld!"];
   const PEEK = ["Nur kurz guckn …","Huhu! Da Seppl!","Is do wer dahoam?","Ois guad bei eich?"];
   const NAMEN = ["%N, du schaffst des!","Weiter so, %N!","%N, du bist a Wahnsinn!","Mia san mia, und du bist dabei, %N!","Servus %N, heit foahrt da Meister.","%N, mia san stolz auf di.","Super gmacht, %N. A Brezn hast da verdient!","%N klingt scho wia a Meistertitel.","%N, du bist a Gwinna-Typ!","Kopf hoch, %N. Auf Regn folgt Weißbier."];
-  /* Vorstellung beim allerersten Auftritt: Seppl sagt, wer er ist (zwei Sprechblasen, eine der drei Fassungen) */
   const VORSTELLUNG = [["Servus! I bin da Seppl, da kloane Bayer. Offiziell Chef vom Quiz.","Mei Beruf: Brezn bewachn. Mei Hobby: Brezn bewachn. Mei Schwächn: aa."],
     ["Griaß eich! Seppl is mei Nama, Seppl bleibt a so. Mei Hut ko mehr als i!","Mei Größe? Genau richtig: ned zu groß, ned zu kloa, grad wia a Brezn."],
     ["Pfiat di Langeweil! I bin da Seppl, des kloane Wunder vo Bayern.","I bin so kloa, mi sehng bloß de, de aa wirklich hischaun."]];
-  async function vorstellen(g){
-    if(ach.seppl) return; ach.seppl = true; save();
-    const v = pick(VORSTELLUNG);
-    await stehen(g, 200); sag(g, v[0], 3400, true); await sprung(g, 30); await stehen(g, 3400);
-    sag(g, v[1], 3600, true); await salto(g); await stehen(g, 3000);
-  }
-  /* Namensfrage: wird mit jeder Wiederholung etwas drängender (und lustiger) */
   const NAMEQ = [["Servus! Mi kennst ja jetz. Wia derf i di nenna?","Trag dei'n Nama ei, nacha sog i Servus mit Nama!"],["Griaß di! Mia san mia, aber wer bist du?","Schreib dei'n Nama eini, des macht's glei persönlicher."],["Hoi! Da Seppl fragt: Wia hoaßt'n du?","Dei Nama kimmt aufs Zertifikat. Des wird schee!"],
     ["Hallo? Hoit! I frog scho wieda: Wia hoaßt'n du?","Ohne Nama kenn i di ned, und i mog di do scho!"],["Schorsch? Franz? Bärbel? Sog's ma, wia du hoaßt!","Trag dein Nama ei, des dauert zwoa Sekunden. Versproch'n!"],["Letzte Chance, dann frog i d'Kellnerin: Wia hoaßt'n du?","Dei Nama macht de App persönlich und mi glücklich!"]];
-  /* Begrüßung, wenn der Name schon da ist: kurzer Witz und Abschied mit Namen */
   const GRUSS = ["Servus %N! Kurz a Witz fia di:","Griaß di, %N! Pass auf, jetz kimmt oana:","Hoi %N! Bevor i's vergiss, a kurzer Witz:"];
   const TSCHUESS = ["I komm wieda, %N!"];
   const KURZWITZE = ["Zwoa Dortmunder an da Gelben Wand. Sagt oana: Mia san laut. Sagt da andere: Mia aa!","Leverkusen wollt immer Meister werdn und hod's gschafft. Respekt! Mia gratulieren, aber nur ganz kurz.","Da HSV hod a berühmte Uhr. Mia hom nur a Brezn-Uhr: Um zehne is Brotzeit.","Köln hod an Geißbock, mia hom a Weißbier. Da Geißbock frisst Gras, des Weißbier is gsünder.","Stuttgart kann ois außer Hochdeitsch. Mia kenna's aa ned, des verbindet.","Frankfurt hod an Adler im Wappen. Mei Hutfeder is kloana, owa mei Humor is größer.","Freiburg hod des scheenste Stadion im Schwarzwald. Mia ham d'Allianz Arena, de leuchtet aa nachts.","Leipzig trinkt aus da Dosn, mia aus da Maß. Prost, ihr Roten Bullen!","Union Berlin singt Eisern Union, mia singa Stern des Südens. Beides is laut!","St. Pauli hod an Totenkopf, mia an Bayernhut. Kopfschmuck is ned alles, aber a bissl!","Augsburg is unser Nachbar. Mia mögn s', a wenn s' uns jedes Mal Nerven kostn.","Wolfsburg baut Autos, mia brauen Bier. Beides bringt di ans Ziel.","Barcelona? Do war moi wos mit 8:2. I sag nix, i schau nur schee.","Real Madrid kann Champions League, mia kenna Weißwurscht. Jeder hod sei Talent."];  const JAGD = ["Bleib steh, Meisterschale!","Aha, de rennt freiwillig zruck noch Minga."];
@@ -1215,13 +1444,11 @@ fromHash(); render();
   const BOW = ["Dankschee!","Entschuidigung, bin nur kurz im Bild.","Vergelt's Gott!"];
   const BOWEND = "I geh scho wieda. Pfiat eich!";
   const KOPF = "Aufm Kopf gsehn is Bayern trotzdem obn.", HATSCHI = "Hatschi! Prost!";
-  /* Stammtisch-Solo: vier Sätze, die Figur spielt beide Rollen und dreht sich dabei um */
   const SZENEN = [
     ["Mia ham heuer wieda 34 Spiele gwunna!","Des san 34 Spiele, ned 34 Siege!","Aber in meim Kopf scho.","Dei Kopf spuit ned in da Bundesliga!"],
     ["I schau nur Dortmund-Spiele, wegn da Stimmung.","Du bist doch Bayern-Fan!","Aber de gelbe Wand is a Wahnsinn.","Respekt geht in beide Richtungen. Stimmt."],
     ["I hob heit no koa Brezn gessn.","Des is a Notfall!","Ohne Brezn koa Taktik.","Nacha geh endlich zum Bäcker!"],
     ["Da Schiri hod mi ang'schaut!","Des is sei Job!","Er hod aber seltsam gschaut.","Du host ja an Bayernhut auf!"]];
-  /* Witze über andere Vereine: Frage und Pointe, immer respektvoll und mit Augenzwinkern */
   const WITZE = [
     ["Dortmund hod de gelbe Wand.","Mia ham de Meisterschale. Aber de Wand is lauter, des geb i zua."],
     ["Warum hod Leverkusen so lang Vizekusen ghoaßn?","Weil's oft Zweita worn san. Seit 2024 hoaßt's: Leverkusen, Respekt!"],
@@ -1245,6 +1472,31 @@ fromHash(); render();
     ["St. Pauli hod an Totenkopf und a Herz.","Mia ham an Bayernhut und a Herz. Passt, jeda mit sei'm Kopfschmuck."],
     ["Wann wird Bayern Meister?","Fruaha oder später. Meistens fruaha."],
     ["Wos sagt da Bayern-Fan nach ana Niederlag?","Des war a Test für de Meisterschaft."]];
+  const TITEL = ["Ersatzbankerl","Stammspieler","Kapitän","Ehrenpräsident"];
+  const URLAUB = "Urlaub am Tegernsee!", STERN = "Unbesiegbar! Zumindest bis zum Schlusspfiff.", BALLON = ["Wheee! Ois guad!","Pfiat eich!"], FASS = ["Gleich wieda do!","Überraschung! Prost!"], GROESSE = ["Mini-Maß!","Riesn-Maß! Prost!"];
+  const DIEB = ["Psst … ned hinschaun.","I leih ma de Schale nur aus!"];
+  const LOB = [
+    ["%N! Do hod oana an Nama, der klingt nach Meistertitel!","Mia san mia, und ab heit san mia a du, %N. Servus im Team!","Jetz lern a bissl, nacha wirst a Vereinslegende!"],
+    ["Wunderbar, %N! Jetz kenn i di endlich. Des feiern mia mit am Weißbier!","Fia dei'n Nama kriagst an Ehrenplatz am Stammtisch.","Des Quiz wart scho auf di, %N!"],
+    ["%N, du bist scho jetz da wertvollste Spieler in dera App!","Neuer Rekord: Nama eitrong in unter oana Minuta. Respekt!","Weida so, %N, da Pokal wart!"],
+    ["Grandios, %N! A Nama wia a Elfmeter: sicher und drin!","Da Torwart hod koa Chance ghabt.","Und jetz schiaßn ma dei erstes Quiz, %N!"],
+    ["Servus %N! Ab sofort bist du offiziell Stammgast!","Dei Ehrenkarte lieg i scho am Tisch. Brezn geht aufs Haus!","Probier glei an Spieltag, %N!"],
+    ["%N, mei Hut ziag i vor dir!","Und des will wos hoaßn, bei dem Hut.","Auf geht's, %N, ins erste Quiz!"]];
+  return {SAG, AUA, ZZZ, WACH, MOON, PSST, TANZ, TURBO, PEEK, NAMEN, VORSTELLUNG, NAMEQ, GRUSS, TSCHUESS, KURZWITZE, JAGD, LEVEL, MUENZE, BOW, BOWEND, KOPF, HATSCHI, SZENEN, WITZE, TITEL, URLAUB, STERN, BALLON, FASS, GROESSE, DIEB, LOB};
+  },
+  };
+  const sprache = () => ({SAG, AUA, ZZZ, WACH, MOON, PSST, TANZ, TURBO, PEEK, NAMEN, VORSTELLUNG, NAMEQ, GRUSS, TSCHUESS, KURZWITZE, JAGD, LEVEL, MUENZE, BOW, BOWEND, KOPF, HATSCHI, SZENEN, WITZE, TITEL, URLAUB, STERN, BALLON, FASS, GROESSE, DIEB, LOB} = DINO_TXT[LANGS[li][0]]());
+  /* Vorstellung beim allerersten Auftritt: Seppl sagt, wer er ist (zwei Sprechblasen, eine der drei Fassungen) */
+  async function vorstellen(g){
+    if(ach.seppl) return; ach.seppl = true; save();
+    const v = pick(VORSTELLUNG);
+    await stehen(g, 200); sag(g, v[0], 3400, true); await sprung(g, 30); await stehen(g, 3400);
+    sag(g, v[1], 3600, true); await salto(g); await stehen(g, 3000);
+  }
+  /* Namensfrage: wird mit jeder Wiederholung etwas drängender (und lustiger) */
+  /* Begrüßung, wenn der Name schon da ist: kurzer Witz und Abschied mit Namen */
+  /* Stammtisch-Solo: vier Sätze, die Figur spielt beide Rollen und dreht sich dabei um */
+  /* Witze über andere Vereine: Frage und Pointe, immer respektvoll und mit Augenzwinkern */
   const aktiv = []; let redet = true;
   /* Profi-Zufallsmix: Mischbeutel statt reinem Zufall. Jedes Muster kommt pro Runde gemaess Gewicht vor und nie zweimal direkt hintereinander; genau einer von fuenf Auftritten redet; die Startrichtung wechselt meistens. */
   let lastDir = 1, beutel = [], letzte = null, redeBeutel = [], redeLetzte = false;
@@ -1271,8 +1523,9 @@ fromHash(); render();
   function dim(){ const t = document.querySelector(".top"); return {W: document.documentElement.clientWidth, H: innerHeight, hb: t ? t.getBoundingClientRect().bottom : 0}; }
   /* Zustand der Figur: Mittelpunkt x/y, Drehung r (0 Boden, 180 Decke, 90 linke Wand, -90 rechte Wand), Blickrichtung f (1 rechts, -1 links) */
   function T(s){ return "translate(" + (s.x - 19.5) + "px," + (s.y - 24) + "px) rotate(" + s.r + "deg) scale(" + (s.f * (s.z || 1)) + "," + (s.z || 1) + ")"; }
+  let actLi = null, lastLi = li, sprachNeu = false;   // Sprache beim Start des Auftritts; wechselt die Sprache oben im Menue, bricht der Auftritt ab und die Figur meldet sich gleich in der neuen Sprache
   let stopBeiName = false;   // während der Namensfrage: sobald ein Name da ist, sofort aufhören
-  function abbruch(){ return document.hidden || (stopBeiName && typeof hasName === "function" && hasName()); }
+  function abbruch(){ return document.hidden || !!ach.noDino || (actLi !== null && li !== actLi) || (stopBeiName && typeof hasName === "function" && hasName()); }
   function neu(s){
     const el = document.createElement("div"); el.className = "runner"; el.setAttribute("aria-hidden", "true"); el.appendChild(figur());
     el.style.transform = T(s); document.body.appendChild(el); aktiv.push(el);
@@ -1316,11 +1569,11 @@ fromHash(); render();
     b.classList.add("z" + seite);
     b.style.setProperty("--zp", Math.round(waag ? Math.max(14, Math.min(h - 14, fy)) : Math.max(16, Math.min(w - 16, fx))) + "px");
   }
-  function sag(g, txt, ms, muss){
+  function sag(g, txt, ms, muss){ sprache();
     if(!muss && !redet) return;
     document.querySelectorAll(".runbub").forEach(x => x.remove());
     const vn = (typeof fname === "function" ? fname() : ""), nn = vn.slice(0, 12) + (vn.length > 12 ? "…" : "");
-    txt = txt.replace(/%N/g, nn || "Spezi");
+    txt = txt.replace(/%N/g, nn || ({de:"Spezi", en:"buddy", bar:"Spezi"})[LANGS[li][0]]);
     const b = document.createElement("div"); b.className = "runbub"; b.textContent = txt; b.setAttribute("aria-hidden", "true"); document.body.appendChild(b);
     const d = dim(), rr = g.s.r * Math.PI / 180, cx = g.s.x + Math.sin(rr) * 44 * (g.s.z || 1), cy = g.s.y - Math.cos(rr) * 44 * (g.s.z || 1), w = b.offsetWidth, h = b.offsetHeight;
     const bl = Math.max(4, Math.min(d.W - w - 4, cx - w / 2)), bt = Math.max(4, Math.min(d.H - h - 4, cy - h / 2));
@@ -1569,8 +1822,6 @@ fromHash(); render();
     await gehe(g, raus(dir, d), undefined, .3);
   }
   /* Weitere Gags im Stil von Brezn: Groesse, Requisiten, Verwandlungen */
-  const TITEL = ["Ersatzbankerl","Stammspieler","Kapitän","Ehrenpräsident"];
-  const URLAUB = "Urlaub am Tegernsee!", STERN = "Unbesiegbar! Zumindest bis zum Schlusspfiff.", BALLON = ["Wheee! Ois guad!","Pfiat eich!"], FASS = ["Gleich wieda do!","Überraschung! Prost!"], GROESSE = ["Mini-Maß!","Riesn-Maß! Prost!"];
   /* Groesse aendern, die Fuesse bleiben am Boden */
   async function skaliere(g, z, ms){
     const z0 = g.s.z || 1, boden = g.s.y + 24 * z0, e = Object.assign({}, g.s, {z, y: boden - 24 * z});
@@ -1634,7 +1885,6 @@ fromHash(); render();
     await skaliere(g, 1, 500); await gehe(g, raus(dir, d), undefined, .3);
   }
   /* Auftritt 23: schleicht sich an, klaut die Meisterschale und rennt damit davon */
-  const DIEB = ["Psst … ned hinschaun.","I leih ma de Schale nur aus!"];
   async function dieb(d){
     const dir = rd(), b = bahn(d, "boden", dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), x = anteil(dir, d, rnd(.4, .65)), boden = b.y + 24;
     const tr = document.createElement("div"); tr.className = "runcoin"; tr.textContent = "🏆"; tr.setAttribute("aria-hidden", "true");
@@ -1686,13 +1936,6 @@ fromHash(); render();
     await gehe(g, raus(dir, d), undefined, .3);
   }
   /* Auftritt 27: kommt sofort wieder, wenn gerade ein Name eingetragen wurde, und lobt auf lustige Art (mit Konfetti) */
-  const LOB = [
-    ["%N! Do hod oana an Nama, der klingt nach Meistertitel!","Mia san mia, und ab heit san mia a du, %N. Servus im Team!","Jetz lern a bissl, nacha wirst a Vereinslegende!"],
-    ["Wunderbar, %N! Jetz kenn i di endlich. Des feiern mia mit am Weißbier!","Fia dei'n Nama kriagst an Ehrenplatz am Stammtisch.","Des Quiz wart scho auf di, %N!"],
-    ["%N, du bist scho jetz da wertvollste Spieler in dera App!","Neuer Rekord: Nama eitrong in unter oana Minuta. Respekt!","Weida so, %N, da Pokal wart!"],
-    ["Grandios, %N! A Nama wia a Elfmeter: sicher und drin!","Da Torwart hod koa Chance ghabt.","Und jetz schiaßn ma dei erstes Quiz, %N!"],
-    ["Servus %N! Ab sofort bist du offiziell Stammgast!","Dei Ehrenkarte lieg i scho am Tisch. Brezn geht aufs Haus!","Probier glei an Spieltag, %N!"],
-    ["%N, mei Hut ziag i vor dir!","Und des will wos hoaßn, bei dem Hut.","Auf geht's, %N, ins erste Quiz!"]];
   async function lob(d){
     const dir = rd(), b = bahn(d, pick(["boden","mitte"]), dir), g = neu({x: rein(dir, d), y: b.y, r: 0, f: b.f}), l = pick(LOB);
     await gehe(g, anteil(dir, d, rnd(.3, .55)), undefined, .5);
@@ -1720,14 +1963,14 @@ fromHash(); render();
   }
   let laeuft = false, lobOffen = false;
   async function auftritt(name){
-    if(abbruch() || laeuft) return; laeuft = true;
+    if(abbruch() || laeuft) return; laeuft = true; sprache(); actLi = li;
     redet = !!name || (!(view && view.v === "quiz") && redetDiesmal());
     try{ await waehle(name)(dim()); } catch(e){ if(!e || e.message !== "stop") console.error("Figur:", e); }
     aktiv.splice(0).forEach(e => e.remove()); document.querySelectorAll(".runbub").forEach(b => b.remove());
-    laeuft = false; stopBeiName = false;
+    laeuft = false; stopBeiName = false; actLi = null;
   }
   /* Warten, aber sofort wach werden, wenn gerade ein Name eingetragen wurde (dann folgt das Lob) */
-  const warte = async ms => { const t0 = Date.now(); while(Date.now() - t0 < ms && !lobOffen) await wait(250); };
+  const warte = async ms => { const t0 = Date.now(); while(Date.now() - t0 < ms && !lobOffen && !sprachNeu) await wait(250); };
   const test = (location.search.match(/[?&]lauf=([a-z]*)/) || [])[1];
   /* Wer noch keinen Namen eingetragen hat, wird gleich zu Beginn freundlich gefragt (auf der Startseite, höchstens dreimal) */
   const brauchtName = () => view && view.v === "home" && typeof hasName === "function" && !hasName() && (ach.nq || 0) < 6;
@@ -1736,11 +1979,14 @@ fromHash(); render();
   (async function(){
     /* Wird zum ersten Mal ein Name eingetragen (auf Startseite oder in einer Lektion), kommt der kleine Bayer gleich zum Loben */
     let hatteName = hatName();
-    setInterval(() => { const jetzt = hatName(); if(jetzt && !hatteName && view && (view.v === "home" || view.v === "lesson")) lobOffen = true; hatteName = jetzt; }, 300);
+    setInterval(() => { const jetzt = hatName(); if(jetzt && !hatteName && view && (view.v === "home" || view.v === "lesson")) lobOffen = true; hatteName = jetzt; if(li !== lastLi){ lastLi = li; sprachNeu = true; } }, 300);
     await warte(test !== undefined ? 1200 : (brauchtName() ? 1200 : (hatName() ? 2000 : rnd(8000, 20000))));
-    let erster = test === undefined; for(;;){
+    let erster = test === undefined, zurueck = false; for(;;){
+      if(ach.noDino){ lobOffen = false; sprachNeu = false; zurueck = true; await wait(1000); continue; }
       let n = test || undefined;
+      if(zurueck){ zurueck = false; await wait(800); n = "hallo"; }
       if(lobOffen){ lobOffen = false; n = "lob"; await wait(700); }
+      else if(sprachNeu){ sprachNeu = false; n = "hallo"; await wait(500); }
       else if(!n && brauchtName() && (erster || R() < .7)) n = "name"; else if(!n && erster && hatName() && grussFaellig()) n = "gruss"; else if(!n && erster && R() < .5) n = "hallo";
       await auftritt(n); erster = false; await warte(test !== undefined ? 1500 : (brauchtName() ? rnd(15000, 30000) : (R() < .15 ? rnd(4000, 9000) : rnd(25000, 80000))));
     }

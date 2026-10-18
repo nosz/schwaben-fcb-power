@@ -1,5 +1,5 @@
 /* Stammtisch-Quiz - Service Worker. VERSION muss mit VERSION in index.html uebereinstimmen. */
-const VERSION = "1.10.0";
+const VERSION = "1.11.0";
 const CACHE = "fcb-stammtisch-" + VERSION;
 const CORE = ["./", "index.html", "manifest.webmanifest"];
 const OPTIONAL = ["favicon.png", "favicon.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "fcbayern_vorschau.jpg"];
