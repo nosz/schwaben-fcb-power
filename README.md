@@ -6,7 +6,7 @@
 
 **Von den FCB Hardcore Fans: Arno & Udo & Nobbe** (inoffizielles Fan-Projekt)
 
-**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.11.5, Stand 23.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
+**Datei:** `index.html` (eine Datei, offline lauffähig, Version 1.11.7, Stand 25.10.2026). Einfach im Browser öffnen oder auf einem Webserver ablegen.
 
 > **Veröffentlichung:** GitHub-Repository `schwaben-fcb-power` (Benutzer `nosz`), Adresse `https://nosz.github.io/schwaben-fcb-power/`. Alle Dateien der Liste unten ins Hauptverzeichnis des Repositories legen (ohne Unterordner), GitHub Pages auf den Hauptzweig (Branch) stellen. Bei anderer Adresse in `index.html` (canonical, og:url, og:image, twitter:image) und in dieser README anpassen.
 
@@ -24,11 +24,11 @@ Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **D
 | 7 | Bossrunde: Elfmeterschießen | 5 |
 
 - **Hinweis ganz oben:** In der Kopfzeile direkt unter "Stammtisch-Quiz" steht groß und fett: "von den FCB Hardcore Fans: Arno & Udo & Nobbe" (Deutsch, Englisch, Bairisch), ebenso auf jedem Zertifikat und in der Fußzeile.
-- **Stammtisch-Spruch & Fakt:** Karte auf der Startseite mit 16 Sprüchen und Fakten (Gags von Arno, Udo & Nobbe plus belegte Zahlen aus den Quellen), Knopf "Noch einer!" zeigt den nächsten.
+- **Stammtisch-Spruch & Fakt:** Karte auf der Startseite mit 28 Sprüchen und Fakten (Gags von Arno, Udo & Nobbe plus belegte Zahlen aus den Quellen), Knopf "Noch einer!" zeigt den nächsten.
 - **Startseite:** "Servus! Was weißt du über den FC Bayern?" mit zwei Wegen ("Ich bin neu im Stadion" / "Ich bin schon ewig Fan"). Name optional, nur lokal gespeichert, steckt in Begrüßung, Quiz, Ergebnis und Zertifikat.
 - **Spielmechanik:** 10 Tore je richtiger Antwort, 1 bis 3 Sterne je Spieltag, 5 Ränge von "Bankdrücker" bis "Vereinslegende", Konfetti, Hell- und Dunkelmodus.
 - **Zertifikate:** je Spieltag ein "Stammtisch-Zertifikat", zum Abschluss das "Meisterschalen-Zertifikat" (PNG speichern oder drucken). Unterschrieben "Arno, Udo & Nobbe (inoffiziell)".
-- **Der kleine Bayer:** Ab und zu läuft ein Pixel-Männchen mit Bayernhut über den Bildschirm (rein dekorativ, nicht klickbar, aus bei „Bewegung reduzieren“). Er spricht immer Boarisch, egal welche Sprache eingestellt ist, und macht Witze über andere Vereine, immer respektvoll und mit Augenzwinkern. Zu Beginn kommt er sofort: ohne Namen fragt er immer drängender danach und zeigt auf das Eingabefeld (höchstens sechsmal), mit Namen macht er einen kurzen Witz und sagt „I komm wieda, <Name>!“. Test mit Adresse `?lauf=witz` (weitere: `name`, `stammtisch`, `brezn`, `tor`, `fass`, `karriere` u. a.).
+- **Der kleine Bayer:** Ab und zu läuft Seppl (Fes mit Namensschild, runde Flügel, Bierkrug vor dem Trikot, Fußball am Fuß) über den Bildschirm (rein dekorativ, nicht klickbar, aus bei „Bewegung reduzieren“). Er spricht immer Boarisch, egal welche Sprache eingestellt ist, und macht Witze über andere Vereine, immer respektvoll und mit Augenzwinkern. Zu Beginn kommt er sofort: ohne Namen fragt er immer drängender danach und zeigt auf das Eingabefeld (höchstens sechsmal), mit Namen macht er einen kurzen Witz und sagt „I komm wieda, <Name>!“. Test mit Adresse `?lauf=witz` (weitere: `name`, `stammtisch`, `brezn`, `tor`, `fass`, `karriere` u. a.).
 - **Installieren-Knopf:** Auf der Startseite steht direkt nach Begrüßung und Namensfrage „Mir gefällt die App, ich möchte sie installieren“ (nur solange die App nicht installiert ist). Er startet die Installation oder zeigt die passende Anleitung (iPhone, Android, Computer).
 - **PWA:** installierbar, läuft offline, Update-Hinweis. Dateien (alle ins Hauptverzeichnis): `index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `favicon.svg`, `apple-touch-icon.png`, `fcbayern_vorschau.jpg`. Bei jeder neuen Version `VERSION` in `index.html` **und** `sw.js` gemeinsam erhöhen.
 
@@ -36,7 +36,7 @@ Fan-Quiz mit 7 Spieltagen, viel Humor, Zertifikaten und Personalisierung, in **D
 Daten und Texte (alle in 3 Sprachen, 93 Oberflächentexte, 16 Sprüche), 7 Spieltage x 3 Sprachen komplett durchgespielt, Namensfrage und Personalisierung, 168 Urkunden (7 Namen, 3 Sprachen, 8 Urkunden) im Rand, PWA (Manifest, Icons, Service Worker, Offline bei gestopptem Server, Fortschritt nach Neuladen), UX-Suite U1 bis U10 auf dem Handy (375 px) hell und dunkel. Nicht getestet: echtes Gerät, GitHub Pages selbst, fcbayern.com-Links.
 
 ## Marke und Look
-Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Blau-Verlauf), aus einem Screenshot geschätzt, nicht aus dem Quelltext der Seite. Es werden **kein Vereinswappen, keine Logos, keine Spielerfotos und keine kopierten Texte** verwendet. Das Logo ist ein selbst gezeichneter Pixel-Fanschal. Die Seite ist ein inoffizielles Fan-Projekt ohne Verbindung zum FC Bayern München.
+Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Blau-Verlauf), aus einem Screenshot geschätzt, nicht aus dem Quelltext der Seite. Es werden **kein Vereinswappen, keine Logos, keine Spielerfotos und keine kopierten Texte** verwendet. Das Logo in der Kopfzeile ist ein selbst gezeichneter Pixel-Fanschal; Läufer, Favicon, App-Icons und Vorschaubild zeigen den selbst gezeichneten Seppl. Die Seite ist ein inoffizielles Fan-Projekt ohne Verbindung zum FC Bayern München.
 
 ## Quellen (Stand Frühjahr 2026, abgerufen 14.10.2026)
 - Wikipedia (DE): https://de.wikipedia.org/wiki/FC_Bayern_M%C3%BCnchen
@@ -49,6 +49,8 @@ Farben nach dem Auftritt von fcbayern.com/de (Rot, Weiß, Dunkel, zarter Rosa-Bl
 - Vor einer öffentlichen Veröffentlichung Marken- und Stil-Anlehnung mit Management/Legal klären.
 
 ## Änderungsprotokoll
+- 1.11.7 (25.10.2026): **Neuer Seppl** als Vektorfigur mit runden Flügeln, Fes mit Namensschild, Bierkrug vor dem Trikot und Fußball am Fuß: er läuft jetzt statt des Pixel-Männchens über den Bildschirm (Sprechblasen sitzen über seinem Hut), Favicon, App-Icons (192, 512, maskable, Apple) und Vorschaubild (`?v=2`) zeigen ihn ebenfalls.
+- 1.11.6 (25.10.2026): 12 neue Sprüche im Stil von „Ein Münchner im Himmel“ (Hingerl, Petrus, Manna, Halleluja) in Deutsch, Englisch und Bairisch: in der Spruch-Karte (jetzt 28 Einträge) und in Seppls Sprechblasen.
 - 1.11.5 (24.10.2026): Teilen und Zertifikat-Download in App-Browsern (Facebook, Instagram, Messenger) repariert: Erkennung mit Hinweis "Im Browser öffnen", Zertifikat-Bild zum Speichern per langem Druck, Fehlerbehandlung beim Download.
 - 1.11.4 (23.10.2026): **Fehler behoben: Die Seite scrollte beim Lesen von selbst nach oben** (der Namens-Hinweis zog die Seite zum Namensfeld; sie scrollt jetzt nie mehr von selbst, das Feld pulsiert nur, wenn es sichtbar ist). **Autoren-Knopf** mit deutlichem Link-Symbol, Symbol für externe Seite und sichtbarer Adresse. **Name-Knopf heißt jetzt „Speichern“** (statt „Das bin ich“), mit Speichern-Symbol; er ist grau, solange das Feld leer ist, wird aktiv und pulsiert bei neuem Text und zeigt „Gespeichert“ (grün), wenn nichts mehr zu speichern ist; nach dem Speichern erscheint eine Bestätigung. Version angehoben.
 - 1.11.3 (23.10.2026): Autoren-Hinweis im Fuß als auffälliger Knopf überarbeitet (ganzer Text ist der Link auf https://nosz.github.io/norbert-szpak/); Version angehoben, alle Tests und die Link-Pflicht-Prüfung erneut.
